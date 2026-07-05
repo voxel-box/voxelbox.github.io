@@ -20,6 +20,7 @@ const NAV = [
     { id:"costs", label:"Costs", href:"costs.html" },
   ]},
   { id:"support", label:"Support", href:"support.html", children:[
+    { id:"status", label:"Status", href:"status.html" },
     { id:"getting-started", label:"Getting Started", href:"getting-started.html" },
     { id:"applications", label:"Applications", href:"applications.html" },
     { id:"update-pings", label:"Update Pings", href:"update-pings.html" },
@@ -30,7 +31,7 @@ const FOOT = [
   ["Explore", [["Home","index.html"],["Servers","servers.html"],["3D Prints","3d-prints.html"],["Portfolio","portfolio.html"],["About","about.html"]]],
   ["Play", [["All Servers","servers.html"],["How To Join","getting-started.html"],["Rules","rules.html"],["Update Pings","update-pings.html"]]],
   ["Community", [["Join Discord",DISCORD,1],["News","announcements.html"],["Showcase","showcase.html"],["Partners","partners.html"]]],
-  ["More", [["Costs","costs.html"],["Applications","applications.html"],["Contact","contact.html"],["Terms","terms.html"],["Privacy","privacy.html"]]],
+  ["More", [["Status","status.html"],["Costs","costs.html"],["Applications","applications.html"],["Contact","contact.html"],["Terms","terms.html"],["Privacy","privacy.html"]]],
 ];
 const SRV_COLOR = {
   minecraft:"#67d073", palworld:"#49b6ff", satisfactory:"#ffce4d", enshrouded:"#b47bff",
