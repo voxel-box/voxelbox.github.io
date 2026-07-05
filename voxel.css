@@ -302,6 +302,80 @@ h3{font-size:1.28rem;font-weight:500}
 @keyframes emFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @keyframes emChip{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
+/* =====================================================================
+   VOXEL SCENE STAGE — the big animated hero dioramas (inner pages)
+   ===================================================================== */
+.banner-grid--scene{grid-template-columns:.92fr 1.08fr;align-items:center}
+.banner-side{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.banner-side .kv{font-size:.94rem}
+.scene-col{min-width:0}
+.scene-stage{position:relative;border:1px solid var(--line-2);border-radius:var(--radius-lg);overflow:hidden;
+  background:
+    radial-gradient(120% 88% at 50% 8%, rgba(127,178,255,.12), transparent 62%),
+    linear-gradient(180deg, rgba(20,24,33,.72), rgba(7,9,13,.9));
+  box-shadow:var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.04);}
+.scene-stage::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:linear-gradient(180deg,transparent 62%,rgba(6,7,10,.45))}
+.scene-stage::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.5;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 2px,transparent 2px 4px)}
+.scene-svg{display:block;width:100%;height:auto}
+.scene-svg .vx{transition:none}
+.sc-tilt{transform-origin:center;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.sc-float{transform-origin:center;animation:scFloat 6s ease-in-out infinite}
+@keyframes scFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+.sc-bob{transform-origin:center;animation:scBob 5s ease-in-out infinite}
+@keyframes scBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.sc-mote{animation:scMote 6s ease-in-out infinite}
+@keyframes scMote{0%{opacity:0;transform:translateY(10px)}30%{opacity:.75}100%{opacity:0;transform:translateY(-30px)}}
+.sc-win{animation:scWin 3.2s ease-in-out infinite}
+@keyframes scWin{0%,100%{opacity:.5}50%{opacity:1}}
+.sc-smoke{opacity:0;animation:scSmoke 3.8s ease-out infinite;transform-origin:center}
+@keyframes scSmoke{0%{opacity:0;transform:translateY(0) scale(.55)}25%{opacity:.45}100%{opacity:0;transform:translateY(-46px) scale(1.35)}}
+.sc-mist{opacity:.22;animation:scMist 7s ease-in-out infinite}
+@keyframes scMist{0%,100%{opacity:.14;transform:translateX(-8px)}50%{opacity:.34;transform:translateX(10px)}}
+.sc-head{animation:scHead 3.2s ease-in-out infinite}
+@keyframes scHead{0%,100%{transform:translateX(-64px)}50%{transform:translateX(64px)}}
+.sc-shadow{animation:scShadow 6s ease-in-out infinite}
+@keyframes scShadow{0%,100%{opacity:.1}50%{opacity:.17}}
+.sc-grid{animation:scShadow 5s ease-in-out infinite}
+.sc-chips{position:absolute;left:14px;bottom:12px;z-index:3;display:flex;flex-wrap:wrap;gap:8px}
+.sc-chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-mono);font-weight:500;font-size:.7rem;
+  letter-spacing:.04em;padding:5px 10px;border-radius:7px;background:rgba(9,11,16,.72);border:1px solid var(--line-2);
+  color:var(--muted);backdrop-filter:blur(6px)}
+.sc-chip i{font-style:normal;color:var(--accent-2);font-size:.62rem;line-height:1}
+
+/* world thumbnail cards (servers) + gallery tiles (showcase) */
+.thumb{position:relative;display:block;border-radius:12px;overflow:hidden;margin:-6px -6px 14px;
+  background:radial-gradient(120% 100% at 50% 0%, rgba(127,178,255,.1), transparent 60%), rgba(9,11,16,.5);
+  border:1px solid var(--line)}
+.thumb .emblem-svg{max-width:none;width:100%;padding:6px 0}
+.tile{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  background:linear-gradient(180deg,rgba(26,30,40,.5),rgba(12,14,19,.6));transition:transform .18s,border-color .18s,box-shadow .18s}
+.tile:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 30px 60px -28px rgba(0,0,0,.85)}
+.tile-art{background:radial-gradient(120% 100% at 50% 0%, rgba(127,178,255,.08), transparent 60%)}
+.tile-art .emblem-svg{max-width:none;width:100%;padding:10px 0}
+.tile-cap{padding:14px 18px 18px;border-top:1px solid var(--line)}
+.tile-cap h3{font-size:1.06rem}
+.tile-cap p{color:var(--muted);font-size:.9rem;margin-top:5px}
+
+/* animated cost-compare bars */
+.compare{display:flex;flex-direction:column;gap:18px;margin-top:8px}
+.cmp{display:grid;grid-template-columns:130px 1fr auto;align-items:center;gap:16px}
+.cmp-label{font-family:var(--f-mono);font-size:.82rem;color:var(--muted)}
+.cmp-track{height:16px;border-radius:8px;background:rgba(9,11,16,.6);border:1px solid var(--line);overflow:hidden}
+.cmp-fill{height:100%;width:0;border-radius:8px;animation:cmpGrow 1.4s cubic-bezier(.22,1,.36,1) forwards}
+.cmp-fill--hi{background:linear-gradient(90deg,var(--warn),#ff9a6b)}
+.cmp-fill--mid{background:linear-gradient(90deg,#7fb2ff,var(--accent-2))}
+.cmp-fill--zero{background:linear-gradient(90deg,var(--ok),#8ff0c0)}
+.cmp-val{font-family:var(--f-display);font-weight:600;font-size:1.05rem;color:var(--ink);min-width:78px;text-align:right}
+@keyframes cmpGrow{from{width:0}to{width:var(--w)}}
+
+@media (max-width:900px){
+  .banner-grid--scene{grid-template-columns:1fr}
+  .scene-col{order:-1}
+  .cmp{grid-template-columns:96px 1fr auto;gap:10px}
+}
+
 /* ---------- responsive ---------- */
 @media (max-width:900px){
   .nav-toggle{display:flex}

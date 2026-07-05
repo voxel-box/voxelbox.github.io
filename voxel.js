@@ -43,8 +43,26 @@ document.addEventListener("DOMContentLoaded", ()=>{
   renderShell(); initNav(); initReveal(); initFaq();
   initServerStatus(); initNewsFeed(); initStreamers();
   initContactForm(); initApplyForm(); initCookies(); setYear();
-  initAmbient(); initPush();
+  initAmbient(); initPush(); initScenes();
 });
+
+/* ---------- voxel scene parallax (inner-page hero dioramas) ---------- */
+function initScenes(){
+  const stages=document.querySelectorAll(".scene-stage[data-tilt]");
+  if(!stages.length) return;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  stages.forEach((st)=>{
+    const g=st.querySelector(".sc-tilt"); if(!g) return;
+    let raf=0, nx=0, ny=0;
+    const apply=()=>{ raf=0; g.style.transform=`translate(${nx*15}px,${ny*11}px)`; };
+    st.addEventListener("pointermove",(e)=>{
+      const r=st.getBoundingClientRect();
+      nx=(e.clientX-r.left)/r.width-.5; ny=(e.clientY-r.top)/r.height-.5;
+      if(!raf) raf=requestAnimationFrame(apply);
+    },{passive:true});
+    st.addEventListener("pointerleave",()=>{ nx=ny=0; g.style.transform=""; });
+  });
+}
 
 /* ---------- the living engine (ambient background, all pages) ----------
    Not decoration — telemetry. Every drifting voxel node is one of the real
