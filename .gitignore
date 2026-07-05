@@ -1,0 +1,14 @@
+# Claude Code build tooling / local settings (not part of the deployed site)
+.claude/
+
+# Dead drafts kept locally but excluded from the live site
+terminal.css
+terminal.js
+studio.html
+studio.css
+studio.js
+voxel-hero.js
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
