@@ -322,7 +322,7 @@ function renderShell(){
       return `<a class="nav-link ${active?"is-active":""}" href="${n.href}">${n.label}</a>`;
     }).join("");
     head.innerHTML = `<header class="site-header"><div class="wrap nav">
-      <a class="brand" href="index.html"><span class="cube"></span>Voxel<b>box</b></a>
+      <a class="brand brand--logo" href="index.html" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
       <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
       <nav class="nav-links">${links}<a class="btn btn--primary nav-cta" href="${DISCORD}" target="_blank" rel="noopener noreferrer">Join Discord</a></nav>
     </div></header>`;
