@@ -332,7 +332,7 @@ function renderShell(){
     const cols = FOOT.map(([t,ls])=>`<div><h4>${t}</h4>${ls.map(([l,h,e])=>`<a href="${h}"${e?' target="_blank" rel="noopener noreferrer"':""}>${l}</a>`).join("")}</div>`).join("");
     foot.innerHTML = `<footer class="foot"><div class="wrap">
       <div class="foot-grid">
-        <div class="foot-brand"><a class="brand" href="index.html"><span class="cube"></span>Voxel<b>box</b></a>
+        <div class="foot-brand"><a class="brand brand--logo" href="index.html" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
           <p>Free community game worlds and custom 3D prints — self-hosted, $0 to play, built by people who actually play.</p>
           <div class="pills"><span class="pill">Free Servers</span><span class="pill">Custom Prints</span><span class="pill">Discord-First</span></div></div>
         ${cols}
