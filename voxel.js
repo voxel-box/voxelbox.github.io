@@ -2,11 +2,13 @@
 const DISCORD = "https://discord.gg/mpeZ62uEEp";
 const STATUS_URL = "https://panel.voxelbox.org/vb-status/status.json";
 const NEWS_URL = "https://panel.voxelbox.org/vb-status/news.json";
+const PORTFOLIO_URL = "https://demos.voxelbox.org/portfolio.json";
 
 const NAV = [
   { id:"home", label:"Home", href:"index.html" },
   { id:"servers", label:"Servers", href:"servers.html" },
   { id:"prints", label:"3D Prints", href:"3d-prints.html" },
+  { id:"portfolio", label:"Portfolio", href:"portfolio.html" },
   { id:"community", label:"Community", href:"community.html", children:[
     { id:"announcements", label:"News", href:"announcements.html" },
     { id:"showcase", label:"Showcase", href:"showcase.html" },
@@ -25,7 +27,7 @@ const NAV = [
   { id:"contact", label:"Contact", href:"contact.html" },
 ];
 const FOOT = [
-  ["Explore", [["Home","index.html"],["Servers","servers.html"],["3D Prints","3d-prints.html"],["About","about.html"],["Team","team.html"]]],
+  ["Explore", [["Home","index.html"],["Servers","servers.html"],["3D Prints","3d-prints.html"],["Portfolio","portfolio.html"],["About","about.html"]]],
   ["Play", [["All Servers","servers.html"],["How To Join","getting-started.html"],["Rules","rules.html"],["Update Pings","update-pings.html"]]],
   ["Community", [["Join Discord",DISCORD,1],["News","announcements.html"],["Showcase","showcase.html"],["Partners","partners.html"]]],
   ["More", [["Costs","costs.html"],["Applications","applications.html"],["Contact","contact.html"],["Terms","terms.html"],["Privacy","privacy.html"]]],
@@ -41,7 +43,7 @@ async function getJSON(u){ const r=await fetch(u,{cache:"no-store"}); if(!r.ok) 
 
 document.addEventListener("DOMContentLoaded", ()=>{
   renderShell(); initNav(); initReveal(); initFaq();
-  initServerStatus(); initNewsFeed(); initStreamers();
+  initServerStatus(); initNewsFeed(); initStreamers(); initPortfolio();
   initContactForm(); initApplyForm(); initCookies(); setYear();
   initAmbient(); initPush(); initScenes();
 });
@@ -376,6 +378,34 @@ function initReveal(){
   items.forEach((el)=>{ if(el.dataset.delay) el.style.setProperty("--d",el.dataset.delay); });
   const io=new IntersectionObserver((es)=>es.forEach((e)=>{ if(e.isIntersecting){ e.target.classList.add("vis"); io.unobserve(e.target);} }),{threshold:.12});
   items.forEach((el)=>io.observe(el));
+}
+
+function initPortfolio(){
+  const grid=document.querySelector("[data-portfolio-grid]");
+  if(!grid) return;
+  const reveal=(root)=>root.querySelectorAll("[data-reveal]").forEach((el,i)=>{
+    if(el.dataset.delay) el.style.setProperty("--d",el.dataset.delay);
+    setTimeout(()=>el.classList.add("vis"), 60+i*55);
+  });
+  getJSON(PORTFOLIO_URL).then((d)=>{
+    const sites=(d.sites||[]).slice().sort((a,b)=>String(b.updated||"").localeCompare(String(a.updated||"")));
+    const cnt=document.querySelector("[data-portfolio-count]"); if(cnt) cnt.textContent=sites.length;
+    if(!sites.length){
+      grid.innerHTML=`<div class="card"><h3>Coming soon</h3><p class="muted">The first demos are being built — check back shortly.</p></div>`;
+      return;
+    }
+    grid.innerHTML=sites.map((s,i)=>`
+      <a class="card" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" data-reveal data-delay="${(i%3)*0.06}s" style="display:block">
+        <span class="pill" style="margin-bottom:10px;display:inline-block">${esc(s.kind||"site")}</span>
+        <h3>${esc(s.title||s.slug)}</h3>
+        <p class="muted" style="margin-top:8px">${esc(s.description||"")}</p>
+        ${(s.tags&&s.tags.length)?`<div class="pills" style="margin-top:14px">${s.tags.map((t)=>`<span class="pill">${esc(t)}</span>`).join("")}</div>`:""}
+        <div class="btn btn--ghost" style="margin-top:16px">Open live site →</div>
+      </a>`).join("");
+    reveal(grid);
+  }).catch(()=>{
+    grid.innerHTML=`<div class="card"><h3>Portfolio unavailable</h3><p class="muted">Couldn't reach the live feed right now — please try again in a moment.</p></div>`;
+  });
 }
 
 function initServerStatus(){
