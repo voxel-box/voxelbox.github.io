@@ -46,7 +46,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
   initAmbient(); initPush();
 });
 
-/* ---------- ambient living background (all pages) ---------- */
+/* ---------- the living engine (ambient background, all pages) ----------
+   Not decoration — telemetry. Every drifting voxel node is one of the real
+   game servers; the constellation wires itself together and lights up from
+   the live status feed, and the sky shifts with the visitor's local clock.
+   The page you're on is a live portrait of the machines running 24/7.        */
 function initAmbient(){
   // the homepage has the full 3D world; skip there and for reduced motion
   if(document.querySelector("[data-voxel-scene]")) return;
@@ -61,48 +65,89 @@ function initAmbient(){
     cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); };
   resize(); addEventListener("resize",resize,{passive:true});
 
-  const ACCENTS=["#7fb2ff","#9ec6ff","#b99bff","#6fe0d0","#ff9a63"];
+  const hex2rgb=(h)=>{ const n=parseInt(h.slice(1),16); return [n>>16&255,n>>8&255,n&255]; };
+  const lerp=(a,b,k)=>a+(b-a)*k;
+  const mix=(a,b,k)=>[Math.round(lerp(a[0],b[0],k)),Math.round(lerp(a[1],b[1],k)),Math.round(lerp(a[2],b[2],k))];
 
-  // aurora orbs — rendered into a tiny offscreen buffer and GPU-upscaled
-  // (cheap + blur-smooth: no per-frame full-viewport gradients, no banding)
+  /* --- the sky knows what time it is: aurora palette drifts through the day.
+     keyframes at hours 0 / 6 / 12 / 18, each three orb colours (rgb).       */
+  const SKY=[
+    { h:0,  o:[[52,84,170],[120,78,205],[38,120,150]] },   // deep night — indigo & cyan
+    { h:6,  o:[[255,150,92],[186,140,232],[120,170,255]] }, // dawn — warm bleeding into blue
+    { h:12, o:[[127,178,255],[110,220,208],[158,198,255]] },// noon — clear blue & teal
+    { h:18, o:[[255,120,92],[185,120,255],[110,122,222]] }, // dusk — ember & violet
+  ];
+  function skyNow(){
+    const d=new Date(), hr=d.getHours()+d.getMinutes()/60;
+    let i=0; for(let k=0;k<SKY.length;k++){ if(hr>=SKY[k].h) i=k; }
+    const a=SKY[i], b=SKY[(i+1)%SKY.length];
+    const span=((b.h-a.h+24)%24)||24, k=((hr-a.h+24)%24)/span;
+    return a.o.map((c,j)=>mix(c,b.o[j],k));
+  }
+  let skyCols=skyNow();
+  setInterval(()=>{ skyCols=skyNow(); }, 60000);   // re-tint once a minute
+
+  // aurora orbs — tiny offscreen buffer, GPU-upscaled (cheap + blur-smooth)
   const AW=240, AH=135;
   const aur=document.createElement("canvas"); aur.width=AW; aur.height=AH;
   const actx=aur.getContext("2d");
   const orbs=[
-    {x:.80,y:.12,r:.42,c:"127,178,255",a:.13,sp:.21,ph:0},
-    {x:.10,y:.78,r:.38,c:"255,143,94",a:.09,sp:.16,ph:2.1},
-    {x:.45,y:.40,r:.30,c:"185,155,255",a:.07,sp:.12,ph:4.2},
+    {x:.80,y:.12,r:.42,a:.14,sp:.21,ph:0,   ci:0},
+    {x:.10,y:.78,r:.38,a:.10,sp:.16,ph:2.1, ci:1},
+    {x:.45,y:.40,r:.30,a:.08,sp:.12,ph:4.2, ci:2},
   ];
   function drawAurora(t){
     actx.clearRect(0,0,AW,AH);
     orbs.forEach((o)=>{
+      const c=skyCols[o.ci], col=`${c[0]},${c[1]},${c[2]}`;
       const ox=(o.x+Math.sin(t*o.sp+o.ph)*.08)*AW;
       const oy=(o.y+Math.cos(t*o.sp*.8+o.ph)*.08)*AH;
       const rr=o.r*AW*(1+Math.sin(t*.5+o.ph)*.08);
       const g=actx.createRadialGradient(ox,oy,0,ox,oy,rr);
-      g.addColorStop(0,`rgba(${o.c},${o.a*(0.8+Math.sin(t*.7+o.ph)*.2)})`);
-      g.addColorStop(1,`rgba(${o.c},0)`);
+      g.addColorStop(0,`rgba(${col},${o.a*(0.8+Math.sin(t*.7+o.ph)*.2)})`);
+      g.addColorStop(1,`rgba(${col},0)`);
       actx.fillStyle=g; actx.fillRect(0,0,AW,AH);
     });
   }
-  // rising light motes — bright enough to actually see
-  const N=Math.min(110,Math.round(innerWidth/12));
-  const motes=Array.from({length:N},()=>({
+
+  // rising light motes — the ambient dust the constellation floats in
+  const NM=Math.min(90,Math.round(innerWidth/14));
+  const motes=Array.from({length:NM},()=>({
     x:Math.random(), y:Math.random(),
-    r:1.4+Math.random()*2.4, s:(.35+Math.random()*.8)/900,
-    a:.25+Math.random()*.35, ph:Math.random()*Math.PI*2, depth:.4+Math.random()*.6 }));
-  // floating wireframe voxel shards (the brand DNA, drifting through the page)
-  const shards=Array.from({length:9},(_,i)=>({
-    x:Math.random(), y:Math.random(),
-    s:14+Math.random()*26, rot:Math.random()*Math.PI,
-    vr:(Math.random()-.5)*.012, vy:(.12+Math.random()*.25)/900,
-    c:ACCENTS[i%ACCENTS.length], a:.16+Math.random()*.2, depth:.5+Math.random()*.5, ph:Math.random()*6 }));
+    r:1.2+Math.random()*2.2, s:(.35+Math.random()*.8)/900,
+    a:.22+Math.random()*.32, ph:Math.random()*Math.PI*2, depth:.4+Math.random()*.6 }));
+
+  /* --- the constellation: one node per REAL server. it lights from the live
+     status feed, so the background is a working readout, not scenery. --- */
+  const SERVERS=[
+    ["minecraft",.18,.28],["palworld",.40,.66],["satisfactory",.62,.22],
+    ["enshrouded",.82,.56],["american-truck-simulator",.50,.44],
+    ["beammp",.26,.80],["fivem",.74,.82],
+  ];
+  const nodes=SERVERS.map(([slug,hx,hy],i)=>({
+    slug, hx, hy, sx:0, sy:0,
+    ph:Math.random()*6.28, sp:.05+Math.random()*.05, amp:.028+Math.random()*.022,
+    rot:Math.random()*6.28, vr:(Math.random()-.5)*.006,
+    depth:.55+ (i%3)*.18, size:13+(i%3)*4,
+    c:hex2rgb(SRV_COLOR[slug]||"#8a86a6"),
+    online:true, lit:1 }));                 // lit eases toward online (1) / offline (0)
+
+  // live status → which servers are actually up right now, refreshed 24/7
+  function pullStatus(){
+    getJSON(STATUS_URL).then((d)=>{
+      const map={}; (d.servers||[]).forEach((s)=>map[s.slug]=s.status);
+      nodes.forEach((n)=>{ const st=map[n.slug]; if(st!==undefined) n.online=(st==="running"); });
+    }).catch(()=>{});
+  }
+  pullStatus(); setInterval(pullStatus,60000);
+
   // occasional comet streak
   let streak=null, nextStreak=performance.now()+3000+Math.random()*5000;
 
   let run=!document.hidden, t=0, last=0;
   const FRAME=1000/30;                        // 30fps is plenty for ambient drift
   document.addEventListener("visibilitychange",()=>{ run=!document.hidden; if(run) loop(); });
+
   function loop(now){
     if(!run) return;
     requestAnimationFrame(loop);
@@ -111,10 +156,12 @@ function initAmbient(){
     const sc=(window.scrollY||0);
     ctx.clearRect(0,0,W,H);
 
+    // 1 — sky
     drawAurora(t);
     ctx.imageSmoothingEnabled=true;
     ctx.drawImage(aur,0,0,W,H);
 
+    // 2 — motes
     ctx.fillStyle="#bcd4ff";
     motes.forEach((m)=>{
       m.y-=m.s*m.depth*(H/700+1)*2; m.x+=Math.sin(t*.7+m.ph)*.0004;
@@ -124,23 +171,72 @@ function initAmbient(){
       ctx.fillRect(m.x*W, y<-20?y+H+40:y, m.r, m.r);
     });
 
-    ctx.lineWidth=1.4;
-    shards.forEach((sh)=>{
-      sh.rot+=sh.vr*2; sh.y-=sh.vy*sh.depth*2;
-      if(sh.y<-.06){ sh.y=1.06; sh.x=Math.random(); }
-      const x=sh.x*W, y=(sh.y*H - sc*.16*sh.depth)%(H+120);
-      const yy=y<-60?y+H+120:y, bob=Math.sin(t*.8+sh.ph)*6;
-      ctx.save(); ctx.translate(x,yy+bob); ctx.rotate(sh.rot);
-      ctx.globalAlpha=sh.a*(0.75+Math.sin(t+sh.ph)*0.25);
-      ctx.strokeStyle=sh.c;
-      const s=sh.s*sh.depth;
-      ctx.strokeRect(-s/2,-s/2,s,s);
-      ctx.globalAlpha*=.5;
+    // 3 — advance nodes + resolve screen positions
+    let onCount=0;
+    nodes.forEach((n)=>{
+      n.lit += ((n.online?1:0)-n.lit)*0.05;
+      if(n.online) onCount++;
+      n.rot+=n.vr;
+      const dx=Math.sin(t*n.sp+n.ph)*n.amp, dy=Math.cos(t*n.sp*.85+n.ph)*n.amp;
+      n.sx=(n.hx+dx)*W;
+      n.sy=(n.hy+dy)*H - sc*.06*n.depth;      // gentle scroll parallax
+    });
+
+    // 4 — the network: living edges between nearby nodes, brighter the closer
+    //     they are and the more alive both ends are. pulses ride the active
+    //     links, and the whole mesh beats faster when more servers are up.
+    const LINK=Math.min(W,H)*0.42, beat=0.14+onCount*0.03;
+    ctx.lineWidth=1;
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i], b=nodes[j];
+        const dx=a.sx-b.sx, dy=a.sy-b.sy, dist=Math.hypot(dx,dy);
+        if(dist>LINK) continue;
+        const near=1-dist/LINK, live=a.lit*b.lit;
+        const edgeA=near*(.05+live*.16);
+        if(edgeA<0.004) continue;
+        const col=mix(a.c,b.c,.5);
+        ctx.strokeStyle=`rgba(${col[0]},${col[1]},${col[2]},${edgeA})`;
+        ctx.beginPath(); ctx.moveTo(a.sx,a.sy); ctx.lineTo(b.sx,b.sy); ctx.stroke();
+        // energy pulse riding the link (only while both ends are alive)
+        if(live>0.35){
+          const seed=(i*7+j)*0.137, p=((t*beat+seed)%1);
+          const px=lerp(a.sx,b.sx,p), py=lerp(a.sy,b.sy,p);
+          const pr=1.4+Math.sin(p*Math.PI)*2.2;
+          ctx.globalAlpha=live*near*(.5+Math.sin(p*Math.PI)*.5);
+          ctx.fillStyle=`rgb(${col[0]},${col[1]},${col[2]})`;
+          ctx.beginPath(); ctx.arc(px,py,pr,0,6.283); ctx.fill();
+          ctx.globalAlpha=1;
+        }
+      }
+    }
+
+    // 5 — the nodes themselves: a glow + double wireframe voxel, per server
+    nodes.forEach((n)=>{
+      const [r,g,b]=n.c, s=n.size*n.depth, breath=0.72+Math.sin(t+n.ph)*0.28;
+      const on=n.lit;
+      // soft glow — bright when the server's up, embers when it's down
+      const gr=ctx.createRadialGradient(n.sx,n.sy,0,n.sx,n.sy,s*2.6);
+      gr.addColorStop(0,`rgba(${r},${g},${b},${(.10+on*.28)*breath})`);
+      gr.addColorStop(1,`rgba(${r},${g},${b},0)`);
+      ctx.fillStyle=gr; ctx.beginPath(); ctx.arc(n.sx,n.sy,s*2.6,0,6.283); ctx.fill();
+      // wireframe cube (brand DNA) — desaturates & dims when offline
+      ctx.save(); ctx.translate(n.sx,n.sy); ctx.rotate(n.rot);
+      const dim=mix([90,100,125],[r,g,b],on);
+      ctx.strokeStyle=`rgba(${dim[0]},${dim[1]},${dim[2]},${(.35+on*.5)*breath})`;
+      ctx.lineWidth=1.4; ctx.strokeRect(-s/2,-s/2,s,s);
+      ctx.globalAlpha=(.35+on*.5)*breath*.55;
       ctx.strokeRect(-s/3.2,-s/3.2,s/1.6,s/1.6);   // inner frame = voxel depth
+      ctx.globalAlpha=1;
+      // a dead server drops a severed diagonal — you can SEE it's down
+      if(on<0.4){
+        ctx.strokeStyle=`rgba(120,128,150,${(.5-on)* .9})`;
+        ctx.beginPath(); ctx.moveTo(-s/2,-s/2); ctx.lineTo(s/2,s/2); ctx.stroke();
+      }
       ctx.restore();
     });
 
-    // comet streak every few seconds
+    // 6 — comet streak every few seconds
     const nowMs=performance.now();
     if(!streak && nowMs>nextStreak){
       const fromLeft=Math.random()<.5;
