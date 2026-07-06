@@ -36,61 +36,12 @@ const SRV_COLOR = {
   "american-truck-simulator":"#ff7d74", beammp:"#4fd6c0", fivem:"#ff9a4d",
 };
 
-const THEMES = [
-  { id:"voxelbox", label:"Voxelbox", meta:"#06070a" },
-  { id:"emberforge", label:"Emberforge", meta:"#080504" },
-  { id:"prismarine", label:"Prismarine", meta:"#03090a" },
-  { id:"amethyst", label:"Amethyst", meta:"#07050d" },
-];
-const THEME_IDS = new Set(THEMES.map((t)=>t.id));
-function themePickerMarkup(){
-  const choices = THEMES.map((t)=>`<button class="theme-choice" type="button" data-theme-choice="${t.id}" role="menuitemradio" aria-checked="false"><span class="theme-swatch theme-swatch--${t.id}" aria-hidden="true"></span><span>${t.label}</span></button>`).join("");
-  return `<div class="theme-picker" data-theme-picker><button class="theme-trigger" type="button" data-theme-toggle aria-label="Theme" title="Theme"><span class="theme-orbit" aria-hidden="true"></span></button><div class="theme-menu" role="menu" aria-label="Theme">${choices}</div></div>`;
-}
-function normalizeTheme(id){ return THEME_IDS.has(id) ? id : "voxelbox"; }
-function applyTheme(id,{save=true}={}){
-  const theme = normalizeTheme(id);
-  document.documentElement.dataset.theme = theme;
-  if(save){ try{ localStorage.setItem("vb_theme",theme); }catch{} }
-  const def = THEMES.find((t)=>t.id===theme) || THEMES[0];
-  document.querySelector('meta[name="theme-color"]')?.setAttribute("content",def.meta);
-  document.querySelectorAll("[data-theme-choice]").forEach((btn)=>{
-    const on = btn.dataset.themeChoice === theme;
-    btn.classList.toggle("is-active",on);
-    btn.setAttribute("aria-checked",on ? "true" : "false");
-  });
-}
-function applyStoredTheme(){
-  let saved="voxelbox";
-  try{ saved=localStorage.getItem("vb_theme") || "voxelbox"; }catch{}
-  applyTheme(saved,{save:false});
-}
-function renderThemePickers(){
-  document.querySelectorAll("[data-theme-picker-mount]").forEach((mount)=>{ mount.outerHTML = themePickerMarkup(); });
-}
-function initThemeControls(){
-  applyStoredTheme();
-  document.querySelectorAll("[data-theme-toggle]").forEach((btn)=>btn.addEventListener("click",(e)=>{
-    e.stopPropagation();
-    const picker = btn.closest("[data-theme-picker]");
-    const open = picker?.classList.contains("is-open");
-    document.querySelectorAll("[data-theme-picker].is-open").forEach((p)=>p.classList.remove("is-open"));
-    if(picker && !open) picker.classList.add("is-open");
-  }));
-  document.querySelectorAll("[data-theme-choice]").forEach((btn)=>btn.addEventListener("click",()=>{
-    applyTheme(btn.dataset.themeChoice);
-    btn.closest("[data-theme-picker]")?.classList.remove("is-open");
-  }));
-  document.addEventListener("click",()=>document.querySelectorAll("[data-theme-picker].is-open").forEach((p)=>p.classList.remove("is-open")));
-  document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") document.querySelectorAll("[data-theme-picker].is-open").forEach((p)=>p.classList.remove("is-open")); });
-}
-
 const esc = (s)=>String(s).replace(/[&<>"']/g,(m)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 function age(iso){ const s=Math.max(0,(Date.now()-new Date(iso).getTime())/1000); if(s<60)return Math.floor(s)+"s"; if(s<3600)return Math.floor(s/60)+"m"; if(s<86400)return Math.floor(s/3600)+"h"; return Math.floor(s/86400)+"d"; }
 async function getJSON(u){ const r=await fetch(u,{cache:"no-store"}); if(!r.ok) throw new Error(r.status); return r.json(); }
 
 document.addEventListener("DOMContentLoaded", ()=>{
-  applyStoredTheme(); renderShell(); renderThemePickers(); initThemeControls(); initNav(); initReveal(); initFaq();
+  renderShell(); initNav(); initReveal(); initFaq();
   initServerStatus(); initNewsFeed(); initStreamers(); initPortfolio();
   initContactForm(); initApplyForm(); initCookies(); setYear();
   initAmbient(); initPush(); initScenes();
@@ -392,7 +343,7 @@ function renderShell(){
     head.innerHTML = `<header class="site-header"><div class="wrap nav">
       <a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
       <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <nav class="nav-links">${links}<span data-theme-picker-mount></span><a class="btn btn--primary nav-cta" href="/contact">Contact Us</a></nav>
+      <nav class="nav-links">${links}<a class="btn btn--primary nav-cta" href="/contact">Contact Us</a></nav>
     </div></header>`;
   }
   const foot = document.querySelector("[data-shell-footer]");
