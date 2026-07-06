@@ -1,19 +1,12 @@
 /* VOXELBOX — voxel theme shell + interactions */
 const DISCORD = "https://discord.gg/mpeZ62uEEp";
-const STATUS_URL = "https://panel.voxelbox.org/vb-status/status.json";
+const STATUS_URL = "https://status.voxelbox.org/api/public/status";
 const NEWS_URL = "https://panel.voxelbox.org/vb-status/news.json";
 const PORTFOLIO_URL = "https://demos.voxelbox.org/portfolio.json";
 
+const GAME_SERVERS = [{"slug": "minecraft", "name": "Minecraft", "short": "Minecraft", "href": "/minecraft-server", "color": "#67d073", "type": "survival / modded", "desc": "Long-term survival, shared builds, and community projects that grow over more than one session."}, {"slug": "palworld", "name": "Palworld", "short": "Palworld", "href": "/palworld-server", "color": "#49b6ff", "type": "co-op survival", "desc": "Open co-op worlds with room for active groups, steady maintenance, and clear join guidance."}, {"slug": "satisfactory", "name": "Satisfactory", "short": "Satisfactory", "href": "/satisfactory-server", "color": "#ffce4d", "type": "factory co-op", "desc": "Long-haul factory projects with shared infrastructure, planning, and big collaborative systems."}, {"slug": "enshrouded", "name": "Enshrouded", "short": "Enshrouded", "href": "/enshrouded-server", "color": "#b47bff", "type": "survival co-op", "desc": "Adventure-driven progression with a shared base, group goals, and stable co-op exploration."}, {"slug": "american-truck-simulator", "name": "American Truck Simulator", "short": "American Truck Sim", "href": "/american-truck-simulator-server", "color": "#ff7d74", "type": "convoy nights", "desc": "Convoys, route nights, and driving events with the wider crew."}, {"slug": "beammp", "name": "BeamMP", "short": "BeamMP", "href": "/beammp-server", "color": "#4fd6c0", "type": "driving sessions", "desc": "Casual driving meetups, stunts, and event-style community hangs."}, {"slug": "fivem", "name": "FiveM", "short": "FiveM", "href": "/fivem-server", "color": "#ff9a4d", "type": "gta v roleplay", "desc": "A GTA V roleplay city with custom scripts, jobs, crews, and community events."}, {"slug": "euro-truck-simulator-2", "name": "Euro Truck Simulator 2", "short": "Euro Truck Sim 2", "href": "/euro-truck-simulator-2-server", "color": "#7fb2ff", "type": "convoy nights", "desc": "European convoy routes, casual road sessions, and community driving nights."}, {"slug": "garrys-mod", "name": "Garry's Mod", "short": "Garry's Mod", "href": "/garrys-mod-server", "color": "#6ba7ff", "type": "sandbox sessions", "desc": "Sandbox sessions, community experiments, and casual source-engine chaos."}, {"slug": "left-4-dead-2", "name": "Left 4 Dead 2", "short": "Left 4 Dead 2", "href": "/left-4-dead-2-server", "color": "#9ad36a", "type": "co-op campaigns", "desc": "Co-op zombie campaigns, quick sessions, and community survival nights."}, {"slug": "no-more-room-in-hell", "name": "No More Room in Hell", "short": "No More Room in Hell", "href": "/no-more-room-in-hell-server", "color": "#c8665a", "type": "co-op survival horror", "desc": "Tense co-op survival horror runs where teamwork matters more than noise."}, {"slug": "rust", "name": "Rust", "short": "Rust", "href": "/rust-server", "color": "#d48a45", "type": "survival pvp", "desc": "Survival, bases, wipes, and player stories on a community-run Rust world."}, {"slug": "sons-of-the-forest", "name": "Sons of the Forest", "short": "Sons of the Forest", "href": "/sons-of-the-forest-server", "color": "#78b46b", "type": "survival co-op", "desc": "Forest survival, base building, and co-op exploration with friends."}, {"slug": "squad", "name": "Squad", "short": "Squad", "href": "/squad-server", "color": "#b7a56a", "type": "tactical teamwork", "desc": "Tactical sessions built around coordination, comms, and squad play."}, {"slug": "team-fortress-2", "name": "Team Fortress 2", "short": "Team Fortress 2", "href": "/team-fortress-2-server", "color": "#d65a4a", "type": "arena nights", "desc": "Classic TF2 rounds, community matches, and low-pressure arena chaos."}, {"slug": "terraria", "name": "Terraria", "short": "Terraria", "href": "/terraria-server", "color": "#65c97a", "type": "adventure sandbox", "desc": "Boss progression, building, loot, and long-running sandbox adventures."}, {"slug": "the-forest", "name": "The Forest", "short": "The Forest", "href": "/the-forest-server", "color": "#5aa568", "type": "survival co-op", "desc": "Co-op survival, cave runs, building, and story progression in the woods."}];
 const NAV = [
-  { id:"servers", label:"Servers", href:"/servers", children:[
-    { id:"minecraft", label:"Minecraft", href:"/minecraft-server" },
-    { id:"palworld", label:"Palworld", href:"/palworld-server" },
-    { id:"satisfactory", label:"Satisfactory", href:"/satisfactory-server" },
-    { id:"enshrouded", label:"Enshrouded", href:"/enshrouded-server" },
-    { id:"american-truck-simulator", label:"American Truck Simulator", href:"/american-truck-simulator-server" },
-    { id:"beammp", label:"BeamMP", href:"/beammp-server" },
-    { id:"fivem", label:"FiveM", href:"/fivem-server" },
-  ]},
+  { id:"servers", label:"Servers", href:"/servers", children:GAME_SERVERS.map((s)=>({ id:s.slug, label:s.name, href:s.href })) },
   { id:"prints", label:"3D Prints", href:"/3d-prints" },
   { id:"portfolio", label:"Portfolio", href:"/portfolio" },
   { id:"community", label:"Community", href:"/community", children:[
@@ -35,15 +28,25 @@ const NAV = [
 ];
 const FOOT = [
   ["Explore", [["Home","/home"],["Servers","/servers"],["3D Prints","/3d-prints"],["Portfolio","/portfolio"],["About","/about"]]],
-  ["Worlds", [["All Servers","/servers"],["Minecraft","/minecraft-server"],["Palworld","/palworld-server"],["Satisfactory","/satisfactory-server"],["Enshrouded","/enshrouded-server"],["American Truck Sim","/american-truck-simulator-server"],["BeamMP","/beammp-server"],["FiveM","/fivem-server"]]],
+  ["Worlds", [["All Servers","/servers"],...GAME_SERVERS.map((s)=>[s.short,s.href])]],
   ["Community", [["Discord Community",DISCORD,1],["News","/announcements"],["Showcase","/showcase"],["Partners","/partners"]]],
   ["More", [["Status","/status"],["Costs","/costs"],["Applications","/applications"],["Contact","/contact"],["Terms","/terms"],["Privacy","/privacy"]]],
 ];
-const SRV_COLOR = {
-  minecraft:"#67d073", palworld:"#49b6ff", satisfactory:"#ffce4d", enshrouded:"#b47bff",
-  "american-truck-simulator":"#ff7d74", beammp:"#4fd6c0", fivem:"#ff9a4d",
-};
-
+const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
+const SERVER_SLUGS = Object.fromEntries(GAME_SERVERS.map((s)=>[s.name.toLowerCase(),s.slug]));
+SERVER_SLUGS["american truck sim"]="american-truck-simulator";
+SERVER_SLUGS["garrys mod"]="garrys-mod";
+SERVER_SLUGS["sons of the forest"]="sons-of-the-forest";
+function gameSlug(name){ return SERVER_SLUGS[String(name||"").toLowerCase()] || String(name||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
+function playerText(n){ return n==null ? "players unavailable" : `${n} player${n===1?"":"s"}`; }
+function normalizeStatusPayload(data){
+  if(data?.games?.servers){
+    const servers=data.games.servers.map((s)=>({ slug:gameSlug(s.name), name:s.name, status:s.online?"running":"offline", players:s.players }));
+    return { servers, up:data.games.online ?? servers.filter((s)=>s.status==="running").length, total:data.games.total ?? servers.length, players:data.games.players };
+  }
+  const servers=(data?.servers||[]).map((s)=>({ slug:s.slug, name:s.name, status:s.status, players:s.players }));
+  return { servers, up:data?.up ?? servers.filter((s)=>s.status==="running").length, total:data?.total ?? servers.length, players:servers.reduce((a,s)=>a+(Number.isFinite(s.players)?s.players:0),0) };
+}
 const THEMES = [
   { id:"voxelbox", label:"Voxelbox", meta:"#020202" },
   { id:"emberforge", label:"Emberforge", meta:"#080504" },
@@ -466,28 +469,38 @@ function initPortfolio(){
 
 function initServerStatus(){
   const grid=document.querySelector("[data-srv-grid]");
-  const worlds=document.querySelector("[data-worlds-count]");
-  if(!grid && !worlds) return;
-  const paint=(data)=>{
-    const servers=data.servers||[];
-    let up=0;
+  const worlds=document.querySelectorAll("[data-worlds-count]");
+  const totalPlayers=document.querySelectorAll("[data-players-count]");
+  const applyLive=(data)=>{
+    const live=normalizeStatusPayload(data);
+    const ordered=GAME_SERVERS.map((cfg)=>live.servers.find((s)=>s.slug===cfg.slug) || {slug:cfg.slug,name:cfg.name,status:"unknown",players:null});
     if(grid){
-      grid.innerHTML=servers.map((s)=>{
+      grid.innerHTML=ordered.map((s)=>{
+        const cfg=GAME_SERVERS.find((g)=>g.slug===s.slug) || s;
         const on=s.status==="running";
-        if(on) up++;
-        const col=SRV_COLOR[s.slug]||"#8a86a6";
-        const state=on?"online":(s.status==="offline"?"offline":"checking");
-        const cls=on?"up is-up":(s.status==="offline"?"down is-down":"warn");
-        return `<div class="srv ${on?"is-up":s.status==="offline"?"is-down":""}">
+        const offline=s.status==="offline";
+        const col=cfg.color || SRV_COLOR[s.slug] || "#8a86a6";
+        const state=on?"online":(offline?"offline":"checking");
+        return `<div class="srv ${on?"is-up":offline?"is-down":""}">
           <span class="srv-cube" style="background:${col}"></span>
-          <div><div class="srv-name">${esc(s.name)}</div><div class="srv-state ${on?"up":s.status==="offline"?"down":"warn"}">${state}</div></div>
+          <div><div class="srv-name">${esc(cfg.name||s.name)}</div><div class="srv-state ${on?"up":offline?"down":"warn"}">${state} · ${playerText(s.players)}</div></div>
           <span class="pulse"></span></div>`;
       }).join("");
-    } else { up=servers.filter((s)=>s.status==="running").length; }
-    if(worlds) worlds.textContent=`${up}/${servers.length||7}`;
+    }
+    worlds.forEach((el)=>{ el.textContent=`${live.up}/${live.total || ordered.length}`; });
+    totalPlayers.forEach((el)=>{ el.textContent=Number.isFinite(live.players) ? live.players : ordered.reduce((a,s)=>a+(Number.isFinite(s.players)?s.players:0),0); });
+    ordered.forEach((s)=>{
+      const on=s.status==="running";
+      const offline=s.status==="offline";
+      document.querySelectorAll(`[data-server-status="${s.slug}"]`).forEach((el)=>{
+        el.textContent=on?"online":(offline?"offline":"checking");
+        el.classList.toggle("up",on); el.classList.toggle("down",offline); el.classList.toggle("warn",!on&&!offline);
+      });
+      document.querySelectorAll(`[data-server-players="${s.slug}"]`).forEach((el)=>{ el.textContent=playerText(s.players); });
+    });
   };
-  getJSON(STATUS_URL).then(paint).catch(()=>{ if(worlds) worlds.textContent="7/7"; });
-  setInterval(()=>getJSON(STATUS_URL).then(paint).catch(()=>{}),30000);
+  getJSON(STATUS_URL).then(applyLive).catch(()=>{ worlds.forEach((el)=>el.textContent="17/17"); });
+  setInterval(()=>getJSON(STATUS_URL).then(applyLive).catch(()=>{}),30000);
 }
 
 function initNewsFeed(){

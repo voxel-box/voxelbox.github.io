@@ -9,8 +9,8 @@
   <url>
     <loc>https://voxelbox.org/3d-prints</loc>
     <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/about</loc>
@@ -22,7 +22,7 @@
     <loc>https://voxelbox.org/american-truck-simulator-server</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/announcements</loc>
@@ -40,7 +40,7 @@
     <loc>https://voxelbox.org/beammp-server</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/community</loc>
@@ -52,7 +52,7 @@
     <loc>https://voxelbox.org/contact</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/costs</loc>
@@ -64,13 +64,25 @@
     <loc>https://voxelbox.org/enshrouded-server</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxelbox.org/euro-truck-simulator-2-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/fivem-server</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxelbox.org/garrys-mod-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/getting-started</loc>
@@ -79,16 +91,28 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://voxelbox.org/left-4-dead-2-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://voxelbox.org/minecraft-server</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxelbox.org/no-more-room-in-hell-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/palworld-server</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/partners</loc>
@@ -115,10 +139,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://voxelbox.org/rust-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://voxelbox.org/satisfactory-server</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/servers</loc>
@@ -129,14 +159,26 @@
   <url>
     <loc>https://voxelbox.org/showcase</loc>
     <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://voxelbox.org/sons-of-the-forest-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxelbox.org/squad-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/status</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/support</loc>
@@ -151,10 +193,28 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://voxelbox.org/team-fortress-2-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://voxelbox.org/terms</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://voxelbox.org/terraria-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxelbox.org/the-forest-server</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://voxelbox.org/update-pings</loc>

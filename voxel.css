@@ -592,3 +592,15 @@ body.no-webgl .jr-scene{position:relative;height:52vh}
 body.no-webgl .jr-panel{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;
   margin:34px auto;max-width:680px}
 body.no-webgl .jr-track,body.no-webgl .jr-rail,body.no-webgl .scroll-cue{display:none}
+
+
+/* live server cards */
+.server-card{display:block;min-height:100%}
+.server-thumb{height:128px;border-radius:10px;border:1px solid var(--line);background:radial-gradient(circle at 70% 20%, color-mix(in srgb, var(--server-color) 32%, transparent), transparent 42%),linear-gradient(145deg,rgba(255,255,255,.05),rgba(0,0,0,.18));display:grid;place-items:center;overflow:hidden;position:relative}
+.server-thumb::before{content:"";position:absolute;inset:auto 18px 18px 18px;height:2px;background:linear-gradient(90deg,transparent,var(--server-color),transparent);box-shadow:0 0 18px var(--server-color)}
+.server-mark{width:58px;height:58px;border-radius:14px;border:1px solid color-mix(in srgb, var(--server-color) 72%, white 16%);background:rgba(5,7,10,.72);box-shadow:0 0 28px -12px var(--server-color),inset 0 1px 0 rgba(255,255,255,.14);transform:rotate(45deg)}
+.server-live{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.server-players{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 8px;background:rgba(255,255,255,.025)}
+.server-live-panel{padding:18px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.server-live-panel h2{font-size:clamp(1.35rem,2.4vw,2rem)}
+.server-live-panel .server-live{margin-top:0}

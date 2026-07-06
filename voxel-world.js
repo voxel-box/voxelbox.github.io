@@ -68,15 +68,25 @@ function boot(mount){
   capstone.position.set(0,18.4,0); world.add(capstone);
   const CORE_HUB = new THREE.Vector3(0, 8.5, 0);
 
-  // ============ 7 SERVER SHARDS (ring around the core) ============
+  // ============ 17 SERVER SHARDS (ring around the core) ============
   const SERVERS = [
-    ["minecraft","Minecraft",0x8fd6a0,"minecraft-server.html"],
-    ["palworld","Palworld",0x7fb2ff,"palworld-server.html"],
-    ["satisfactory","Satisfactory",0xffcf6b,"satisfactory-server.html"],
-    ["enshrouded","Enshrouded",0xb99bff,"enshrouded-server.html"],
-    ["american-truck-simulator","American Truck Sim",0xff9a70,"american-truck-simulator-server.html"],
-    ["beammp","BeamMP",0x6fe0d0,"beammp-server.html"],
-    ["fivem","FiveM",0xffab5e,"fivem-server.html"],
+    ["minecraft","Minecraft",0x67d073,"minecraft-server.html"],
+    ["palworld","Palworld",0x49b6ff,"palworld-server.html"],
+    ["satisfactory","Satisfactory",0xffce4d,"satisfactory-server.html"],
+    ["enshrouded","Enshrouded",0xb47bff,"enshrouded-server.html"],
+    ["american-truck-simulator","American Truck Sim",0xff7d74,"american-truck-simulator-server.html"],
+    ["beammp","BeamMP",0x4fd6c0,"beammp-server.html"],
+    ["fivem","FiveM",0xff9a4d,"fivem-server.html"],
+    ["euro-truck-simulator-2","Euro Truck Sim 2",0x7fb2ff,"euro-truck-simulator-2-server.html"],
+    ["garrys-mod","Garry's Mod",0x6ba7ff,"garrys-mod-server.html"],
+    ["left-4-dead-2","Left 4 Dead 2",0x9ad36a,"left-4-dead-2-server.html"],
+    ["no-more-room-in-hell","No More Room in Hell",0xc8665a,"no-more-room-in-hell-server.html"],
+    ["rust","Rust",0xd48a45,"rust-server.html"],
+    ["sons-of-the-forest","Sons of the Forest",0x78b46b,"sons-of-the-forest-server.html"],
+    ["squad","Squad",0xb7a56a,"squad-server.html"],
+    ["team-fortress-2","Team Fortress 2",0xd65a4a,"team-fortress-2-server.html"],
+    ["terraria","Terraria",0x65c97a,"terraria-server.html"],
+    ["the-forest","The Forest",0x5aa568,"the-forest-server.html"],
   ];
   const shards = [];
   SERVERS.forEach(([slug,name,color,href],i)=>{
@@ -153,9 +163,9 @@ function boot(mount){
   }
 
   // ============ live status -> dim offline shards ============
-  fetch("https://panel.voxelbox.org/vb-status/status.json",{cache:"no-store"})
+  fetch("https://status.voxelbox.org/api/public/status",{cache:"no-store"})
     .then(r=>r.ok?r.json():null).then(d=>{ if(!d) return;
-      const map={}; (d.servers||[]).forEach(s=>map[s.slug]=s.status);
+      const aliases={"American Truck Sim":"american-truck-simulator","Garrys Mod":"garrys-mod","Garry's Mod":"garrys-mod","Sons Of The Forest":"sons-of-the-forest"}; const slug=(name)=>aliases[name] || String(name||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); const map={}; (d.games?.servers||d.servers||[]).forEach(s=>{ map[s.slug||slug(s.name)] = s.status || (s.online?"running":"offline"); });
       shards.forEach((sh)=>{ const st=map[sh.slug];
         if(st && st!=="running"){
           sh.online=false;
