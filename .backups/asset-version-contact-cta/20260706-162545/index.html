@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voxelbox — Free Game Worlds &amp; Custom 3D Prints</title>
+  <meta name="description" content="Voxelbox runs free community game servers and makes custom 3D prints. Seven worlds, $0 to play, self-hosted, one Discord. Scroll to fly through the realm.">
+  <meta name="theme-color" content="#06070a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Voxelbox">
+  <meta property="og:title" content="Voxelbox — Free Game Worlds & Custom 3D Prints">
+  <meta property="og:description" content="Seven free community game worlds + custom 3D prints. $0 to play, one Discord.">
+  <meta property="og:image" content="social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="voxel.css?v=14">
+</head>
+<body data-page="home" class="journey">
+  <a class="skip-link" href="#station-4">Skip to links</a>
+
+  <!-- ============ THE WORLD (fixed, fullscreen) ============ -->
+  <div class="jr-scene" data-voxel-scene aria-hidden="true">
+    <div class="scene-fallback">
+      <svg viewBox="0 0 240 240" width="40%" role="img" aria-label="An obsidian monolith">
+        <g fill="#12151d" stroke="#7fb2ff" stroke-width="1.5" stroke-linejoin="round">
+          <rect x="96" y="60" width="48" height="140"/>
+          <rect x="88" y="96" width="64" height="104"/>
+        </g>
+        <rect x="116" y="24" width="8" height="40" fill="#a9c9ff"/>
+      </svg>
+    </div>
+    <div class="scene-labels" data-labels></div>
+  </div>
+
+  <!-- ============ HUD ============ -->
+  <header class="hud">
+    <a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
+    <nav class="hud-nav">
+      <a class="nav-link" href="/servers">Servers</a>
+      <a class="nav-link" href="/3d-prints">3D Prints</a>
+      <a class="nav-link" href="/portfolio">Portfolio</a>
+      <div class="nav-group">
+        <a class="nav-link" href="/community">Community</a>
+        <div class="nav-menu">
+          <a href="/announcements">News</a>
+          <a href="/showcase">Showcase</a>
+          <a href="/partners">Partners</a>
+          <a href="/rules">Rules</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <a class="nav-link" href="/about">About</a>
+        <div class="nav-menu">
+          <a href="/team">Team</a>
+          <a href="/costs">Costs</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <a class="nav-link" href="/support">Support</a>
+        <div class="nav-menu">
+          <a href="/getting-started">Getting Started</a>
+          <a href="/applications">Applications</a>
+          <a href="/update-pings">Update Pings</a>
+        </div>
+      </div>
+      <a class="nav-link" href="/status">Status</a>
+      <a class="nav-link" href="/contact">Contact</a>
+    </nav>
+    <a class="btn btn--primary hud-cta" href="/contact">Contact Us</a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <!-- ============ FLIGHT RAIL ============ -->
+  <nav class="jr-rail" aria-label="Flight stations">
+    <button data-jump title="Arrival"><i></i><span>Arrival</span></button>
+    <button data-jump title="The Worlds"><i></i><span>Worlds</span></button>
+    <button data-jump title="VoxelBot"><i></i><span>Dispatch</span></button>
+    <button data-jump title="Print Forge"><i></i><span>Forge</span></button>
+    <button data-jump title="Join"><i></i><span>Join</span></button>
+  </nav>
+
+  <div class="scroll-cue" aria-hidden="true"><span></span> scroll to fly</div>
+
+  <!-- ============ STATIONS (fade in along the flight) ============ -->
+  <main id="main">
+    <section class="jr-panel jr-panel--hero" data-chapter="0" id="station-0">
+      <span class="eyebrow">Self-hosted · seven live worlds</span>
+      <h1>Real hardware.<br><span class="g">Zero to play.</span></h1>
+      <p class="lead">Voxelbox runs seven community game servers on infrastructure we own — no rented slots, no pay-to-play — plus custom 3D prints made to order. This is the realm. Scroll to fly through it.</p>
+      <div class="hero-chips">
+        <span class="chip"><span class="dot"></span> <b data-worlds-count>7/7</b>&nbsp;online</span>
+        <span class="chip">$0 to play</span>
+        <span class="chip">Self-hosted</span>
+      </div>
+    </section>
+
+    <section class="jr-panel jr-panel--right" data-chapter="1" id="station-1">
+      <span class="eyebrow">Station 01 — The worlds</span>
+      <h2>Seven worlds, live.</h2>
+      <p class="lead">Each shard out there is a real server. Green means jump in — the labels are doors.</p>
+      <div class="panel status-panel"><div class="srv-grid" data-srv-grid>
+        <div class="srv"><span class="srv-cube" style="color:#8a86a6;background:#8a86a6"></span><div><div class="srv-name">loading…</div><div class="srv-state warn">checking</div></div><span class="pulse"></span></div>
+      </div></div>
+      <a class="btn btn--ghost" href="servers.html" style="margin-top:16px">All servers &amp; how to join</a>
+    </section>
+
+    <section class="jr-panel" data-chapter="2" id="station-2">
+      <span class="eyebrow">Station 02 — Dispatch</span>
+      <h2>VoxelBot is watching.</h2>
+      <p class="lead">An automated feed straight from the core — server events, as they happen. No human typing.</p>
+      <div class="panel" style="padding:8px 18px"><div class="bot" data-bot>
+        <div class="bot-line"><span class="muted">voxelbot connecting…<span class="bot-cursor"></span></span></div>
+      </div></div>
+    </section>
+
+    <section class="jr-panel jr-panel--right" data-chapter="3" id="station-3">
+      <span class="eyebrow">Station 03 — The print forge</span>
+      <h2>Things to hold.</h2>
+      <p class="lead">The warm tower ahead is the other half of Voxelbox: custom 3D prints — desk gear, display builds, props, practical parts — designed and printed to order.</p>
+      <div class="btn-row" style="margin-top:20px">
+        <a class="btn btn--primary" href="3d-prints.html">See 3D prints</a>
+        <a class="btn btn--ghost" href="3d-prints.html#request">Start a request</a>
+      </div>
+    </section>
+
+    <section class="jr-panel jr-panel--join" data-chapter="4" id="station-4">
+      <span class="eyebrow">Final station — Join</span>
+      <h2>Pick a world.<br><span class="g">Jump in.</span></h2>
+      <p class="lead">Server info, print requests, events, support — it all runs out of one Discord. Free forever.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:22px">
+        <a class="btn btn--primary" href="/contact">Contact Voxelbox</a>
+        <a class="btn btn--ghost" href="getting-started.html">How it works</a>
+      </div>
+      <div class="jr-links">
+        <div><h4>Explore</h4><a href="/servers">Servers</a><a href="/3d-prints">3D Prints</a><a href="/portfolio">Portfolio</a><a href="/about">About</a><a href="team.html">Team</a></div>
+        <div><h4>Play</h4><a href="getting-started.html">How to join</a><a href="rules.html">Rules</a><a href="update-pings.html">Update Pings</a></div>
+        <div><h4>Community</h4><a href="announcements.html">News</a><a href="showcase.html">Showcase</a><a href="partners.html">Partners</a></div>
+        <div><h4>More</h4><a href="/status">Status</a><a href="costs.html">Costs</a><a href="applications.html">Applications</a><a href="/contact">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+      </div>
+      <p class="jr-fine">© <span data-year></span> Voxelbox — all worlds free, forever.</p>
+    </section>
+  </main>
+
+  <!-- scroll runway that drives the flight -->
+  <div class="jr-track" aria-hidden="true"></div>
+
+  <script src="voxel.js?v=11" defer></script>
+  <script type="module" src="voxel-world.js?v=3"></script>
+</body>
+</html>

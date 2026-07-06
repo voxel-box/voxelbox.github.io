@@ -29,7 +29,7 @@ const NAV = [
 const FOOT = [
   ["Explore", [["Home","/home"],["Servers","/servers"],["3D Prints","/3d-prints"],["Portfolio","/portfolio"],["About","/about"]]],
   ["Play", [["All Servers","/servers"],["How To Join","/getting-started"],["Rules","/rules"],["Update Pings","/update-pings"]]],
-  ["Community", [["Join Discord",DISCORD,1],["News","/announcements"],["Showcase","/showcase"],["Partners","/partners"]]],
+  ["Community", [["Discord Community",DISCORD,1],["News","/announcements"],["Showcase","/showcase"],["Partners","/partners"]]],
   ["More", [["Status","/status"],["Costs","/costs"],["Applications","/applications"],["Contact","/contact"],["Terms","/terms"],["Privacy","/privacy"]]],
 ];
 const SRV_COLOR = {
@@ -344,7 +344,7 @@ function renderShell(){
     head.innerHTML = `<header class="site-header"><div class="wrap nav">
       <a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
       <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <nav class="nav-links">${links}<a class="btn btn--primary nav-cta" href="${DISCORD}" target="_blank" rel="noopener noreferrer">Join Discord</a></nav>
+      <nav class="nav-links">${links}<a class="btn btn--primary nav-cta" href="/contact">Contact Us</a></nav>
     </div></header>`;
   }
   const foot = document.querySelector("[data-shell-footer]");
