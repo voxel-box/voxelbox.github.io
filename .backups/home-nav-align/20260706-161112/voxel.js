@@ -5,20 +5,20 @@ const NEWS_URL = "https://panel.voxelbox.org/vb-status/news.json";
 const PORTFOLIO_URL = "https://demos.voxelbox.org/portfolio.json";
 
 const NAV = [
-  { id:"servers", label:"Servers", href:"/servers" },
-  { id:"prints", label:"3D Prints", href:"/3d-prints" },
-  { id:"portfolio", label:"Portfolio", href:"/portfolio" },
-  { id:"community", label:"Community", href:"/community" },
-  { id:"about", label:"About", href:"/about" },
-  { id:"support", label:"Support", href:"/support" },
-  { id:"status", label:"Status", href:"/status" },
-  { id:"contact", label:"Contact", href:"/contact" },
+  { id:"servers", label:"Servers", href:"servers.html" },
+  { id:"prints", label:"3D Prints", href:"3d-prints.html" },
+  { id:"portfolio", label:"Portfolio", href:"portfolio.html" },
+  { id:"community", label:"Community", href:"community.html" },
+  { id:"about", label:"About", href:"about.html" },
+  { id:"support", label:"Support", href:"support.html" },
+  { id:"status", label:"Status", href:"status.html" },
+  { id:"contact", label:"Contact", href:"contact.html" },
 ];
 const FOOT = [
-  ["Explore", [["Home","/home"],["Servers","/servers"],["3D Prints","/3d-prints"],["Portfolio","/portfolio"],["About","/about"]]],
+  ["Explore", [["Home","index.html"],["Servers","servers.html"],["3D Prints","3d-prints.html"],["Portfolio","portfolio.html"],["About","about.html"]]],
   ["Play", [["All Servers","servers.html"],["How To Join","getting-started.html"],["Rules","rules.html"],["Update Pings","update-pings.html"]]],
   ["Community", [["Join Discord",DISCORD,1],["News","announcements.html"],["Showcase","showcase.html"],["Partners","partners.html"]]],
-  ["More", [["Status","/status"],["Costs","costs.html"],["Applications","applications.html"],["Contact","/contact"],["Terms","terms.html"],["Privacy","privacy.html"]]],
+  ["More", [["Status","status.html"],["Costs","costs.html"],["Applications","applications.html"],["Contact","contact.html"],["Terms","terms.html"],["Privacy","privacy.html"]]],
 ];
 const SRV_COLOR = {
   minecraft:"#67d073", palworld:"#49b6ff", satisfactory:"#ffce4d", enshrouded:"#b47bff",
