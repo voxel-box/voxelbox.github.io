@@ -1,6 +1,5 @@
 /* VOXELBOX — voxel theme shell + interactions */
 const DISCORD = "https://discord.gg/mpeZ62uEEp";
-const GITHUB = "https://github.com/voxel-box";
 const STATUS_URL = "https://status.voxelbox.org/api/public/status";
 const NEWS_URL = "https://panel.voxelbox.org/vb-status/news.json";
 const PORTFOLIO_URL = "https://demos.voxelbox.org/portfolio.json";
@@ -19,7 +18,6 @@ const NAV = [
   { id:"about", label:"About", href:"/about", children:[
     { id:"team", label:"Team", href:"/team" },
     { id:"costs", label:"Costs", href:"/costs" },
-    { id:"github", label:"GitHub", href:GITHUB, external:true },
   ]},
   { id:"support", label:"Support", href:"/support", children:[
     { id:"getting-started", label:"Getting Started", href:"/getting-started" },
@@ -31,7 +29,7 @@ const NAV = [
 const FOOT = [
   ["Explore", [["Home","/home"],["Servers","/servers"],["3D Prints","/3d-prints"],["Portfolio","/portfolio"],["About","/about"]]],
   ["Worlds", [["All Servers","/servers"],...GAME_SERVERS.map((s)=>[s.short,s.href])]],
-  ["Community", [["Discord Community",DISCORD,1],["GitHub",GITHUB,1],["News","/announcements"],["Showcase","/showcase"],["Partners","/partners"]]],
+  ["Community", [["Discord Community",DISCORD,1],["News","/announcements"],["Showcase","/showcase"],["Partners","/partners"]]],
   ["More", [["Status","/status"],["Costs","/costs"],["Applications","/applications"],["Contact","/contact"],["Terms","/terms"],["Privacy","/privacy"]]],
 ];
 const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
@@ -397,10 +395,10 @@ function renderShell(){
     const links = NAV.map((n)=>{
       const active = n.id===page || n.children?.some((c)=>c.id===page);
       if (n.children){
-        const sub = n.children.map((c)=>`<a href="${c.href}" class="${c.id===page?"is-active":""}"${c.external?' target="_blank" rel="noopener noreferrer"':""}>${c.label}</a>`).join("");
+        const sub = n.children.map((c)=>`<a href="${c.href}" class="${c.id===page?"is-active":""}">${c.label}</a>`).join("");
         return `<div class="nav-group"><a class="nav-link ${active?"is-active":""}" href="${n.href}">${n.label}</a><div class="nav-menu">${sub}</div></div>`;
       }
-      return `<a class="nav-link ${active?"is-active":""}" href="${n.href}"${n.external?' target="_blank" rel="noopener noreferrer"':""}>${n.label}</a>`;
+      return `<a class="nav-link ${active?"is-active":""}" href="${n.href}">${n.label}</a>`;
     }).join("");
     head.innerHTML = `<header class="site-header"><div class="wrap nav">
       <a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
