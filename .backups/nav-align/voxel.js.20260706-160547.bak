@@ -5,13 +5,26 @@ const NEWS_URL = "https://panel.voxelbox.org/vb-status/news.json";
 const PORTFOLIO_URL = "https://demos.voxelbox.org/portfolio.json";
 
 const NAV = [
+  { id:"home", label:"Home", href:"index.html" },
   { id:"servers", label:"Servers", href:"servers.html" },
   { id:"prints", label:"3D Prints", href:"3d-prints.html" },
   { id:"portfolio", label:"Portfolio", href:"portfolio.html" },
-  { id:"community", label:"Community", href:"community.html" },
-  { id:"about", label:"About", href:"about.html" },
-  { id:"support", label:"Support", href:"support.html" },
-  { id:"status", label:"Status", href:"status.html" },
+  { id:"community", label:"Community", href:"community.html", children:[
+    { id:"announcements", label:"News", href:"announcements.html" },
+    { id:"showcase", label:"Showcase", href:"showcase.html" },
+    { id:"partners", label:"Partners", href:"partners.html" },
+    { id:"rules", label:"Rules", href:"rules.html" },
+  ]},
+  { id:"about", label:"About", href:"about.html", children:[
+    { id:"team", label:"Team", href:"team.html" },
+    { id:"costs", label:"Costs", href:"costs.html" },
+  ]},
+  { id:"support", label:"Support", href:"support.html", children:[
+    { id:"status", label:"Status", href:"status.html" },
+    { id:"getting-started", label:"Getting Started", href:"getting-started.html" },
+    { id:"applications", label:"Applications", href:"applications.html" },
+    { id:"update-pings", label:"Update Pings", href:"update-pings.html" },
+  ]},
   { id:"contact", label:"Contact", href:"contact.html" },
 ];
 const FOOT = [
