@@ -24,6 +24,7 @@ const NAV = [
     { id:"update-pings", label:"Update Pings", href:"/update-pings" },
   ]},
   { id:"status", label:"Status", href:"/status" },
+  { id:"contact", label:"Contact", href:"/contact" },
 ];
 const FOOT = [
   ["Explore", [["Home","/home"],["Servers","/servers"],["3D Prints","/3d-prints"],["Portfolio","/portfolio"],["About","/about"]]],

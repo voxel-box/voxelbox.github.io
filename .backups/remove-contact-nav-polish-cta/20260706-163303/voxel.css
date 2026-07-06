@@ -116,9 +116,7 @@ h3{font-size:1.28rem;font-weight:500}
 .site-header .nav-link{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted);padding:8px 11px;border-radius:7px;transition:.15s}
 .site-header .nav-link:hover,.site-header .nav-link.is-active{color:var(--ink);background:rgba(255,255,255,.05)}
-.site-header .nav-cta{padding:10px 18px;font-size:.85rem;margin-left:12px;border-radius:999px;border-color:rgba(185,213,255,.55);background:linear-gradient(135deg,#f8fbff 0%,#a9c9ff 44%,#7fb2ff 100%);box-shadow:0 0 0 1px rgba(127,178,255,.35),0 14px 36px -14px var(--glow),inset 0 1px 0 rgba(255,255,255,.65)}
-.site-header .nav-cta::after{content:"";width:6px;height:6px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);opacity:.72;margin-left:1px}
-.site-header .nav-cta:hover{box-shadow:0 0 0 1px rgba(210,228,255,.7),0 18px 46px -12px var(--glow),inset 0 1px 0 rgba(255,255,255,.7)}
+.site-header .nav-cta{padding:9px 16px;font-size:.85rem;margin-left:8px}
 
 /* ---------- sections ---------- */
 .sec{padding-block:clamp(58px,9vw,112px);position:relative}
@@ -434,9 +432,7 @@ body.journey .world-label:hover{transform:translate(-50%,-50%) scale(1.12);borde
 .hud-nav a{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted);padding:8px 11px;border-radius:7px;transition:.15s}
 .hud-nav a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
-.hud-cta{padding:10px 18px;font-size:.85rem;border-radius:999px;border-color:rgba(185,213,255,.55);background:linear-gradient(135deg,#f8fbff 0%,#a9c9ff 44%,#7fb2ff 100%);box-shadow:0 0 0 1px rgba(127,178,255,.35),0 14px 36px -14px var(--glow),inset 0 1px 0 rgba(255,255,255,.65)}
-.hud-cta::after{content:"";width:6px;height:6px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);opacity:.72;margin-left:1px}
-.hud-cta:hover{box-shadow:0 0 0 1px rgba(210,228,255,.7),0 18px 46px -12px var(--glow),inset 0 1px 0 rgba(255,255,255,.7)}
+.hud-cta{padding:9px 16px;font-size:.85rem}
 
 .hud-nav .nav-group{position:relative}
 .hud-nav .nav-menu{position:absolute;top:100%;left:0;min-width:210px;background:var(--bg-2);border:1px solid var(--line-2);
