@@ -8,29 +8,17 @@ const NAV = [
   { id:"servers", label:"Servers", href:"/servers" },
   { id:"prints", label:"3D Prints", href:"/3d-prints" },
   { id:"portfolio", label:"Portfolio", href:"/portfolio" },
-  { id:"community", label:"Community", href:"/community", children:[
-    { id:"announcements", label:"News", href:"/announcements" },
-    { id:"showcase", label:"Showcase", href:"/showcase" },
-    { id:"partners", label:"Partners", href:"/partners" },
-    { id:"rules", label:"Rules", href:"/rules" },
-  ]},
-  { id:"about", label:"About", href:"/about", children:[
-    { id:"team", label:"Team", href:"/team" },
-    { id:"costs", label:"Costs", href:"/costs" },
-  ]},
-  { id:"support", label:"Support", href:"/support", children:[
-    { id:"getting-started", label:"Getting Started", href:"/getting-started" },
-    { id:"applications", label:"Applications", href:"/applications" },
-    { id:"update-pings", label:"Update Pings", href:"/update-pings" },
-  ]},
+  { id:"community", label:"Community", href:"/community" },
+  { id:"about", label:"About", href:"/about" },
+  { id:"support", label:"Support", href:"/support" },
   { id:"status", label:"Status", href:"/status" },
   { id:"contact", label:"Contact", href:"/contact" },
 ];
 const FOOT = [
   ["Explore", [["Home","/home"],["Servers","/servers"],["3D Prints","/3d-prints"],["Portfolio","/portfolio"],["About","/about"]]],
-  ["Play", [["All Servers","/servers"],["How To Join","/getting-started"],["Rules","/rules"],["Update Pings","/update-pings"]]],
-  ["Community", [["Join Discord",DISCORD,1],["News","/announcements"],["Showcase","/showcase"],["Partners","/partners"]]],
-  ["More", [["Status","/status"],["Costs","/costs"],["Applications","/applications"],["Contact","/contact"],["Terms","/terms"],["Privacy","/privacy"]]],
+  ["Play", [["All Servers","servers.html"],["How To Join","getting-started.html"],["Rules","rules.html"],["Update Pings","update-pings.html"]]],
+  ["Community", [["Join Discord",DISCORD,1],["News","announcements.html"],["Showcase","showcase.html"],["Partners","partners.html"]]],
+  ["More", [["Status","/status"],["Costs","costs.html"],["Applications","applications.html"],["Contact","/contact"],["Terms","terms.html"],["Privacy","privacy.html"]]],
 ];
 const SRV_COLOR = {
   minecraft:"#67d073", palworld:"#49b6ff", satisfactory:"#ffce4d", enshrouded:"#b47bff",
