@@ -5,15 +5,7 @@ const NEWS_URL = "https://panel.voxelbox.org/vb-status/news.json";
 const PORTFOLIO_URL = "https://demos.voxelbox.org/portfolio.json";
 
 const NAV = [
-  { id:"servers", label:"Servers", href:"/servers", children:[
-    { id:"minecraft", label:"Minecraft", href:"/minecraft-server" },
-    { id:"palworld", label:"Palworld", href:"/palworld-server" },
-    { id:"satisfactory", label:"Satisfactory", href:"/satisfactory-server" },
-    { id:"enshrouded", label:"Enshrouded", href:"/enshrouded-server" },
-    { id:"american-truck-simulator", label:"American Truck Simulator", href:"/american-truck-simulator-server" },
-    { id:"beammp", label:"BeamMP", href:"/beammp-server" },
-    { id:"fivem", label:"FiveM", href:"/fivem-server" },
-  ]},
+  { id:"servers", label:"Servers", href:"/servers" },
   { id:"prints", label:"3D Prints", href:"/3d-prints" },
   { id:"portfolio", label:"Portfolio", href:"/portfolio" },
   { id:"community", label:"Community", href:"/community", children:[
@@ -35,7 +27,7 @@ const NAV = [
 ];
 const FOOT = [
   ["Explore", [["Home","/home"],["Servers","/servers"],["3D Prints","/3d-prints"],["Portfolio","/portfolio"],["About","/about"]]],
-  ["Worlds", [["All Servers","/servers"],["Minecraft","/minecraft-server"],["Palworld","/palworld-server"],["Satisfactory","/satisfactory-server"],["Enshrouded","/enshrouded-server"],["American Truck Sim","/american-truck-simulator-server"],["BeamMP","/beammp-server"],["FiveM","/fivem-server"]]],
+  ["Play", [["All Servers","/servers"],["How To Join","/getting-started"],["Rules","/rules"],["Update Pings","/update-pings"]]],
   ["Community", [["Discord Community",DISCORD,1],["News","/announcements"],["Showcase","/showcase"],["Partners","/partners"]]],
   ["More", [["Status","/status"],["Costs","/costs"],["Applications","/applications"],["Contact","/contact"],["Terms","/terms"],["Privacy","/privacy"]]],
 ];
@@ -410,7 +402,7 @@ function renderShell(){
       <div class="foot-grid">
         <div class="foot-brand"><a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
           <p>Free community game worlds and custom 3D prints — self-hosted, $0 to play, built by people who actually play.</p>
-          <div class="pills"><span class="pill">Free Servers</span><span class="pill">Custom Prints</span><span class="pill">Official Contact</span></div></div>
+          <div class="pills"><span class="pill">Free Servers</span><span class="pill">Custom Prints</span><span class="pill">Discord-First</span></div></div>
         ${cols}
       </div>
       <div class="foot-bottom"><span>© <span data-year></span> Voxelbox — all worlds free, forever.</span><span>Built by the community, for the community.</span></div>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://voxelbox.net/sitemap.xml
+Sitemap: https://voxelbox.org/sitemap.xml
