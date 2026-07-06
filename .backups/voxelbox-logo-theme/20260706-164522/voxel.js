@@ -37,7 +37,7 @@ const SRV_COLOR = {
 };
 
 const THEMES = [
-  { id:"voxelbox", label:"Voxelbox", meta:"#020202" },
+  { id:"voxelbox", label:"Voxelbox", meta:"#06070a" },
   { id:"emberforge", label:"Emberforge", meta:"#080504" },
   { id:"prismarine", label:"Prismarine", meta:"#03090a" },
   { id:"amethyst", label:"Amethyst", meta:"#07050d" },
