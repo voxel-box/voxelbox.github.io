@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoxelBox RP | City OS | Story Contracts | New Player Friendly</title>
+  <meta name="description" content="Join VoxelBox RP, a new-player-friendly FiveM city with City OS, Story Contracts, Passport progression, Crew Calls, VoxelTech, and weekly launch events.">
+  <meta name="robots" content="index, follow">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#07110d">
+  <meta property="og:title" content="VoxelBox RP | City OS">
+  <meta property="og:description" content="Story Contracts, City Passport progression, live City Pulse, Crew Calls, VoxelTech, and new-player-friendly Qbox RP.">
+  <meta property="og:image" content="../social-preview.png">
+  <link rel="icon" href="../favicon.ico">
+  <style>
+    :root {
+      --bg: #07110d;
+      --panel: rgba(10, 18, 18, 0.82);
+      --panel-strong: rgba(13, 27, 25, 0.94);
+      --line: rgba(169, 255, 214, 0.18);
+      --line-hot: rgba(255, 199, 86, 0.42);
+      --text: #f4fff7;
+      --muted: #a9beb3;
+      --green: #46f08a;
+      --cyan: #53d8ff;
+      --amber: #ffc756;
+      --red: #ff7d7d;
+      --ink: #03100a;
+      --radius: 8px;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --container: min(1160px, calc(100vw - 32px));
+      font-family: "Aptos", "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        linear-gradient(180deg, rgba(6, 25, 19, 0.82), rgba(7, 10, 14, 0.96)),
+        url("../social-preview.png") center top / cover fixed;
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+      opacity: 0.32;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: var(--container); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(5, 12, 12, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+    .brand img { width: 42px; height: 42px; object-fit: contain; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      align-items: center;
+      padding: 52px 0 38px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border: 1px solid var(--line-hot);
+      border-radius: var(--radius);
+      color: var(--amber);
+      background: rgba(255, 199, 86, 0.11);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 16px;
+      max-width: 830px;
+      font-family: "Bahnschrift", "Segoe UI", Arial, sans-serif;
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+    .lead {
+      max-width: 760px;
+      margin: 0 0 28px;
+      color: #d8eee3;
+      font-size: 1.13rem;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-weight: 800;
+    }
+    .button.primary { background: var(--green); border-color: var(--green); color: var(--ink); }
+    .button.secondary { border-color: rgba(83, 216, 255, 0.48); color: #cdf5ff; }
+    .status-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat, .panel, .feature, .guide-step, .event {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .stat { padding: 14px; }
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .stat strong { display: block; margin-top: 6px; font-size: 1.45rem; }
+    .panel { padding: 18px; background: var(--panel-strong); }
+    .pulse-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: var(--radius);
+      color: var(--ink);
+      background: var(--green);
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .pulse {
+      padding: 14px;
+      border: 1px solid var(--line-hot);
+      border-radius: var(--radius);
+      color: #fff4d5;
+      background: rgba(255, 199, 86, 0.1);
+    }
+    .connect-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    code {
+      min-width: 0;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.28);
+      color: #d9fff0;
+      overflow-wrap: anywhere;
+    }
+    section { padding: 54px 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    h2 {
+      margin: 0;
+      font-family: "Bahnschrift", "Segoe UI", Arial, sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .muted { color: var(--muted); }
+    .features, .events, .guide {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .feature, .guide-step, .event { padding: 18px; }
+    .feature strong, .event strong, .guide-step strong { display: block; margin-bottom: 8px; color: #ffffff; }
+    .feature p, .event p, .guide-step p { margin: 0; color: #c2d7cc; }
+    .discord-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .channels {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .channel {
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(83, 216, 255, 0.24);
+      color: #dbf8ff;
+      background: rgba(83, 216, 255, 0.08);
+      font-weight: 800;
+    }
+    .founder {
+      border-color: var(--line-hot);
+      background: linear-gradient(135deg, rgba(255, 199, 86, 0.16), rgba(70, 240, 138, 0.1)), var(--panel-strong);
+    }
+    .footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+    }
+    @media (max-width: 920px) {
+      .hero-grid, .discord-grid { grid-template-columns: 1fr; }
+      .status-row, .features, .events, .guide { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+      .nav-links { flex-wrap: wrap; }
+      .hero { min-height: auto; }
+      .status-row, .features, .events, .guide, .channels { grid-template-columns: 1fr; }
+      .connect-box { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/home" aria-label="VoxelBox home"><img src="../logo.png" alt="VoxelBox">VoxelBox RP</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#pulse">City Pulse</a>
+        <a href="#events">Events</a>
+        <a href="#guide">New Player Guide</a>
+        <a href="https://discord.gg/voxelbox" target="_blank" rel="noopener noreferrer">Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">City OS online | New player friendly</p>
+          <h1>VoxelBox RP</h1>
+          <p class="lead">A FiveM city built around Story Contracts, City Passport progression, Crew Calls, VoxelTech hooks, and weekly launch events designed to get real scenes moving fast.</p>
+          <div class="actions">
+            <a class="button primary" href="fivem://connect/fivem.voxelbox.org:30120">Connect Now</a>
+            <button class="button secondary" type="button" data-copy="fivem.voxelbox.org:30120">Copy Address</button>
+            <a class="button" href="https://discord.gg/voxelbox" target="_blank" rel="noopener noreferrer">Join Discord</a>
+          </div>
+          <div class="status-row" aria-label="Live server status">
+            <div class="stat"><span>Players</span><strong data-players>Checking</strong></div>
+            <div class="stat"><span>Capacity</span><strong data-capacity>48</strong></div>
+            <div class="stat"><span>Connect</span><strong>30120</strong></div>
+          </div>
+        </div>
+
+        <aside class="panel" id="pulse">
+          <div class="pulse-head">
+            <strong>Current City Pulse</strong>
+            <span class="badge" data-live-label>Live</span>
+          </div>
+          <div class="pulse" data-pulse>No scheduled pulse yet. Use /city in game or watch #city-pulse for staff updates.</div>
+          <div class="connect-box">
+            <code>fivem.voxelbox.org:30120</code>
+            <button class="button primary" type="button" data-copy="fivem.voxelbox.org:30120">Copy</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>What Makes It Different</h2>
+          <p class="muted">Built for scenes, not empty driving.</p>
+        </div>
+        <div class="features">
+          <article class="feature"><strong>City OS</strong><p>Live phases, pulse prompts, and staff tools that keep the city pointed at the next playable moment.</p></article>
+          <article class="feature"><strong>City Passport</strong><p>Progression, badges, onboarding tour, and Founder identity without selling power.</p></article>
+          <article class="feature"><strong>Story Contracts</strong><p>Small RP hooks that give solo players a reason to talk, travel, investigate, and build scenes.</p></article>
+          <article class="feature"><strong>Signals</strong><p>In-game prompts that turn quiet time into service jobs, interviews, pickups, wellness checks, and crew scenes.</p></article>
+          <article class="feature"><strong>Crew Calls</strong><p>Players can broadcast scene requests so people find each other before the city feels full.</p></article>
+          <article class="feature"><strong>VoxelTech</strong><p>A custom VoxelBox starter identity tied to tech, print work, and future business stories.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="container">
+        <div class="section-head">
+          <h2>Seed Events</h2>
+          <p class="muted">The first target is 5-8 people in the same window.</p>
+        </div>
+        <div class="events">
+          <article class="event"><strong>Friday | Founders Night</strong><p>Founder Passport claims, crew calls, first businesses, and staff-led story contracts.</p></article>
+          <article class="event"><strong>Saturday | City OS Launch Event</strong><p>City Pulse phases, public crew scenes, VoxelTech hooks, and first-week city objectives.</p></article>
+          <article class="event"><strong>Sunday | New Citizen Tour</strong><p>Guided onboarding, Passport route, starter jobs, and easy scene matchmaking.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="guide">
+      <div class="container">
+        <div class="section-head">
+          <h2>60-Second New Player Guide</h2>
+          <p class="muted">Join, get oriented, start a scene.</p>
+        </div>
+        <div class="guide">
+          <article class="guide-step"><strong>1. Connect</strong><p>Use <code>fivem.voxelbox.org:30120</code>, then join Discord so staff can help if FiveM gives you trouble.</p></article>
+          <article class="guide-step"><strong>2. Open City OS</strong><p>Run <code>/guide</code>, <code>/passport</code>, and <code>/tour start</code> to learn the city route.</p></article>
+          <article class="guide-step"><strong>3. Pick A Signal</strong><p>Run <code>/signal</code> and choose a Story Contract that gives you a reason to meet another player.</p></article>
+          <article class="guide-step"><strong>4. Call A Scene</strong><p>Use <code>/crewcall</code> when you want taxi, tow, mechanic, interview, tour, or business RP.</p></article>
+          <article class="guide-step"><strong>5. Watch The Pulse</strong><p>Use <code>/city</code> and <code>/events</code> in game, or watch Discord for current city movement.</p></article>
+          <article class="guide-step"><strong>6. Claim Founder</strong><p>Run <code>/founder</code> during Season 0 for a non-pay-to-win Founder Passport identity.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container discord-grid">
+        <article class="panel">
+          <h2>Discord Funnel</h2>
+          <p class="muted">These are the public channels that make the city look alive before the server is full.</p>
+          <div class="channels">
+            <div class="channel">#join-the-city</div>
+            <div class="channel">#city-pulse</div>
+            <div class="channel">#looking-for-scenes</div>
+            <div class="channel">#new-citizen-help</div>
+            <div class="channel">#event-schedule</div>
+          </div>
+        </article>
+        <article class="panel founder">
+          <h2>Founder Rewards</h2>
+          <p>Season 0 Founders get a Founder Passport badge, Founder title callout, and first priority for future cosmetic apartments, garages, businesses, and jobs. No power is sold. Any future monetization should stay cosmetic and go through Tebex.</p>
+          <div class="actions"><a class="button primary" href="https://discord.gg/voxelbox" target="_blank" rel="noopener noreferrer">Join As Founder</a></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">VoxelBox RP | City OS | Story Contracts | New Player Friendly</div>
+  </footer>
+
+  <script>
+    const statusUrl = "/rp/status.json";
+    const playersUrl = "/rp/players.json";
+    const playersEl = document.querySelector("[data-players]");
+    const capacityEl = document.querySelector("[data-capacity]");
+    const pulseEl = document.querySelector("[data-pulse]");
+    const liveLabel = document.querySelector("[data-live-label]");
+
+    async function loadStatus() {
+      try {
+        const [statusRes, playersRes] = await Promise.all([
+          fetch(statusUrl, { cache: "no-store" }),
+          fetch(playersUrl, { cache: "no-store" })
+        ]);
+        if (!statusRes.ok) throw new Error("status unavailable");
+        const status = await statusRes.json();
+        const players = playersRes.ok ? await playersRes.json() : [];
+        const count = Number.isFinite(status.clients) ? status.clients : (Array.isArray(players) ? players.length : 0);
+        playersEl.textContent = String(count);
+        capacityEl.textContent = status.sv_maxclients || status.sv_maxClients || "48";
+        pulseEl.textContent = status.hostname ? status.hostname.replace(/\^\d/g, "") : "City OS is online. Watch Discord and /city for the next pulse.";
+        liveLabel.textContent = "Live";
+      } catch (error) {
+        playersEl.textContent = "0";
+        capacityEl.textContent = "48";
+        liveLabel.textContent = "Fallback";
+      }
+    }
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(button.dataset.copy);
+        const original = button.textContent;
+        button.textContent = "Copied";
+        setTimeout(() => { button.textContent = original; }, 1500);
+      });
+    });
+
+    loadStatus();
+    setInterval(loadStatus, 30000);
+  </script>
+</body>
+</html>
