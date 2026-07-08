@@ -7,39 +7,17 @@ const PORTFOLIO_URL = "https://demos.voxelbox.org/portfolio.json";
 
 const GAME_SERVERS = [{"slug": "minecraft", "name": "Minecraft", "short": "Minecraft", "href": "/minecraft-server", "color": "#67d073", "type": "survival / modded", "desc": "Long-term survival, shared builds, and community projects that grow over more than one session."}, {"slug": "palworld", "name": "Palworld", "short": "Palworld", "href": "/palworld-server", "color": "#49b6ff", "type": "co-op survival", "desc": "Open co-op worlds with room for active groups, steady maintenance, and clear join guidance."}, {"slug": "satisfactory", "name": "Satisfactory", "short": "Satisfactory", "href": "/satisfactory-server", "color": "#ffce4d", "type": "factory co-op", "desc": "Long-haul factory projects with shared infrastructure, planning, and big collaborative systems."}, {"slug": "enshrouded", "name": "Enshrouded", "short": "Enshrouded", "href": "/enshrouded-server", "color": "#b47bff", "type": "survival co-op", "desc": "Adventure-driven progression with a shared base, group goals, and stable co-op exploration."}, {"slug": "american-truck-simulator", "name": "American Truck Simulator", "short": "American Truck Sim", "href": "/american-truck-simulator-server", "color": "#ff7d74", "type": "convoy nights", "desc": "Convoys, route nights, and driving events with the wider crew."}, {"slug": "beammp", "name": "BeamMP", "short": "BeamMP", "href": "/beammp-server", "color": "#4fd6c0", "type": "driving sessions", "desc": "Casual driving meetups, stunts, and event-style community hangs."}, {"slug": "fivem", "name": "FiveM", "short": "FiveM", "href": "/fivem-server", "color": "#ff9a4d", "type": "gta v roleplay", "desc": "A GTA V roleplay city with custom scripts, jobs, crews, and community events."}, {"slug": "euro-truck-simulator-2", "name": "Euro Truck Simulator 2", "short": "Euro Truck Sim 2", "href": "/euro-truck-simulator-2-server", "color": "#ff6428", "type": "convoy nights", "desc": "European convoy routes, casual road sessions, and community driving nights."}, {"slug": "garrys-mod", "name": "Garry's Mod", "short": "Garry's Mod", "href": "/garrys-mod-server", "color": "#6ba7ff", "type": "sandbox sessions", "desc": "Sandbox sessions, community experiments, and casual source-engine chaos."}, {"slug": "left-4-dead-2", "name": "Left 4 Dead 2", "short": "Left 4 Dead 2", "href": "/left-4-dead-2-server", "color": "#9ad36a", "type": "co-op campaigns", "desc": "Co-op zombie campaigns, quick sessions, and community survival nights."}, {"slug": "no-more-room-in-hell", "name": "No More Room in Hell", "short": "No More Room in Hell", "href": "/no-more-room-in-hell-server", "color": "#c8665a", "type": "co-op survival horror", "desc": "Tense co-op survival horror runs where teamwork matters more than noise."}, {"slug": "rust", "name": "Rust", "short": "Rust", "href": "/rust-server", "color": "#d48a45", "type": "survival pvp", "desc": "Survival, bases, wipes, and player stories on a community-run Rust world."}, {"slug": "sons-of-the-forest", "name": "Sons of the Forest", "short": "Sons of the Forest", "href": "/sons-of-the-forest-server", "color": "#78b46b", "type": "survival co-op", "desc": "Forest survival, base building, and co-op exploration with friends."}, {"slug": "squad", "name": "Squad", "short": "Squad", "href": "/squad-server", "color": "#b7a56a", "type": "tactical teamwork", "desc": "Tactical sessions built around coordination, comms, and squad play."}, {"slug": "team-fortress-2", "name": "Team Fortress 2", "short": "Team Fortress 2", "href": "/team-fortress-2-server", "color": "#d65a4a", "type": "arena nights", "desc": "Classic TF2 rounds, community matches, and low-pressure arena chaos."}, {"slug": "terraria", "name": "Terraria", "short": "Terraria", "href": "/terraria-server", "color": "#65c97a", "type": "adventure sandbox", "desc": "Boss progression, building, loot, and long-running sandbox adventures."}, {"slug": "the-forest", "name": "The Forest", "short": "The Forest", "href": "/the-forest-server", "color": "#5aa568", "type": "survival co-op", "desc": "Co-op survival, cave runs, building, and story progression in the woods."}];
 const NAV = [
-  { id:"servers", label:"Servers", href:"/servers", children:[
-    { id:"servers", label:"All Servers", href:"/servers" },
-    { id:"status", label:"Live Status", href:"/status" },
-    { id:"getting-started", label:"How to Join", href:"/getting-started" },
-    { id:"minecraft", label:"Minecraft", href:"/minecraft-server" },
-    { id:"palworld", label:"Palworld", href:"/palworld-server" },
-    { id:"satisfactory", label:"Satisfactory", href:"/satisfactory-server" }
-  ] },
+  { id:"build", label:"What We Build", href:"/#build" },
+  { id:"portfolio", label:"Work", href:"/portfolio" },
+  { id:"servers", label:"Servers", href:"/servers" },
   { id:"prints", label:"3D Prints", href:"/3d-prints" },
-  { id:"portfolio", label:"Portfolio", href:"/portfolio" },
-  { id:"community", label:"Community", href:"/community", children:[
-    { id:"announcements", label:"News", href:"/announcements" },
-    { id:"showcase", label:"Showcase", href:"/showcase" },
-    { id:"partners", label:"Partners", href:"/partners" },
-    { id:"rules", label:"Rules", href:"/rules" },
-  ]},
-  { id:"about", label:"About", href:"/about", children:[
-    { id:"team", label:"Team", href:"/team" },
-    { id:"costs", label:"Costs", href:"/costs" },
-    { id:"github", label:"GitHub", href:GITHUB, external:true },
-  ]},
-  { id:"support", label:"Support", href:"/support", children:[
-    { id:"getting-started", label:"Getting Started", href:"/getting-started" },
-    { id:"applications", label:"Applications", href:"/applications" },
-    { id:"update-pings", label:"Update Pings", href:"/update-pings" },
-  ]},
-  { id:"status", label:"Status", href:"/status" },
+  { id:"about", label:"About", href:"/about" },
+  { id:"contact", label:"Contact", href:"/contact" },
 ];
 const FOOT = [
-  ["Explore", [["Home","/home"],["Servers","/servers"],["3D Prints","/3d-prints"],["Portfolio","/portfolio"],["About","/about"]]],
-  ["Worlds", [["All Servers","/servers"],["Live Status","/status"],["How to Join","/getting-started"],["Minecraft","/minecraft-server"],["Palworld","/palworld-server"],["Satisfactory","/satisfactory-server"]]],
-  ["Community", [["Discord Community",DISCORD,1],["GitHub",GITHUB,1],["News","/announcements"],["Showcase","/showcase"],["Partners","/partners"]]],
-  ["More", [["Status","/status"],["Costs","/costs"],["Applications","/applications"],["Contact","/contact"],["Terms","/terms"],["Privacy","/privacy"]]],
+  ["Studio", [["What We Build","/#build"],["Work","/portfolio"],["About","/about"],["Team","/team"],["Contact","/contact"]]],
+  ["Play", [["Game Servers","/servers"],["3D Prints","/3d-prints"],["Live Status","/status"],["How to Join","/getting-started"],["Showcase","/showcase"]]],
+  ["More", [["Community","/community"],["News","/announcements"],["Support","/support"],["Costs","/costs"],["Discord Community",DISCORD,1]]],
 ];
 const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
 const SERVER_SLUGS = Object.fromEntries(GAME_SERVERS.map((s)=>[s.name.toLowerCase(),s.slug]));
@@ -412,7 +390,7 @@ function renderShell(){
     head.innerHTML = `<header class="site-header"><div class="wrap nav">
       <a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
       <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <nav class="nav-links">${links}<span data-theme-picker-mount></span><a class="btn btn--primary nav-cta" href="/contact">Contact Us</a></nav>
+      <nav class="nav-links">${links}<span data-theme-picker-mount></span><a class="btn btn--primary nav-cta" href="/contact">Start a Project</a></nav>
     </div></header>`;
   }
   const foot = document.querySelector("[data-shell-footer]");
@@ -421,11 +399,11 @@ function renderShell(){
     foot.innerHTML = `<footer class="foot"><div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand"><a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
-          <p>Free community game worlds and custom 3D prints — self-hosted, $0 to play, built by people who actually play.</p>
-          <div class="pills"><span class="pill">Free Servers</span><span class="pill">Custom Prints</span><span class="pill">Official Contact</span></div></div>
+          <p>A digital studio building websites, AI systems, automation, and infrastructure — and running them long after launch. We also host free community game worlds on our own hardware.</p>
+          <div class="pills"><span class="pill">Websites</span><span class="pill">AI Systems</span><span class="pill">Automation</span><span class="pill">Game Infra</span></div></div>
         ${cols}
       </div>
-      <div class="foot-bottom"><span>© <span data-year></span> Voxelbox — all worlds free, forever.</span><span>Built by the community, for the community.</span></div>
+      <div class="foot-bottom"><span>© <span data-year></span> Voxelbox — built like a system.</span><span>Designed &amp; engineered in-house.</span></div>
     </div></footer>`;
   }
 }
