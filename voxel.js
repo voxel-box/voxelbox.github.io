@@ -15,9 +15,9 @@ const NAV = [
   { id:"contact", label:"Contact", href:"/contact" },
 ];
 const FOOT = [
-  ["Studio", [["What We Build","/#build"],["Work","/portfolio"],["About","/about"],["Team","/team"],["Contact","/contact"]]],
-  ["Play", [["Game Servers","/servers"],["3D Prints","/3d-prints"],["Live Status","/status"],["How to Join","/getting-started"],["Showcase","/showcase"]]],
-  ["More", [["Community","/community"],["News","/announcements"],["Support","/support"],["Costs","/costs"],["Discord Community",DISCORD,1]]],
+  ["Studio", [["About","/about"],["Team","/team"],["Portfolio","/portfolio"],["Contact","/contact"],["Applications","/applications"]]],
+  ["Community", [["Game Servers","/servers"],["3D Prints","/3d-prints"],["Community","/community"],["News","/announcements"],["Showcase","/showcase"]]],
+  ["More", [["Support","/support"],["Getting Started","/getting-started"],["Costs","/costs"],["Terms","/terms"],["Privacy","/privacy"]]],
 ];
 const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
 const SERVER_SLUGS = Object.fromEntries(GAME_SERVERS.map((s)=>[s.name.toLowerCase(),s.slug]));
