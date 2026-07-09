@@ -400,3 +400,6 @@ body.nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-4
 .fact{padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(23,27,35,.55),rgba(11,13,17,.6))}
 .fact .k{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-2)}
 .fact p{color:var(--muted);font-size:.95rem;margin-top:8px}
+
+/* guarantee reveals always win — no content can stay hidden */
+[data-reveal].vis{opacity:1 !important;transform:none !important;filter:none !important}
