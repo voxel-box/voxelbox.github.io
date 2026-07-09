@@ -477,3 +477,10 @@ a.card:hover,.card.holo:hover{transform:translateY(-4px);border-color:rgba(255,1
 .klist li::before{content:"";width:8px;height:8px;margin-top:8px;flex:none;border-radius:2px;background:var(--orange);box-shadow:0 0 8px var(--glow)}
 .bignum{font-family:var(--f-display);font-weight:600;font-size:clamp(3rem,8vw,5.4rem);color:#5fd39a;line-height:1;letter-spacing:-.03em}
 @media (max-width:620px){.form-grid{grid-template-columns:1fr}}
+
+/* server world cards */
+.world-card{display:block}
+.world-card:hover{border-color:var(--wc,var(--orange))!important}
+.world-card .wc-top{display:flex;align-items:center;gap:11px}
+.world-card .wc-top h3{margin-right:auto;font-size:1.1rem}
+.world-card .wc-foot{display:flex;align-items:center;justify-content:space-between;gap:10px}
