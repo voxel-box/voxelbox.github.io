@@ -383,3 +383,20 @@ body.nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-4
     border-left:1px solid var(--line-2);border-radius:0;margin:2px 0 6px 12px;padding:2px 0 2px 10px;background:none;min-width:0}
   .top-nav .nav-group>a::after{margin-left:auto}
 }
+
+/* ============ inner studio pages: compact hero + shared bits ============ */
+.page-hero{position:relative;padding:calc(74px + clamp(52px,9vw,104px)) 0 clamp(38px,6vw,70px);overflow:hidden}
+.page-hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(58% 80% at 78% 0%, rgba(255,122,26,.10), transparent 64%),
+             radial-gradient(46% 60% at 8% 16%, rgba(91,124,255,.06), transparent 70%)}
+.page-hero .wrap{position:relative;z-index:1}
+.page-hero .eyebrow{margin-bottom:16px}
+.page-hero h1{font-size:clamp(2.3rem,5vw,4rem);margin-bottom:18px;max-width:17ch}
+.page-hero h1 .g{color:transparent;background:linear-gradient(120deg,var(--orange-2),var(--orange) 60%,#ff5d3a);-webkit-background-clip:text;background-clip:text}
+.page-hero .lead{max-width:62ch}
+.page-hero .btn-row{margin-top:28px}
+/* value/detail cards reuse .mods/.mod; small kv list for facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+.fact{padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(23,27,35,.55),rgba(11,13,17,.6))}
+.fact .k{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-2)}
+.fact p{color:var(--muted);font-size:.95rem;margin-top:8px}
