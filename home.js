@@ -293,6 +293,8 @@ function initReveal(){
   };
   addEventListener("scroll",()=>{ if(!tick) tick=setTimeout(sweep,120); },{passive:true});
   setTimeout(sweep, 700);
+  // absolute catch-all: nothing stays hidden even if IO + scroll never fire
+  setTimeout(()=>{ items.forEach((el)=>el.classList.add("vis")); if(pipe) pipe.classList.add("flow"); }, 1600);
 }
 
 /* =====================================================================
