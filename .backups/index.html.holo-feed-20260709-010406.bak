@@ -196,7 +196,7 @@
         </div>
         <!-- PLACEHOLDER PROJECTS — swap titles, art, links & tags per real case study.
              (The portfolio page already pulls the live feed from demos.voxelbox.org.) -->
-        <div class="holos" data-holo-grid>
+        <div class="holos">
           <a class="holo" href="https://aurora.voxelbox.org" target="_blank" rel="noopener noreferrer" data-reveal data-delay="0s" style="--f:0s">
             <span class="holo-open">visit →</span>
             <div class="holo-art" aria-hidden="true"><svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice">
@@ -322,6 +322,6 @@
     </div>
   </footer>
 
-  <script type="module" src="home.js?v=5"></script>
+  <script type="module" src="home.js?v=4"></script>
 </body>
 </html>
