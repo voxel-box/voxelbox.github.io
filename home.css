@@ -484,3 +484,13 @@ a.card:hover,.card.holo:hover{transform:translateY(-4px);border-color:rgba(255,1
 .world-card .wc-top{display:flex;align-items:center;gap:11px}
 .world-card .wc-top h3{margin-right:auto;font-size:1.1rem}
 .world-card .wc-foot{display:flex;align-items:center;justify-content:space-between;gap:10px}
+
+/* cost tables */
+.vtable-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:rgba(11,13,17,.5)}
+.vtable{width:100%;border-collapse:collapse;font-size:.95rem;min-width:520px}
+.vtable th{font-family:var(--f-mono);font-weight:500;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);text-align:left;padding:13px 18px;border-bottom:1px solid var(--line-2)}
+.vtable td{padding:13px 18px;border-bottom:1px solid var(--line);color:var(--muted)}
+.vtable td:first-child{color:var(--ink);font-family:var(--f-display);font-weight:500}
+.vtable tr:last-child td{border-bottom:0}
+.vtable .cost{color:var(--orange-2);font-family:var(--f-mono)}
+.vtable tr.total td{border-top:1px solid var(--line-2);color:var(--ink);font-weight:600;background:rgba(255,122,26,.05)}
