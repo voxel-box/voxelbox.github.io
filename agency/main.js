@@ -9,7 +9,7 @@
 
   var DATA = window.VOXELBOX_DATA || { SERVICES: [], PROJECTS: [], CASE_STUDIES: {} };
   var CONTACT_EMAIL = "admin@voxelbox.org"; // used for the mailto: fallback
-  var CONTACT_ENDPOINT = "/api/contact";    // existing VoxelBox relay (verified live)
+  var CONTACT_ENDPOINT = "https://demos.voxelbox.org/api/lead";    // existing VoxelBox relay (verified live)
 
   /* --- tiny helpers ------------------------------------------------------- */
   function esc(s) {

@@ -576,8 +576,8 @@ function wireForm(sel,url,fields){
     finally{ btn.disabled=false; }
   });
 }
-function initContactForm(){ wireForm("[data-contact-form]","/api/contact",["name","email","message"]); }
-function initApplyForm(){ wireForm("[data-apply-form]","/api/apply",["name","email","role","age","experience","message"]); }
+function initContactForm(){ wireForm("[data-contact-form]","https://demos.voxelbox.org/api/lead",["name","email","message"]); }
+function initApplyForm(){ wireForm("[data-apply-form]","https://demos.voxelbox.org/api/lead",["name","email","role","age","experience","message"]); }
 
 function initCookies(){
   if(localStorage.getItem("vb_cookie_consent")) return;

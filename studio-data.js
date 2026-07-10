@@ -165,8 +165,8 @@
 
   function run(){
     initServerStatus(); initPortfolio(); initNewsFeed(); initStreamers();
-    wireForm("[data-contact-form]","/api/contact",["name","email","message"]);
-    wireForm("[data-apply-form]","/api/apply",["name","email","role","age","experience","message"]);
+    wireForm("[data-contact-form]","https://demos.voxelbox.org/api/lead",["name","email","message"]);
+    wireForm("[data-apply-form]","https://demos.voxelbox.org/api/lead",["name","email","role","age","experience","message"]);
     initFaq();
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",run); else run();
