@@ -32,7 +32,7 @@ const NAV = [
 const FOOT = [
   ["Studio", [["About","/about"],["Team","/team"],["Portfolio","/portfolio"],["Contact","/contact"],["Applications","/applications"]]],
   ["Community", [["Game Servers","/servers"],["3D Prints","/3d-prints"],["Community","/community"],["News","/announcements"],["Showcase","/showcase"]]],
-  ["More", [["Support","/support"],["Getting Started","/getting-started"],["Costs","/costs"],["Terms","/terms"],["Privacy","/privacy"]]],
+  ["More", [["Support","/support"],["Getting Started","/getting-started"],["Costs","/costs"],["Terms","/terms"],["Intellectual Property","/ip"],["Privacy","/privacy"]]],
 ];
 const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
 const SERVER_SLUGS = Object.fromEntries(GAME_SERVERS.map((s)=>[s.name.toLowerCase(),s.slug]));
