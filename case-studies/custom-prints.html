@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>voxelbox.org — Case Study | VoxelBox</title>
-  <meta name="description" content="Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.">
-  <link rel="canonical" href="https://voxelbox.org/case-studies/studio-site">
+  <title>Custom 3D prints — Case Study | VoxelBox</title>
+  <meta name="description" content="Made-to-order 3D prints — from idea or file to finished part — with the same queue, quality checks, and status comms we give servers.">
+  <link rel="canonical" href="https://voxelbox.org/case-studies/custom-prints">
   <meta name="theme-color" content="#07080b">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="VoxelBox">
-  <meta property="og:title" content="voxelbox.org — Case Study | VoxelBox">
-  <meta property="og:description" content="Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.">
+  <meta property="og:title" content="Custom 3D prints — Case Study | VoxelBox">
+  <meta property="og:description" content="Made-to-order 3D prints — from idea or file to finished part — with the same queue, quality checks, and status comms we give servers.">
   <meta property="og:image" content="https://voxelbox.org/social-preview.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/home.css?v=10">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://voxelbox.org/#organization","name":"Voxelbox","url":"https://voxelbox.org","logo":"https://voxelbox.org/logo.png","sameAs":["https://discord.gg/mpeZ62uEEp"]},{"@type":"WebPage","@id":"https://voxelbox.org/case-studies/studio-site#webpage","url":"https://voxelbox.org/case-studies/studio-site","name":"voxelbox.org — Case Study | VoxelBox","description":"Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.","isPartOf":{"@id":"https://voxelbox.org/#website"},"publisher":{"@id":"https://voxelbox.org/#organization"},"inLanguage":"en-US"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://voxelbox.org/#organization","name":"Voxelbox","url":"https://voxelbox.org","logo":"https://voxelbox.org/logo.png","sameAs":["https://discord.gg/mpeZ62uEEp"]},{"@type":"WebPage","@id":"https://voxelbox.org/case-studies/custom-prints#webpage","url":"https://voxelbox.org/case-studies/custom-prints","name":"Custom 3D prints — Case Study | VoxelBox","description":"Made-to-order 3D prints — from idea or file to finished part — with the same queue, quality checks, and status comms we give servers.","isPartOf":{"@id":"https://voxelbox.org/#website"},"publisher":{"@id":"https://voxelbox.org/#organization"},"inLanguage":"en-US"}]}</script>
   <style>
     .cs-tags{display:flex;flex-wrap:wrap;gap:8px}
     .cs-tag{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
@@ -59,13 +59,13 @@
   <!-- ============ HERO ============ -->
   <section class="page-hero">
     <div class="wrap">
-      <span class="eyebrow">case study · CS·11</span>
-      <h1>The studio site <span class="g">as a system.</span></h1>
-      <p class="lead">Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.</p>
-      <div class="cs-tags cs-hero-tags"><span class="cs-tag cs-tag--live">live</span><span class="cs-tag">web</span><span class="cs-tag">WebGL</span><span class="cs-tag">static-fast</span></div>
+      <span class="eyebrow">case study · CS·02</span>
+      <h1>Prints, run like <span class="g">production.</span></h1>
+      <p class="lead">Made-to-order 3D prints — from idea or file to finished part — with the same queue, quality checks, and status comms we give servers.</p>
+      <div class="cs-tags cs-hero-tags"><span class="cs-tag cs-tag--live">live</span><span class="cs-tag">3D printing</span><span class="cs-tag">fabrication</span><span class="cs-tag">made-to-order</span></div>
       <div class="btn-row" style="margin-top:26px">
         <a class="btn btn--primary" href="/contact">Build something like this <span class="ar">→</span></a>
-        <a class="btn btn--ghost" href="/home">Visit the homepage</a>
+        <a class="btn btn--ghost" href="/3d-prints">See the print service</a>
       </div>
     </div>
   </section>
@@ -78,8 +78,8 @@
           <h2>What we were handed.</h2>
         </div>
         <div class="cs-prose" data-reveal>
-          <p>A studio that sells custom systems can't credibly run on a page-builder template. The site itself has to make the argument: fast, owned end-to-end, and cheap to keep fresh.</p>
-          <p>The usual trap is the opposite trade — either a beautiful site that's a chore to update, or an easy one that looks like everyone else's.</p>
+          <p>One-off custom parts and gifts sit in an awkward gap: mass production won't touch them, and bespoke fabrication is priced for businesses. Most hobby print services fill the gap badly — no queue, no quality bar, no idea when your part ships.</p>
+          <p>The printing is the easy half. The hard half is everything around it: intake, scheduling, failure recovery, and telling people what's actually happening with their order.</p>
         </div>
       </div>
     </section>
@@ -91,14 +91,14 @@
           <h2>The system.</h2>
         </div>
         <div class="cs-prose" data-reveal>
-          <p>A hand-authored static site — no framework tax, no builder — with a WebGL voxel-assembly hero that builds the brand mark in front of you.</p>
-          <p>The “Floating in production” work wall is driven by the same JSON feed as our demo pipeline: publish a demo anywhere on our infrastructure and the homepage features it automatically. The site is served and aggressively cached on our own stack.</p>
+          <p>A made-to-order print service run with server-ops discipline. Requests come in as anything from a rough idea to a finished model file, get turned into a printable design, and enter a real queue.</p>
+          <p>The printers are treated like the rest of our fleet: jobs are monitored, failures are caught and re-run instead of shipped, and the customer hears about progress without having to ask.</p>
         </div>
         <div class="facts" data-reveal style="margin-top:34px">
-          <div class="fact"><span class="k">Static core</span><p>Hand-written HTML, CSS, and JS — nothing between you and the page.</p></div>
-          <div class="fact"><span class="k">WebGL hero</span><p>A voxel-assembly scene, not a stock hero image.</p></div>
-          <div class="fact"><span class="k">Live wall</span><p>Feed-driven portfolio — new work appears with zero HTML edits.</p></div>
-          <div class="fact"><span class="k">Self-hosted</span><p>Served, cached, and monitored on the same stack we sell.</p></div>
+          <div class="fact"><span class="k">Intake</span><p>From a rough idea or a model file to a printable design.</p></div>
+          <div class="fact"><span class="k">Queue</span><p>A real schedule — orders don't disappear into a pile.</p></div>
+          <div class="fact"><span class="k">QC</span><p>Failed or flawed prints get caught and re-run, not shipped.</p></div>
+          <div class="fact"><span class="k">Comms</span><p>Status updates along the way, unprompted.</p></div>
         </div>
       </div>
     </section>
@@ -110,12 +110,12 @@
           <h2>What changed.</h2>
         </div>
         <div class="cs-prose" data-reveal>
-          <p>You're reading it. The site loads fast, updates itself when work ships, and doubles as the honest answer to “what would you build for us?”</p>
+          <p>The same ops discipline we apply to servers, applied to atoms. Custom parts ship predictably, and the service pays its way inside a brand people already trust with their game worlds.</p>
         </div>
         <div class="cs-pn" data-reveal>
-          <a href="/case-studies/voxelburg">← CS·10 — Voxelburg</a>
+          <a href="/case-studies/community-game-servers">← CS·01 — Community game servers</a>
           <a href="/case-studies">All case studies</a>
-          <a href="/case-studies/launch-os">CS·12 — Launch OS →</a>
+          <a href="/case-studies/demo-pipeline">CS·03 — The demo pipeline →</a>
         </div>
       </div>
     </section>

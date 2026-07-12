@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>voxelbox.org — Case Study | VoxelBox</title>
-  <meta name="description" content="Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.">
-  <link rel="canonical" href="https://voxelbox.org/case-studies/studio-site">
+  <title>The edge — Case Study | VoxelBox</title>
+  <meta name="description" content="Every public service we run reaches the internet through secure outbound tunnels — no inbound ports, origins that refuse direct connections, and private tools behind an access gate.">
+  <link rel="canonical" href="https://voxelbox.org/case-studies/network-edge">
   <meta name="theme-color" content="#07080b">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="VoxelBox">
-  <meta property="og:title" content="voxelbox.org — Case Study | VoxelBox">
-  <meta property="og:description" content="Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.">
+  <meta property="og:title" content="The edge — Case Study | VoxelBox">
+  <meta property="og:description" content="Every public service we run reaches the internet through secure outbound tunnels — no inbound ports, origins that refuse direct connections, and private tools behind an access gate.">
   <meta property="og:image" content="https://voxelbox.org/social-preview.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/home.css?v=10">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://voxelbox.org/#organization","name":"Voxelbox","url":"https://voxelbox.org","logo":"https://voxelbox.org/logo.png","sameAs":["https://discord.gg/mpeZ62uEEp"]},{"@type":"WebPage","@id":"https://voxelbox.org/case-studies/studio-site#webpage","url":"https://voxelbox.org/case-studies/studio-site","name":"voxelbox.org — Case Study | VoxelBox","description":"Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.","isPartOf":{"@id":"https://voxelbox.org/#website"},"publisher":{"@id":"https://voxelbox.org/#organization"},"inLanguage":"en-US"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://voxelbox.org/#organization","name":"Voxelbox","url":"https://voxelbox.org","logo":"https://voxelbox.org/logo.png","sameAs":["https://discord.gg/mpeZ62uEEp"]},{"@type":"WebPage","@id":"https://voxelbox.org/case-studies/network-edge#webpage","url":"https://voxelbox.org/case-studies/network-edge","name":"The edge — Case Study | VoxelBox","description":"Every public service we run reaches the internet through secure outbound tunnels — no inbound ports, origins that refuse direct connections, and private tools behind an access gate.","isPartOf":{"@id":"https://voxelbox.org/#website"},"publisher":{"@id":"https://voxelbox.org/#organization"},"inLanguage":"en-US"}]}</script>
   <style>
     .cs-tags{display:flex;flex-wrap:wrap;gap:8px}
     .cs-tag{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
@@ -59,13 +59,12 @@
   <!-- ============ HERO ============ -->
   <section class="page-hero">
     <div class="wrap">
-      <span class="eyebrow">case study · CS·11</span>
-      <h1>The studio site <span class="g">as a system.</span></h1>
-      <p class="lead">Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.</p>
-      <div class="cs-tags cs-hero-tags"><span class="cs-tag cs-tag--live">live</span><span class="cs-tag">web</span><span class="cs-tag">WebGL</span><span class="cs-tag">static-fast</span></div>
+      <span class="eyebrow">case study · CS·09</span>
+      <h1>Public products, <span class="g">zero open doors.</span></h1>
+      <p class="lead">Every public service we run reaches the internet through secure outbound tunnels — no inbound ports, origins that refuse direct connections, and private tools behind an access gate.</p>
+      <div class="cs-tags cs-hero-tags"><span class="cs-tag cs-tag--live">in production</span><span class="cs-tag">networking</span><span class="cs-tag">security</span><span class="cs-tag">tunnels</span></div>
       <div class="btn-row" style="margin-top:26px">
         <a class="btn btn--primary" href="/contact">Build something like this <span class="ar">→</span></a>
-        <a class="btn btn--ghost" href="/home">Visit the homepage</a>
       </div>
     </div>
   </section>
@@ -78,8 +77,8 @@
           <h2>What we were handed.</h2>
         </div>
         <div class="cs-prose" data-reveal>
-          <p>A studio that sells custom systems can't credibly run on a page-builder template. The site itself has to make the argument: fast, owned end-to-end, and cheap to keep fresh.</p>
-          <p>The usual trap is the opposite trade — either a beautiful site that's a chore to update, or an easy one that looks like everyone else's.</p>
+          <p>Self-hosting traditionally means punching holes: port forwards, an exposed home IP, and a consumer router with hard limits on what it will even forward. Every new service was another opening to defend — and another thing that broke when hardware moved.</p>
+          <p>Serving real products to the public from your own hardware means the edge has to be boring, hardened, and portable. A hobbyist network wasn't going to carry a business.</p>
         </div>
       </div>
     </section>
@@ -91,14 +90,14 @@
           <h2>The system.</h2>
         </div>
         <div class="cs-prose" data-reveal>
-          <p>A hand-authored static site — no framework tax, no builder — with a WebGL voxel-assembly hero that builds the brand mark in front of you.</p>
-          <p>The “Floating in production” work wall is driven by the same JSON feed as our demo pipeline: publish a demo anywhere on our infrastructure and the homepage features it automatically. The site is served and aggressively cached on our own stack.</p>
+          <p>We rebuilt the edge around secure outbound tunnels: services dial out to the edge network, and visitors are routed back through it — so nothing on our network listens for inbound connections at all.</p>
+          <p>Origin servers were locked down to refuse anything that doesn't arrive through the tunnel, even direct hits on the raw IP with a forged hostname. Internal tools sit behind an authenticated access gate, and because a tunnel connector is just software, it moves to healthy hardware when a host misbehaves — services have survived machine failures by relocating in minutes.</p>
         </div>
         <div class="facts" data-reveal style="margin-top:34px">
-          <div class="fact"><span class="k">Static core</span><p>Hand-written HTML, CSS, and JS — nothing between you and the page.</p></div>
-          <div class="fact"><span class="k">WebGL hero</span><p>A voxel-assembly scene, not a stock hero image.</p></div>
-          <div class="fact"><span class="k">Live wall</span><p>Feed-driven portfolio — new work appears with zero HTML edits.</p></div>
-          <div class="fact"><span class="k">Self-hosted</span><p>Served, cached, and monitored on the same stack we sell.</p></div>
+          <div class="fact"><span class="k">Tunnels</span><p>Outbound-only connections carry all public traffic — no inbound ports.</p></div>
+          <div class="fact"><span class="k">Locked origins</span><p>Direct hits on the raw IP get refused, forged hostnames included.</p></div>
+          <div class="fact"><span class="k">Access gate</span><p>Private tools require authentication at the edge, before our network.</p></div>
+          <div class="fact"><span class="k">Portable</span><p>Connectors relocate to healthy hardware when a host fails.</p></div>
         </div>
       </div>
     </section>
@@ -110,12 +109,12 @@
           <h2>What changed.</h2>
         </div>
         <div class="cs-prose" data-reveal>
-          <p>You're reading it. The site loads fast, updates itself when work ships, and doubles as the honest answer to “what would you build for us?”</p>
+          <p>A stranger scanning our address finds almost nothing to talk to, while a dozen public products keep serving. The edge stopped being the scary part of self-hosting — and it's the same pattern we deploy for clients who want products on hardware they own.</p>
         </div>
         <div class="cs-pn" data-reveal>
-          <a href="/case-studies/voxelburg">← CS·10 — Voxelburg</a>
+          <a href="/case-studies/the-fleet">← CS·08 — The fleet</a>
           <a href="/case-studies">All case studies</a>
-          <a href="/case-studies/launch-os">CS·12 — Launch OS →</a>
+          <a href="/case-studies/voxelburg">CS·10 — Voxelburg →</a>
         </div>
       </div>
     </section>

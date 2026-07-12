@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>voxelbox.org — Case Study | VoxelBox</title>
-  <meta name="description" content="Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.">
-  <link rel="canonical" href="https://voxelbox.org/case-studies/studio-site">
+  <title>Mission control — Case Study | VoxelBox</title>
+  <meta name="description" content="A self-hosted hub that answers 'is everything up, and what changed?' in one view — status, operational feeds, and common actions for every service we run.">
+  <link rel="canonical" href="https://voxelbox.org/case-studies/mission-control">
   <meta name="theme-color" content="#07080b">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="VoxelBox">
-  <meta property="og:title" content="voxelbox.org — Case Study | VoxelBox">
-  <meta property="og:description" content="Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.">
+  <meta property="og:title" content="Mission control — Case Study | VoxelBox">
+  <meta property="og:description" content="A self-hosted hub that answers 'is everything up, and what changed?' in one view — status, operational feeds, and common actions for every service we run.">
   <meta property="og:image" content="https://voxelbox.org/social-preview.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/home.css?v=10">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://voxelbox.org/#organization","name":"Voxelbox","url":"https://voxelbox.org","logo":"https://voxelbox.org/logo.png","sameAs":["https://discord.gg/mpeZ62uEEp"]},{"@type":"WebPage","@id":"https://voxelbox.org/case-studies/studio-site#webpage","url":"https://voxelbox.org/case-studies/studio-site","name":"voxelbox.org — Case Study | VoxelBox","description":"Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.","isPartOf":{"@id":"https://voxelbox.org/#website"},"publisher":{"@id":"https://voxelbox.org/#organization"},"inLanguage":"en-US"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://voxelbox.org/#organization","name":"Voxelbox","url":"https://voxelbox.org","logo":"https://voxelbox.org/logo.png","sameAs":["https://discord.gg/mpeZ62uEEp"]},{"@type":"WebPage","@id":"https://voxelbox.org/case-studies/mission-control#webpage","url":"https://voxelbox.org/case-studies/mission-control","name":"Mission control — Case Study | VoxelBox","description":"A self-hosted hub that answers 'is everything up, and what changed?' in one view — status, operational feeds, and common actions for every service we run.","isPartOf":{"@id":"https://voxelbox.org/#website"},"publisher":{"@id":"https://voxelbox.org/#organization"},"inLanguage":"en-US"}]}</script>
   <style>
     .cs-tags{display:flex;flex-wrap:wrap;gap:8px}
     .cs-tag{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
@@ -59,13 +59,12 @@
   <!-- ============ HERO ============ -->
   <section class="page-hero">
     <div class="wrap">
-      <span class="eyebrow">case study · CS·11</span>
-      <h1>The studio site <span class="g">as a system.</span></h1>
-      <p class="lead">Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.</p>
-      <div class="cs-tags cs-hero-tags"><span class="cs-tag cs-tag--live">live</span><span class="cs-tag">web</span><span class="cs-tag">WebGL</span><span class="cs-tag">static-fast</span></div>
+      <span class="eyebrow">case study · CS·07</span>
+      <h1>The whole stack, <span class="g">one screen.</span></h1>
+      <p class="lead">A self-hosted hub that answers 'is everything up, and what changed?' in one view — status, operational feeds, and common actions for every service we run.</p>
+      <div class="cs-tags cs-hero-tags"><span class="cs-tag cs-tag--live">in production</span><span class="cs-tag">dashboard</span><span class="cs-tag">observability</span><span class="cs-tag">internal tool</span></div>
       <div class="btn-row" style="margin-top:26px">
         <a class="btn btn--primary" href="/contact">Build something like this <span class="ar">→</span></a>
-        <a class="btn btn--ghost" href="/home">Visit the homepage</a>
       </div>
     </div>
   </section>
@@ -78,8 +77,8 @@
           <h2>What we were handed.</h2>
         </div>
         <div class="cs-prose" data-reveal>
-          <p>A studio that sells custom systems can't credibly run on a page-builder template. The site itself has to make the argument: fast, owned end-to-end, and cheap to keep fresh.</p>
-          <p>The usual trap is the opposite trade — either a beautiful site that's a chore to update, or an easy one that looks like everyone else's.</p>
+          <p>A dozen hosts, dozens of services, tunnels, and game worlds — each with its own logs and its own status page. The question “is everything healthy right now?” had no single answer; it had fifteen browser tabs.</p>
+          <p>And when something did break, the first ten minutes went to figuring out where to even look.</p>
         </div>
       </div>
     </section>
@@ -91,14 +90,14 @@
           <h2>The system.</h2>
         </div>
         <div class="cs-prose" data-reveal>
-          <p>A hand-authored static site — no framework tax, no builder — with a WebGL voxel-assembly hero that builds the brand mark in front of you.</p>
-          <p>The “Floating in production” work wall is driven by the same JSON feed as our demo pipeline: publish a demo anywhere on our infrastructure and the homepage features it automatically. The site is served and aggressively cached on our own stack.</p>
+          <p>A self-hosted operations hub: live status for every service in one view, the operational data feeds that matter, and the routine actions within reach instead of buried in SSH sessions.</p>
+          <p>It became the natural front door for everything else we bolted on — the agent fleet reports into the same picture, so the dashboard shows not just what's up, but what the fleet found.</p>
         </div>
         <div class="facts" data-reveal style="margin-top:34px">
-          <div class="fact"><span class="k">Static core</span><p>Hand-written HTML, CSS, and JS — nothing between you and the page.</p></div>
-          <div class="fact"><span class="k">WebGL hero</span><p>A voxel-assembly scene, not a stock hero image.</p></div>
-          <div class="fact"><span class="k">Live wall</span><p>Feed-driven portfolio — new work appears with zero HTML edits.</p></div>
-          <div class="fact"><span class="k">Self-hosted</span><p>Served, cached, and monitored on the same stack we sell.</p></div>
+          <div class="fact"><span class="k">Status</span><p>Every service, one view — real responses, not just green dots.</p></div>
+          <div class="fact"><span class="k">Feeds</span><p>The operational data that matters, aggregated in one place.</p></div>
+          <div class="fact"><span class="k">Actions</span><p>Routine operations one click away, not one SSH session away.</p></div>
+          <div class="fact"><span class="k">Dogfood</span><p>Runs self-hosted on the same stack it watches.</p></div>
         </div>
       </div>
     </section>
@@ -110,12 +109,12 @@
           <h2>What changed.</h2>
         </div>
         <div class="cs-prose" data-reveal>
-          <p>You're reading it. The site loads fast, updates itself when work ships, and doubles as the honest answer to “what would you build for us?”</p>
+          <p>“Is everything up?” takes one glance. It's also the pattern we now build for clients who run anything — a business dashboard is the same idea wearing different data.</p>
         </div>
         <div class="cs-pn" data-reveal>
-          <a href="/case-studies/voxelburg">← CS·10 — Voxelburg</a>
+          <a href="/case-studies/discord-assistant">← CS·06 — The ops assistant</a>
           <a href="/case-studies">All case studies</a>
-          <a href="/case-studies/launch-os">CS·12 — Launch OS →</a>
+          <a href="/case-studies/the-fleet">CS·08 — The fleet →</a>
         </div>
       </div>
     </section>
