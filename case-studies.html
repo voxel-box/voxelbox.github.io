@@ -9,37 +9,32 @@
   <meta name="theme-color" content="#07080b">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="VoxelBox">
-  <meta property="og:title" content="Case Studies — VoxelBox">
-  <meta property="og:description" content="Deep dives into systems VoxelBox has designed, built, and run — the problem, the build, and what changed.">
-  <meta property="og:image" content="social-preview.png">
+  <meta property="og:title" content="Case Studies — VoxelBox | Real systems, real outcomes">
+  <meta property="og:description" content="Deep dives into systems VoxelBox has designed, built, and run — event platforms, AI worlds, and automation pipelines. The problem, the build, and what changed.">
+  <meta property="og:image" content="https://voxelbox.org/social-preview.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="home.css?v=10">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://voxelbox.org/#organization","name":"Voxelbox","url":"https://voxelbox.org","logo":"https://voxelbox.org/logo.png","sameAs":["https://discord.gg/mpeZ62uEEp"]},{"@type":"CollectionPage","@id":"https://voxelbox.org/case-studies#webpage","url":"https://voxelbox.org/case-studies","name":"Case Studies — VoxelBox","description":"Deep dives into systems VoxelBox has designed, built, and run.","isPartOf":{"@id":"https://voxelbox.org/#website"},"publisher":{"@id":"https://voxelbox.org/#organization"},"inLanguage":"en-US"}]}</script>
+  <link rel="stylesheet" href="/home.css?v=10">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://voxelbox.org/#organization","name":"Voxelbox","url":"https://voxelbox.org","logo":"https://voxelbox.org/logo.png","sameAs":["https://discord.gg/mpeZ62uEEp"]},{"@type":"WebPage","@id":"https://voxelbox.org/case-studies#webpage","url":"https://voxelbox.org/case-studies","name":"Case Studies — VoxelBox | Real systems, real outcomes","description":"Deep dives into systems VoxelBox has designed, built, and run — event platforms, AI worlds, and automation pipelines. The problem, the build, and what changed.","isPartOf":{"@id":"https://voxelbox.org/#website"},"publisher":{"@id":"https://voxelbox.org/#organization"},"inLanguage":"en-US"}]}</script>
   <style>
-    /* case-study cards — scoped to this page, builds on home.css vars */
-    .cs-list{display:flex;flex-direction:column;gap:28px;margin-top:44px}
-    .cs{display:grid;grid-template-columns:1fr 1.6fr;gap:0;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel);overflow:hidden;transition:border-color .3s var(--ease),transform .3s var(--ease)}
-    .cs:hover{border-color:var(--line-2);transform:translateY(-3px)}
-    .cs-side{padding:34px 30px;border-right:1px solid var(--line);background:var(--bg-1);display:flex;flex-direction:column;gap:14px}
-    .cs-side .cs-num{font-family:var(--f-mono);font-size:.8rem;color:var(--orange);letter-spacing:.12em}
-    .cs-side h3{font-family:var(--f-display);font-size:1.5rem;line-height:1.2;margin:0}
-    .cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:18px}
+    .cs-tags{display:flex;flex-wrap:wrap;gap:8px}
     .cs-tag{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
     .cs-tag--live{color:var(--orange-2);border-color:rgba(255,122,26,.35)}
-    .cs-body{padding:34px 34px 30px;display:flex;flex-direction:column;gap:18px}
-    .cs-block h4{font-family:var(--f-mono);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:0 0 6px}
-    .cs-block p{color:var(--muted);font-size:.95rem;margin:0}
-    .cs-link{margin-top:auto;padding-top:6px}
-    .cs-link a{color:var(--orange-2);text-decoration:none;font-size:.9rem}
-    .cs-link a:hover{text-decoration:underline}
-    @media (max-width:880px){
-      .cs{grid-template-columns:1fr}
-      .cs-side{border-right:0;border-bottom:1px solid var(--line)}
-    }
+    /* clickable case-study index cards */
+    .cs-list{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:44px}
+    a.cs{display:flex;flex-direction:column;gap:14px;padding:30px 28px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--panel);text-decoration:none;color:inherit;transition:border-color .3s var(--ease),transform .3s var(--ease)}
+    a.cs:hover{border-color:rgba(255,122,26,.45);transform:translateY(-4px)}
+    .cs-num{font-family:var(--f-mono);font-size:.8rem;color:var(--orange);letter-spacing:.12em}
+    .cs h3{font-family:var(--f-display);font-size:1.35rem;line-height:1.25;margin:0}
+    .cs p{color:var(--muted);font-size:.93rem;margin:0}
+    .cs-tags{padding-top:2px}
+    .cs-read{margin-top:auto;padding-top:14px;color:var(--orange-2);font-size:.9rem}
+    a.cs:hover .cs-read .ar{transform:translateX(4px)}
+    .cs-read .ar{display:inline-block;transition:transform .25s var(--ease)}
+    @media (max-width:880px){.cs-list{grid-template-columns:1fr}}
   </style>
 </head>
 <body data-page="case-studies">
@@ -48,7 +43,7 @@
   <!-- ============ HEADER (identical to homepage) ============ -->
   <header class="top" data-top>
     <div class="wrap top-in">
-      <a class="brand" href="index.html" aria-label="VoxelBox — home"><img class="brand-logo" src="logo-wordmark.png" alt="VoxelBox" width="624" height="238"></a>
+      <a class="brand" href="/home" aria-label="VoxelBox — home"><img class="brand-logo" src="/logo-wordmark.png" alt="VoxelBox" width="624" height="238"></a>
       <nav class="top-nav" aria-label="Primary">
         <a href="/#build">What We Build</a>
         <a href="https://demos.voxelbox.org">Demos</a>
@@ -82,141 +77,92 @@
         <div class="sec-head" data-reveal>
           <span class="eyebrow">the work</span>
           <h2>Problem → system → outcome.</h2>
-          <p class="lead">A running list of builds we can talk about in detail. More are in flight — private pilots get published here once they ship.</p>
+          <p class="lead">A running list of builds we can talk about in detail — click any study for the full story. More are in flight; private pilots get published here once they ship.</p>
         </div>
 
-        <!-- To add a case study: copy one <article class="cs"> block, update the
-             number, title, tags, and the four text blocks. Newest goes on top. -->
+        <!-- Pages are generated: edit generate_cs.py (see repo/scratchpad), or copy an
+             <a class="cs"> card + a detail page in case-studies/. Newest goes on top. -->
         <div class="cs-list">
 
-          <article class="cs" data-reveal>
-            <div class="cs-side">
-              <span class="cs-num">CS·07</span>
-              <h3>Equestrian event entry &amp; live scoring platform</h3>
-              <div class="cs-tags">
-                <span class="cs-tag cs-tag--live">private pilot</span>
-                <span class="cs-tag">web platform</span>
-                <span class="cs-tag">automation</span>
-                <span class="cs-tag">live scoring</span>
-              </div>
-            </div>
-            <div class="cs-body">
-              <div class="cs-block"><h4>The problem</h4><p>Horse shows still run on paper entries, hand-built ride times, and a stressed organizer with a clipboard. Riders don't know their times until the last minute, and every schedule change ripples through the whole day by phone call.</p></div>
-              <div class="cs-block"><h4>What we built</h4><p>A full entry platform: online entries with waitlists, automatic ride-time generation that respects horse and rider conflicts, live scoring published as classes run, and notifications that keep riders updated without anyone touching a phone tree. An AI concierge answers entry questions around the clock.</p></div>
-              <div class="cs-block"><h4>The outcome</h4><p>An organizer can run entries, scheduling, and day-of scoring from one screen. Currently in a private pilot with a launch partner ahead of public release.</p></div>
-            </div>
-          </article>
+          <a class="cs" href="/case-studies/equestrian-events" data-reveal>
+            <span class="cs-num">CS·10</span>
+            <h3>Equestrian event entry & live scoring platform</h3>
+            <p>Online entries, automatic conflict-aware ride times, live scoring, and an AI concierge — a horse show run from one screen.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">private pilot</span><span class="cs-tag">web platform</span><span class="cs-tag">automation</span><span class="cs-tag">live scoring</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
 
-          <article class="cs" data-reveal data-delay=".06s">
-            <div class="cs-side">
-              <span class="cs-num">CS·06</span>
-              <h3>Launch OS — from first lead to launch day</h3>
-              <div class="cs-tags">
-                <span class="cs-tag cs-tag--live">in production</span>
-                <span class="cs-tag">web platform</span>
-                <span class="cs-tag">pipeline</span>
-                <span class="cs-tag">internal tool</span>
-              </div>
-            </div>
-            <div class="cs-body">
-              <div class="cs-block"><h4>The problem</h4><p>Winning a client is only step one. Leads, proposals, build status, and launch checklists were scattered across chats, notes, and memory — and the gap between "they said yes" and "the site is live" is exactly where projects stall.</p></div>
-              <div class="cs-block"><h4>What we built</h4><p>Launch OS: a lead-to-launch platform that carries every prospect through one pipeline — from the first automated lead sweep, through proposal and build, to a launch checklist that won't let a project ship half-finished. It grew out of Client Radar and absorbed it as the front of the funnel.</p></div>
-              <div class="cs-block"><h4>The outcome</h4><p>One screen answers "where is every project right now." Nothing lives in someone's head, and nothing falls through the crack between sales and delivery.</p></div>
-            </div>
-          </article>
+          <a class="cs" href="/case-studies/launch-os" data-reveal>
+            <span class="cs-num">CS·09</span>
+            <h3>Launch OS — from first lead to launch day</h3>
+            <p>A lead-to-launch platform that carries every prospect through one pipeline — from automated lead sweep to a launch checklist that won't let a project ship half-finished.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">in production</span><span class="cs-tag">web platform</span><span class="cs-tag">pipeline</span><span class="cs-tag">internal tool</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
 
-          <article class="cs" data-reveal data-delay=".06s">
-            <div class="cs-side">
-              <span class="cs-num">CS·05</span>
-              <h3>Voxelburg — a living AI town</h3>
-              <div class="cs-tags">
-                <span class="cs-tag cs-tag--live">live</span>
-                <span class="cs-tag">AI agents</span>
-                <span class="cs-tag">self-hosted LLMs</span>
-                <span class="cs-tag">simulation</span>
-              </div>
-            </div>
-            <div class="cs-body">
-              <div class="cs-block"><h4>The problem</h4><p>"We use AI" is easy to say and hard to show. We wanted a piece of proof you can walk around in — AI characters with memories, relationships, and plans, running continuously on our own hardware rather than rented API calls.</p></div>
-              <div class="cs-block"><h4>What we built</h4><p>Voxelburg: a persistent virtual town where AI residents live out their days — chatting, forming opinions, and remembering you between visits. The agent simulation, language models, and world state all run on VoxelBox's self-hosted stack.</p></div>
-              <div class="cs-block"><h4>The outcome</h4><p>A public, always-on demonstration of agentic AI infrastructure — the same building blocks we use for business automation, running where anyone can poke at them.</p></div>
-              <div class="cs-link"><a href="https://aitown.voxelbox.org">Visit Voxelburg →</a></div>
-            </div>
-          </article>
+          <a class="cs" href="/case-studies/studio-site" data-reveal>
+            <span class="cs-num">CS·08</span>
+            <h3>voxelbox.org — the studio site as a system</h3>
+            <p>Our own site: hand-built, static-fast, a WebGL voxel hero — and a homepage that updates itself when new work ships.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">live</span><span class="cs-tag">web</span><span class="cs-tag">WebGL</span><span class="cs-tag">static-fast</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
 
-          <article class="cs" data-reveal data-delay=".06s">
-            <div class="cs-side">
-              <span class="cs-num">CS·04</span>
-              <h3>The fleet — infrastructure that watches itself</h3>
-              <div class="cs-tags">
-                <span class="cs-tag cs-tag--live">in production</span>
-                <span class="cs-tag">AI agents</span>
-                <span class="cs-tag">monitoring</span>
-                <span class="cs-tag">chat ops</span>
-              </div>
-            </div>
-            <div class="cs-body">
-              <div class="cs-block"><h4>The problem</h4><p>A growing stack of hosts, tunnels, and services means outages get noticed by users before operators. Babysitting dashboards doesn't scale, and 3&nbsp;a.m. incidents don't wait for business hours.</p></div>
-              <div class="cs-block"><h4>What we built</h4><p>A fleet of self-hosted agents that patrol the infrastructure on timers — watchdogs checking real service responses (not just pings), a sentinel that investigates anomalies and writes up what it found, and scheduled sweeps for the routine chores. A hybrid local/cloud AI brain does the reasoning, and everything reports into Discord, where the team can talk to the fleet and issue commands.</p></div>
-              <div class="cs-block"><h4>The outcome</h4><p>The infrastructure notices its own problems and often arrives with a diagnosis before a human has looked. Operations happen in chat, with a paper trail for free.</p></div>
-            </div>
-          </article>
+          <a class="cs" href="/case-studies/voxelburg" data-reveal>
+            <span class="cs-num">CS·07</span>
+            <h3>Voxelburg — a living AI town</h3>
+            <p>A persistent virtual town where AI residents live out their days — chatting, forming opinions, and remembering you between visits.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">live</span><span class="cs-tag">AI agents</span><span class="cs-tag">self-hosted LLMs</span><span class="cs-tag">simulation</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
 
-          <article class="cs" data-reveal data-delay=".12s">
-            <div class="cs-side">
-              <span class="cs-num">CS·03</span>
-              <h3>Client Radar — lead generation on autopilot</h3>
-              <div class="cs-tags">
-                <span class="cs-tag cs-tag--live">in production</span>
-                <span class="cs-tag">automation</span>
-                <span class="cs-tag">data pipeline</span>
-                <span class="cs-tag">internal tool</span>
-              </div>
-            </div>
-            <div class="cs-body">
-              <div class="cs-block"><h4>The problem</h4><p>Finding local businesses that need a website is hours of manual map-scrolling and note-taking — the kind of work that quietly never gets done.</p></div>
-              <div class="cs-block"><h4>What we built</h4><p>An automated sweep of open map data that finds businesses with no web presence, enriches each lead with contact details, and drafts tailored outreach — with a human approving every message before anything sends.</p></div>
-              <div class="cs-block"><h4>The outcome</h4><p>Prospecting went from an afternoon of manual research to a reviewed queue that's waiting each morning. It's the same pattern we build for clients: boring, valuable work done by a system instead of a person.</p></div>
-            </div>
-          </article>
+          <a class="cs" href="/case-studies/the-fleet" data-reveal>
+            <span class="cs-num">CS·06</span>
+            <h3>The fleet — infrastructure that watches itself</h3>
+            <p>A fleet of self-hosted agents that patrol the stack on timers, investigate anomalies, and report to Discord — often with the diagnosis attached.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">in production</span><span class="cs-tag">AI agents</span><span class="cs-tag">monitoring</span><span class="cs-tag">chat ops</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
 
-          <article class="cs" data-reveal data-delay=".06s">
-            <div class="cs-side">
-              <span class="cs-num">CS·02</span>
-              <h3>The demo pipeline — a live site in minutes</h3>
-              <div class="cs-tags">
-                <span class="cs-tag cs-tag--live">live</span>
-                <span class="cs-tag">infrastructure</span>
-                <span class="cs-tag">hosting</span>
-                <span class="cs-tag">web</span>
-              </div>
-            </div>
-            <div class="cs-body">
-              <div class="cs-block"><h4>The problem</h4><p>The best pitch for a business without a website is showing them <em>their</em> site — not a portfolio PDF. But standing up a hosted, shareable demo used to cost an afternoon of server work per prospect.</p></div>
-              <div class="cs-block"><h4>What we built</h4><p>A publishing pipeline on our own hardware: every demo gets its own voxelbox.org subdomain with TLS through secure tunnels — no ports opened, no per-site server setup. One JSON feed drives the catalog, and new work automatically appears on the voxelbox.org homepage the moment it's published.</p></div>
-              <div class="cs-block"><h4>The outcome</h4><p>Idea to live, shareable demo in minutes. It's the machinery behind the "Floating in production" wall on our homepage — and behind every mockup we hand a prospect.</p></div>
-              <div class="cs-link"><a href="https://demos.voxelbox.org">Browse the demo shelf →</a></div>
-            </div>
-          </article>
+          <a class="cs" href="/case-studies/discord-assistant" data-reveal>
+            <span class="cs-num">CS·05</span>
+            <h3>The ops assistant — an AI teammate in Discord</h3>
+            <p>An AI assistant that lives where the team already is — reading playbooks, running real checks, and answering with actions instead of links.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">in production</span><span class="cs-tag">AI assistant</span><span class="cs-tag">chat ops</span><span class="cs-tag">playbooks</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
 
-          <article class="cs" data-reveal data-delay=".06s">
-            <div class="cs-side">
-              <span class="cs-num">CS·01</span>
-              <h3>Community game servers — where it all started</h3>
-              <div class="cs-tags">
-                <span class="cs-tag cs-tag--live">live</span>
-                <span class="cs-tag">game servers</span>
-                <span class="cs-tag">self-hosted</span>
-                <span class="cs-tag">community</span>
-              </div>
-            </div>
-            <div class="cs-body">
-              <div class="cs-block"><h4>The problem</h4><p>Free community servers usually mean laggy, abandoned worlds; well-run ones usually mean a subscription. Players kept having to choose between a stable world and a welcoming one.</p></div>
-              <div class="cs-block"><h4>What we built</h4><p>A self-hosted game server platform on hardware we own — Minecraft, Palworld, Satisfactory, and more — with a management panel, a public live-status page, scheduled backups, and update notices people can actually rely on.</p></div>
-              <div class="cs-block"><h4>The outcome</h4><p>The origin of everything on this page. The worlds are still online, the communities outlived week one, and the ops discipline they demanded is the same discipline that now runs client systems.</p></div>
-              <div class="cs-link"><a href="/servers">See the worlds →</a></div>
-            </div>
-          </article>
+          <a class="cs" href="/case-studies/client-radar" data-reveal>
+            <span class="cs-num">CS·04</span>
+            <h3>Client Radar — lead generation on autopilot</h3>
+            <p>An automated sweep that finds local businesses with no web presence, enriches each lead, and drafts outreach — with a human approving every send.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">in production</span><span class="cs-tag">automation</span><span class="cs-tag">data pipeline</span><span class="cs-tag">internal tool</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
+
+          <a class="cs" href="/case-studies/self-hosted-ai" data-reveal>
+            <span class="cs-num">CS·03</span>
+            <h3>The AI stack — models on metal we own</h3>
+            <p>Language models, image generation, speech, and private search — served from our own AI hardware, with cloud models pulled in only when a task earns it.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">in production</span><span class="cs-tag">self-hosted LLMs</span><span class="cs-tag">image gen</span><span class="cs-tag">speech</span><span class="cs-tag">infrastructure</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
+
+          <a class="cs" href="/case-studies/demo-pipeline" data-reveal>
+            <span class="cs-num">CS·02</span>
+            <h3>The demo pipeline — a live site in minutes</h3>
+            <p>Idea to live, shareable demo in minutes — every mockup gets its own voxelbox.org subdomain, TLS included, no server work per site.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">live</span><span class="cs-tag">infrastructure</span><span class="cs-tag">hosting</span><span class="cs-tag">web</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
+
+          <a class="cs" href="/case-studies/community-game-servers" data-reveal>
+            <span class="cs-num">CS·01</span>
+            <h3>Community game servers — where it all started</h3>
+            <p>Free, well-run game worlds on hardware we own — the build that started VoxelBox, and the ops discipline everything else inherited.</p>
+            <div class="cs-tags"><span class="cs-tag cs-tag--live">live</span><span class="cs-tag">game servers</span><span class="cs-tag">self-hosted</span><span class="cs-tag">community</span></div>
+            <span class="cs-read">Read the study <span class="ar">→</span></span>
+          </a>
 
         </div>
       </div>
@@ -228,7 +174,7 @@
       <div class="wrap final-in" data-reveal>
         <span class="eyebrow" style="justify-content:center">your project</span>
         <h2>The next study could be yours.</h2>
-        <p class="lead">Bring us the problem — the messy, manual, "there has to be a better way" kind. We'll design the system, build it, and run it.</p>
+        <p class="lead">Bring us the problem — the messy, manual, “there has to be a better way” kind. We'll design the system, build it, and run it.</p>
         <div class="btn-row" style="justify-content:center;margin-top:30px">
           <a class="btn btn--primary" href="/contact">Start a Project <span class="ar">→</span></a>
           <a class="btn btn--ghost" href="https://demos.voxelbox.org">See live demos</a>
@@ -242,7 +188,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <a href="index.html" aria-label="VoxelBox — home"><img class="brand-logo" src="logo-wordmark.png" alt="VoxelBox" width="624" height="238"></a>
+          <a href="/home" aria-label="VoxelBox — home"><img class="brand-logo" src="/logo-wordmark.png" alt="VoxelBox" width="624" height="238"></a>
           <p>A digital studio building websites, AI systems, automation, and infrastructure — and running them long after launch. We also host free community game worlds on our own hardware.</p>
         </div>
         <div><h4>Studio</h4><a href="/about">About</a><a href="/team">Team</a><a href="/portfolio">Portfolio</a><a href="/case-studies">Case Studies</a><a href="/contact">Contact</a><a href="/applications">Applications</a></div>
@@ -253,6 +199,6 @@
     </div>
   </footer>
 
-  <script type="module" src="home.js?v=4"></script>
+  <script type="module" src="/home.js?v=4"></script>
 </body>
 </html>
