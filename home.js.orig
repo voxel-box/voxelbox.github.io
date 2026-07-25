@@ -416,54 +416,6 @@ function initHolos(){
   }).catch(()=>{ /* feed unreachable — leave the baked-in fallback cards */ });
 }
 
-/* =====================================================================
-   CONTACT FORM - main-site intake into the lead service
-   ===================================================================== */
-function contactError(status){
-  if(status===429) return "too many messages right now - try again in a few minutes.";
-  if(status===400) return "check your name, email, and message, then try again.";
-  return "could not send right now - email admin@voxelbox.org instead.";
-}
-
-function initContactForm(){
-  const form=$("[data-contact-form]");
-  if(!form) return;
-  const status=form.querySelector(".form-status");
-  const button=form.querySelector('button[type="submit"]');
-  form.addEventListener("submit",async(event)=>{
-    event.preventDefault();
-    if(!form.reportValidity()) return;
-    const fields=new FormData(form);
-    const payload={
-      name:String(fields.get("name")||"").trim(),
-      email:String(fields.get("email")||"").trim(),
-      message:String(fields.get("message")||"").trim(),
-      company:String(fields.get("company")||"").trim(),
-    };
-    status.className="form-status pending";
-    status.textContent="sending...";
-    button.disabled=true;
-    try{
-      const response=await fetch("/api/contact",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(payload),
-      });
-      let result={};
-      try{ result=await response.json(); }catch{}
-      if(!response.ok||!result.ok) throw Object.assign(new Error("send failed"),{status:response.status});
-      status.className="form-status ok";
-      status.textContent=form.dataset.ok||"sent - thanks!";
-      form.reset();
-    }catch(error){
-      status.className="form-status err";
-      status.textContent=contactError(error.status||0);
-    }finally{
-      button.disabled=false;
-    }
-  });
-}
-
 /* ----- go ----- */
 boot();
 initShell();
@@ -471,5 +423,4 @@ initReveal();
 initTilt();
 initMotes();
 initHolos();
-initContactForm();
 initHero();
