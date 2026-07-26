@@ -349,8 +349,12 @@ function initShell(){
     addEventListener("scroll",onScroll,{passive:true}); onScroll();
   }
   const tog=$(".nav-toggle");
-  if(tog) tog.addEventListener("click",()=>document.body.classList.toggle("nav-open"));
-  $$(".top-nav a").forEach((a)=>a.addEventListener("click",()=>document.body.classList.remove("nav-open")));
+  const setNavOpen=(open)=>{
+    document.body.classList.toggle("nav-open",open);
+    if(tog) tog.setAttribute("aria-expanded",open?"true":"false");
+  };
+  if(tog) tog.addEventListener("click",()=>setNavOpen(!document.body.classList.contains("nav-open")));
+  $$(".top-nav a").forEach((a)=>a.addEventListener("click",()=>setNavOpen(false)));
   $$("[data-year]").forEach((n)=>n.textContent=new Date().getFullYear());
   if(!localStorage.getItem("vb_cookie_consent")){
     const bar=document.createElement("div"); bar.className="cookie";
