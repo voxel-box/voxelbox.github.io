@@ -20,7 +20,11 @@
   const esc=(s)=>String(s).replace(/[&<>"']/g,(m)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
   const age=(iso)=>{ const s=Math.max(0,(Date.now()-new Date(iso).getTime())/1000); if(s<60)return Math.floor(s)+"s"; if(s<3600)return Math.floor(s/60)+"m"; if(s<86400)return Math.floor(s/3600)+"h"; return Math.floor(s/86400)+"d"; };
   async function getJSON(u){ const r=await fetch(u,{cache:"no-store"}); if(!r.ok) throw new Error(r.status); return r.json(); }
-  const gameSlug=(name)=>SERVER_SLUGS[String(name||"").toLowerCase()] || String(name||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  const gameSlug=(name)=>{
+    const normalized=String(name||"").toLowerCase();
+    const match=Object.entries(SERVER_SLUGS).find(([label])=>normalized.includes(label));
+    return (match&&match[1]) || normalized.replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  };
   const playerText=(n)=>n==null ? "players unavailable" : `${n} player${n===1?"":"s"}`;
   function normalizeStatusPayload(data){
     if(data&&data.games&&data.games.servers){
@@ -46,7 +50,7 @@
           const cfg=GAME_SERVERS.find((g)=>g.slug===s.slug) || s;
           const on=s.status==="running", offline=s.status==="offline";
           const col=cfg.color || SRV_COLOR[s.slug] || "#8a86a6";
-          const state=on?"online":(offline?"offline":"checking");
+          const state=on?"online":(offline?"offline":"not reporting");
           return `<a class="srv" href="${esc(cfg.href||"/servers")}">
             <span class="srv-cube" style="background:${col}"></span>
             <div class="srv-meta"><div class="srv-name">${esc(cfg.name||s.name)}</div><div class="srv-state ${on?"up":offline?"down":"warn"}">${state} · ${playerText(s.players)}</div></div>
@@ -58,13 +62,19 @@
       ordered.forEach((s)=>{
         const on=s.status==="running", offline=s.status==="offline";
         document.querySelectorAll(`[data-server-status="${s.slug}"]`).forEach((el)=>{
-          el.textContent=on?"online":(offline?"offline":"checking");
+          el.textContent=on?"online":(offline?"offline":"not reporting");
           el.classList.toggle("up",on); el.classList.toggle("down",offline); el.classList.toggle("warn",!on&&!offline);
         });
         document.querySelectorAll(`[data-server-players="${s.slug}"]`).forEach((el)=>{ el.textContent=playerText(s.players); });
       });
     };
-    getJSON(STATUS_URL).then(applyLive).catch(()=>{ worlds.forEach((el)=>el.textContent="17/17"); });
+    const markUnavailable=()=>{
+      worlds.forEach((el)=>el.textContent="unavailable");
+      totalPlayers.forEach((el)=>el.textContent="—");
+      document.querySelectorAll("[data-server-status]").forEach((el)=>{ el.textContent="unavailable"; el.classList.add("warn"); });
+      document.querySelectorAll("[data-server-players]").forEach((el)=>{ el.textContent="players unavailable"; });
+    };
+    getJSON(STATUS_URL).then(applyLive).catch(markUnavailable);
     setInterval(()=>getJSON(STATUS_URL).then(applyLive).catch(()=>{}),30000);
   }
 
