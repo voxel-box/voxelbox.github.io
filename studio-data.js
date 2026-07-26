@@ -16,6 +16,8 @@
   const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
   const SERVER_SLUGS = {};
   GAME_SERVERS.forEach((s)=>{ SERVER_SLUGS[s.name.toLowerCase()]=s.slug; SERVER_SLUGS[s.short.toLowerCase()]=s.slug; });
+  SERVER_SLUGS["voxelbox rp"]="fivem";
+  SERVER_SLUGS["community city"]="fivem";
 
   const esc=(s)=>String(s).replace(/[&<>"']/g,(m)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
   const age=(iso)=>{ const s=Math.max(0,(Date.now()-new Date(iso).getTime())/1000); if(s<60)return Math.floor(s)+"s"; if(s<3600)return Math.floor(s/60)+"m"; if(s<86400)return Math.floor(s/3600)+"h"; return Math.floor(s/86400)+"d"; };
