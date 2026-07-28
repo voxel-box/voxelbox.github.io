@@ -76,7 +76,6 @@ function boot(mount){
     ["enshrouded","Enshrouded",0xb47bff,"enshrouded-server.html"],
     ["american-truck-simulator","American Truck Sim",0xff7d74,"american-truck-simulator-server.html"],
     ["beammp","BeamMP",0x4fd6c0,"beammp-server.html"],
-    ["fivem","FiveM",0xff9a4d,"fivem-server.html"],
     ["euro-truck-simulator-2","Euro Truck Sim 2",0x7fb2ff,"euro-truck-simulator-2-server.html"],
     ["garrys-mod","Garry's Mod",0x6ba7ff,"garrys-mod-server.html"],
     ["left-4-dead-2","Left 4 Dead 2",0x9ad36a,"left-4-dead-2-server.html"],

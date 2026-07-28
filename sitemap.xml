@@ -73,12 +73,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://voxelbox.org/fivem-server</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://voxelbox.org/garrys-mod-server</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
