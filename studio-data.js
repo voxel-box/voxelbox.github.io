@@ -12,7 +12,7 @@
   const NEWS_URL = "https://panel.voxelbox.org/vb-status/news.json";
   const PORTFOLIO_URL = "https://demos.voxelbox.org/portfolio.json";
 
-  const GAME_SERVERS = [{"slug":"minecraft","name":"Minecraft","short":"Minecraft","href":"/minecraft-server","color":"#67d073","type":"survival / modded"},{"slug":"palworld","name":"Palworld","short":"Palworld","href":"/palworld-server","color":"#49b6ff","type":"co-op survival"},{"slug":"satisfactory","name":"Satisfactory","short":"Satisfactory","href":"/satisfactory-server","color":"#ffce4d","type":"factory co-op"},{"slug":"beammp","name":"BeamMP","short":"BeamMP","href":"/beammp-server","color":"#4fd6c0","type":"driving sessions"},{"slug":"terraria","name":"Terraria","short":"Terraria","href":"/terraria-server","color":"#65c97a","type":"adventure sandbox"},{"slug":"the-forest","name":"The Forest","short":"The Forest","href":"/the-forest-server","color":"#5aa568","type":"survival co-op"}];
+  const GAME_SERVERS = [{"slug": "palworld", "name": "Palworld", "short": "Palworld", "href": "/palworld-server", "color": "#49b6ff", "type": "co-op survival"}];
   const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
   const SERVER_SLUGS = {};
   GAME_SERVERS.forEach((s)=>{ SERVER_SLUGS[s.name.toLowerCase()]=s.slug; SERVER_SLUGS[s.short.toLowerCase()]=s.slug; });

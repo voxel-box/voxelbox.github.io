@@ -407,6 +407,9 @@ function initHolos(){
   if(!grid) return;
   fetch(PORTFOLIO_URL,{cache:"no-store"}).then((r)=>r.ok?r.json():Promise.reject()).then((d)=>{
     const sites=(d.sites||[]).slice()
+      // games have their own section on this page — keep the work grid for
+      // sites, apps and client platforms so the two do not repeat each other
+      .filter((s)=>!/game/i.test(String(s.kind||"")))
       .sort((a,b)=>String(b.updated||"").localeCompare(String(a.updated||"")))
       .slice(0, HOLO_MAX);
     if(!sites.length) return;                       // keep the static fallback cards
@@ -468,6 +471,40 @@ function initContactForm(){
   });
 }
 
+/* =====================================================================
+   LIVE COUNTERS — the band under the hero
+   Numbers are read from the same feeds the rest of the estate uses, so
+   the homepage can never quietly drift out of date. If either feed is
+   unreachable the markup's baked-in values simply stay put.
+   ===================================================================== */
+function initLiveStats(){
+  const sitesEl=$('[data-stat="sites"]');
+  const svcEl=$('[data-stat="services"]');
+  if(!sitesEl && !svcEl) return;
+
+  if(sitesEl){
+    fetch(PORTFOLIO_URL,{cache:"no-store"})
+      .then((r)=>r.ok?r.json():Promise.reject())
+      .then((d)=>{
+        const n=(d.sites||[]).length;
+        if(n) sitesEl.textContent=String(n);
+      }).catch(()=>{});
+  }
+
+  if(svcEl){
+    const dot=svcEl.querySelector(".dot");
+    const val=svcEl.querySelector("[data-stat-val]");
+    fetch("https://status.voxelbox.org/api/public/status",{cache:"no-store"})
+      .then((r)=>r.ok?r.json():Promise.reject())
+      .then((d)=>{
+        const up=d?.summary?.up, total=d?.summary?.total;
+        if(!Number.isFinite(up)||!Number.isFinite(total)||!total) return;
+        if(val) val.textContent=`${up}/${total}`;
+        if(dot) dot.classList.add(up>=total?"up":"down");
+      }).catch(()=>{});
+  }
+}
+
 /* ----- go ----- */
 boot();
 initShell();
@@ -475,5 +512,9 @@ initReveal();
 initTilt();
 initMotes();
 initHolos();
-initContactForm();
+initLiveStats();
 initHero();
+/* NOTE: forms are owned by studio-data.js (posts to the lead service).
+   initContactForm() below is retained for reference only — calling it here
+   double-bound [data-contact-form] and fired a dead POST to /api/contact
+   alongside the working submit, which surfaced a false error to the user. */
