@@ -1,0 +1,22 @@
+/* Native scrolling: no wheel interception, scroll lock, or snapping. */
+.scroll-copy[data-chapter="1"],.scroll-copy[data-chapter="2"],.scroll-rail{display:none}
+.scroll-ready .scroll-journey{position:relative;height:300svh;--journey-progress:0}
+.scroll-ready .scroll-journey>.rift{position:sticky;top:0;height:100svh;min-height:760px;max-height:none;overflow:clip}
+.scroll-ready .scroll-copy{display:block;will-change:opacity,transform}
+.scroll-ready .scroll-copy[data-chapter="1"],.scroll-ready .scroll-copy[data-chapter="2"]{opacity:0}
+.rift h2{font-size:clamp(90px,11.7vw,185px);font-weight:700;line-height:.78;letter-spacing:-.085em;color:#f1f0f4}
+.rift h2 em{display:inline-block;margin-top:.12em;font-style:normal;color:#caff35;font-size:.72em;letter-spacing:-.078em}
+.scroll-ready .scroll-rail{display:block;position:absolute;left:4.6%;bottom:125px;width:330px;z-index:6}
+.scroll-track{height:2px;background:#ffffff30;margin-bottom:16px;overflow:hidden}
+.scroll-track i{display:block;width:100%;height:100%;background:#caff35;transform-origin:left;transform:scaleX(var(--journey-progress));box-shadow:0 0 12px #caff35}
+.scroll-stops{display:flex;justify-content:space-between;gap:12px}
+.scroll-stops button{border:0;background:none;color:#9890a8;font:8px var(--f-mono);text-align:left;letter-spacing:.07em;padding:8px 0;cursor:pointer}
+.scroll-stops b{display:block;font-size:14px;margin-bottom:7px;font-weight:400}.scroll-stops button[aria-current]{color:#caff35}.scroll-stops button:hover{color:#f1f0f4}
+.scroll-ready .rift-halo{opacity:calc(.13 + var(--journey-progress)*.15);transform:translateX(calc(var(--journey-progress)*-70px));transition:none}
+.scroll-ready .rift-grid{opacity:calc(.4 + var(--journey-progress)*.6)}
+.scroll-ready .rift[data-scroll-chapter="1"] .rift-halo{background:#9146ff}.scroll-ready .rift[data-scroll-chapter="2"] .rift-halo{background:#90b82b}
+.scroll-ready .rift-note p{min-height:70px;max-width:325px}.scroll-ready .rift-state{color:#c3b7d5}
+@media(max-width:1100px){.rift h2{font-size:12.6vw}.scroll-ready .scroll-rail{width:280px;bottom:125px}.scroll-ready .rift-note{max-width:330px}}
+@media(max-width:900px){.scroll-ready .scroll-journey{height:285svh}.scroll-ready .scroll-journey>.rift{min-height:790px}.rift h2{font-size:14vw}.scroll-ready .scroll-rail{left:auto;right:5%;width:260px;bottom:255px}.scroll-ready .rift-note{max-width:500px}.scroll-ready .rift-note p{min-height:0}.scroll-ready .rift-stage{top:10%;height:68%}}
+@media(max-width:600px){.scroll-ready .scroll-journey{height:290svh}.scroll-ready .scroll-journey>.rift{min-height:800px}.rift h2{font-size:18.5vw;line-height:.83}.rift h2 em{font-size:.65em}.scroll-ready .rift-type{top:17%}.scroll-ready .rift-stage{top:23%;height:48%}.scroll-ready .scroll-rail{left:5%;right:5%;width:auto;bottom:237px}.scroll-stops button{font-size:7px;display:flex;align-items:center;gap:7px}.scroll-stops b{font-size:11px;margin:0}.scroll-track{margin-bottom:8px}.scroll-ready .rift-note{bottom:100px}.scroll-ready .rift-note p{font-size:11px;line-height:1.55;max-width:none;min-height:50px}.scroll-ready .rift-note .btn{padding:12px 16px;margin-top:2px}.scroll-ready .rift-bottom{bottom:23px}.scroll-ready .rift-spark{font-size:28px}}
+@media(prefers-reduced-motion:reduce){.scroll-journey{height:auto!important}.scroll-journey>.rift{position:relative!important}.scroll-copy:not([data-chapter="0"]),.scroll-rail{display:none!important}}
