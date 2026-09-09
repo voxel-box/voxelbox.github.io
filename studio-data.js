@@ -14,7 +14,7 @@
 
   const GAME_SERVERS = [{"slug": "palworld", "name": "Palworld", "short": "Palworld", "href": "/palworld-server", "color": "#49b6ff", "type": "co-op survival"}];
   const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
-  const SERVER_SLUGS = {};
+  const SERVER_SLUGS = {paladise:"palworld"};
   GAME_SERVERS.forEach((s)=>{ SERVER_SLUGS[s.name.toLowerCase()]=s.slug; SERVER_SLUGS[s.short.toLowerCase()]=s.slug; });
 
   const esc=(s)=>String(s).replace(/[&<>"']/g,(m)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
@@ -44,16 +44,16 @@
     const applyLive=(data)=>{
       const live=normalizeStatusPayload(data);
       const hasData = live.total>0 && live.servers.some((s)=>s.status==="running"||s.status==="offline");
-      const ordered=GAME_SERVERS.map((cfg)=>live.servers.find((s)=>s.slug===cfg.slug) || {slug:cfg.slug,name:cfg.name,status:"unknown",players:null});
+      const ordered=live.servers;
       if(grid){
         grid.innerHTML=ordered.map((s)=>{
           const cfg=GAME_SERVERS.find((g)=>g.slug===s.slug) || s;
           const on=s.status==="running", offline=s.status==="offline";
           const col=cfg.color || SRV_COLOR[s.slug] || "#8a86a6";
           const state=on?"online":(offline?"offline":"not reporting");
-          return `<a class="srv" href="${esc(cfg.href||"/servers")}">
+          return `<a class="srv" href="${esc(cfg.href||"/getting-started")}">
             <span class="srv-cube" style="background:${col}"></span>
-            <div class="srv-meta"><div class="srv-name">${esc(cfg.name||s.name)}</div><div class="srv-state ${on?"up":offline?"down":"warn"}">${state} · ${playerText(s.players)}</div></div>
+            <div class="srv-meta"><div class="srv-name">${esc(s.name||cfg.name)}</div><div class="srv-state ${on?"up":offline?"down":"warn"}">${state} · ${playerText(s.players)}</div></div>
             <span class="pulse ${on?"is-up":offline?"is-down":""}"></span></a>`;
         }).join("");
       }
@@ -69,13 +69,14 @@
       });
     };
     const markUnavailable=()=>{
+      if(grid) grid.innerHTML='<p class="muted" role="status">Live status is unavailable. <a href="/status">Check the status page</a>.</p>';
       worlds.forEach((el)=>el.textContent="unavailable");
       totalPlayers.forEach((el)=>el.textContent="—");
       document.querySelectorAll("[data-server-status]").forEach((el)=>{ el.textContent="unavailable"; el.classList.add("warn"); });
       document.querySelectorAll("[data-server-players]").forEach((el)=>{ el.textContent="players unavailable"; });
     };
     getJSON(STATUS_URL).then(applyLive).catch(markUnavailable);
-    setInterval(()=>getJSON(STATUS_URL).then(applyLive).catch(()=>{}),30000);
+    setInterval(()=>getJSON(STATUS_URL).then(applyLive).catch(markUnavailable),30000);
   }
 
   /* ---------- portfolio feed ---------- */
@@ -111,7 +112,7 @@
         <span class="bot-time">${it.at?age(it.at):""}</span></div>`).join("");
     };
     getJSON(NEWS_URL).then(render).catch(()=>{ feed.innerHTML=`<div class="bot-line"><span class="muted">voxelbot offline — feed resumes shortly.</span></div>`; });
-    setInterval(()=>getJSON(NEWS_URL).then(render).catch(()=>{}),30000);
+    setInterval(()=>getJSON(NEWS_URL).then(render).catch(markUnavailable),30000);
   }
 
   /* ---------- streamers ---------- */

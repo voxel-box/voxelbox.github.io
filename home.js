@@ -506,11 +506,9 @@ function initLiveStats(){
 }
 
 /* ----- go ----- */
-boot();
+// Atelier: immediate content; no boot overlay.
 initShell();
 initReveal();
-initTilt();
-initMotes();
 initHolos();
 initLiveStats();
 initHero();

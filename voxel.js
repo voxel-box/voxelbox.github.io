@@ -420,7 +420,7 @@ function renderShell(){
       return `<a class="nav-link ${active?"is-active":""}" href="${n.href}"${n.external?' target="_blank" rel="noopener noreferrer"':""}>${n.label}</a>`;
     }).join("");
     head.innerHTML = `<header class="site-header"><div class="wrap nav">
-      <a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
+      <a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><span class="atelier-brand"><svg viewBox="0 0 30 32" width="27" height="29" aria-hidden="true"><path d="M15 1 29 9v15L15 32 1 24V9Z" fill="currentColor"/><path d="m2 9 13 8 13-8M15 17v14" stroke="#f2f0e6" stroke-width="1.2"/><path d="m8 5 14 8" stroke="#f2f0e6" stroke-width="1.2"/></svg><span>voxelbox</span></span></a>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav-links">${links}<span data-theme-picker-mount></span><a class="btn btn--primary nav-cta" href="/contact">Start a Project</a></nav>
     </div></header>`;
@@ -430,7 +430,7 @@ function renderShell(){
     const cols = FOOT.map(([t,ls])=>`<div><h4>${t}</h4>${ls.map(([l,h,e])=>`<a href="${h}"${e?' target="_blank" rel="noopener noreferrer"':""}>${l}</a>`).join("")}</div>`).join("");
     foot.innerHTML = `<footer class="foot"><div class="wrap">
       <div class="foot-grid">
-        <div class="foot-brand"><a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><img class="brand-logo" src="logo-wordmark.png" alt="Voxelbox" width="624" height="238"></a>
+        <div class="foot-brand"><a class="brand brand--logo" href="/home" aria-label="Voxelbox — home"><span class="atelier-brand"><svg viewBox="0 0 30 32" width="27" height="29" aria-hidden="true"><path d="M15 1 29 9v15L15 32 1 24V9Z" fill="currentColor"/><path d="m2 9 13 8 13-8M15 17v14" stroke="#f2f0e6" stroke-width="1.2"/><path d="m8 5 14 8" stroke="#f2f0e6" stroke-width="1.2"/></svg><span>voxelbox</span></span></a>
           <p>A digital studio building websites, AI systems, automation, and infrastructure — and running them long after launch. We also host free community game worlds on our own hardware.</p>
           <div class="pills"><span class="pill">Websites</span><span class="pill">AI Systems</span><span class="pill">Automation</span><span class="pill">Game Infra</span></div></div>
         ${cols}
