@@ -150,6 +150,7 @@ function initScenes(){
    the live status feed, and the sky shifts with the visitor's local clock.
    The page you're on is a live portrait of the machines running 24/7.        */
 function initAmbient(){
+  if(document.querySelector('link[href="/atelier-legacy-20260908.css"]')) return;
   // the homepage has the full 3D world; skip there and for reduced motion
   if(document.querySelector("[data-voxel-scene]")) return;
   if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
