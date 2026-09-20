@@ -45,6 +45,7 @@
       const live=normalizeStatusPayload(data);
       const hasData = live.total>0 && live.servers.some((s)=>s.status==="running"||s.status==="offline");
       const ordered=live.servers;
+      const pal=window.__paladiseLive; if(pal&&Number.isFinite(pal.players)) ordered.forEach((s)=>{ if(s.slug==="palworld"&&s.players==null) s.players=pal.players; });
       if(grid){
         grid.innerHTML=ordered.map((s)=>{
           const cfg=GAME_SERVERS.find((g)=>g.slug===s.slug) || s;

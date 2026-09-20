@@ -5,7 +5,7 @@ const STATUS_URL = "https://status.voxelbox.org/api/public/status";
 const NEWS_URL = "https://panel.voxelbox.org/vb-status/news.json";
 const PORTFOLIO_URL = "https://demos.voxelbox.org/portfolio.json";
 
-const GAME_SERVERS = [{"slug": "palworld", "name": "Palworld", "short": "Palworld", "href": "/palworld-server", "color": "#49b6ff", "type": "co-op survival", "desc": "Open co-op worlds with room for active groups, steady maintenance, and clear join guidance."}];
+const GAME_SERVERS = [{"slug": "palworld", "name": "Paladise", "short": "Paladise", "href": "/palworld-server", "color": "#49b6ff", "type": "Palworld co-op", "desc": "Our cross-platform Palworld community: live leaderboard, base showcase and a friendly Discord."}];
 const NAV = [
   { id:"build", label:"What We Build", href:"/#build" },
   { id:"work", label:"Work", href:"/case-studies", children:[
@@ -26,6 +26,7 @@ const NAV = [
   ]},
   { id:"community", label:"Community", href:"/servers", children:[
     { id:"servers", label:"Game Servers", href:"/servers" },
+    { id:"paladise", label:"Paladise (Palworld)", href:"https://paladise.org", external:true },
     { id:"status", label:"Live Status", href:"/status" },
     { id:"getting-started", label:"How to Join", href:"/getting-started" },
     { id:"community", label:"Community", href:"/community" },
@@ -44,7 +45,7 @@ const NAV = [
 const FOOT = [
   ["Studio", [["About","/about"],["Team","/team"],["Case Studies","/case-studies"],["Portfolio","/portfolio"],["Costs","/costs"],["Contact","/contact"],["Join Us","/applications"]]],
   ["Games", [["The Arcade","/games"],["Play Now","https://games.voxelbox.org",true],["CommonGround","https://voxelworld.voxelbox.org",true],["Voxel Odyssey","https://odyssey.voxelbox.org",true],["Signal Lost","https://games.voxelbox.org/play/signal-lost/",true],["Voxelgram","https://games.voxelbox.org/play/voxelgram/",true],["Cretaceous Co.","https://games.voxelbox.org/play/cretaceous-co/",true],["VoxelBox ID","https://id.voxelbox.org",true]]],
-  ["Community", [["Game Servers","/servers"],["Live Status","/status"],["How to Join","/getting-started"],["Community","/community"],["3D Prints","/3d-prints"],["News","/announcements"],["Showcase","/showcase"]]],
+  ["Community", [["Game Servers","/servers"],["Paladise (Palworld)","https://paladise.org",true],["Live Status","/status"],["How to Join","/getting-started"],["Community","/community"],["3D Prints","/3d-prints"],["News","/announcements"],["Showcase","/showcase"]]],
   ["More", [["Live Demos","https://demos.voxelbox.org",true],["Support","/support"],["Partners","/partners"],["Terms","/terms"],["Intellectual Property","/ip"],["Privacy","/privacy"],["Rules","/rules"]]],
 ];
 const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
@@ -498,6 +499,7 @@ function initServerStatus(){
   const applyLive=(data)=>{
     const live=normalizeStatusPayload(data);
     const ordered=GAME_SERVERS.map((cfg)=>live.servers.find((s)=>s.slug===cfg.slug) || {slug:cfg.slug,name:cfg.name,status:"unknown",players:null});
+    const pal=window.__paladiseLive; if(pal&&Number.isFinite(pal.players)) ordered.forEach((s)=>{ if(s.slug==="palworld"&&s.players==null) s.players=pal.players; });
     if(grid){
       grid.innerHTML=ordered.map((s)=>{
         const cfg=GAME_SERVERS.find((g)=>g.slug===s.slug) || s;
