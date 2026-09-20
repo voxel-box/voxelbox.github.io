@@ -45,7 +45,8 @@
       const live=normalizeStatusPayload(data);
       const hasData = live.total>0 && live.servers.some((s)=>s.status==="running"||s.status==="offline");
       const ordered=live.servers;
-      const pal=window.__paladiseLive; if(pal&&Number.isFinite(pal.players)) ordered.forEach((s)=>{ if(s.slug==="palworld"&&s.players==null) s.players=pal.players; });
+      const best={}; ordered.forEach((s)=>{ const b=best[s.slug]; if(!b||(s.status==="running"&&b.status!=="running")) best[s.slug]=s; });
+      const pal=window.__paladiseLive; if(pal&&Number.isFinite(pal.players)) Object.values(best).forEach((s)=>{ if(s.slug==="palworld"&&s.players==null) s.players=pal.players; });
       if(grid){
         grid.innerHTML=ordered.map((s)=>{
           const cfg=GAME_SERVERS.find((g)=>g.slug===s.slug) || s;
@@ -60,7 +61,7 @@
       }
       if(hasData){ worlds.forEach((el)=>{ el.textContent=`${live.up}/${live.total || ordered.length}`; }); }
       if(hasData){ totalPlayers.forEach((el)=>{ el.textContent=Number.isFinite(live.players) ? live.players : ordered.reduce((a,s)=>a+(Number.isFinite(s.players)?s.players:0),0); }); }
-      ordered.forEach((s)=>{
+      Object.values(best).forEach((s)=>{
         const on=s.status==="running", offline=s.status==="offline";
         document.querySelectorAll(`[data-server-status="${s.slug}"]`).forEach((el)=>{
           el.textContent=on?"online":(offline?"offline":"not reporting");
