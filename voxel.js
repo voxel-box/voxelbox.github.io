@@ -34,6 +34,7 @@ const NAV = [
   ]},
   { id:"about", label:"Studio", href:"/about", children:[
     { id:"about", label:"About", href:"/about" },
+    { id:"ai-tools", label:"AI Tools", href:"/ai-tools" },
     { id:"team", label:"Team", href:"/team" },
     { id:"costs", label:"Costs", href:"/costs" },
     { id:"support", label:"Support", href:"/support" },
@@ -46,7 +47,7 @@ const FOOT = [
   ["Studio", [["About","/about"],["Team","/team"],["Case Studies","/case-studies"],["Portfolio","/portfolio"],["Costs","/costs"],["Contact","/contact"],["Join Us","/applications"]]],
   ["Games", [["The Arcade","/games"],["Play Now","https://games.voxelbox.org",true],["CommonGround","https://voxelworld.voxelbox.org",true],["Voxel Odyssey","https://odyssey.voxelbox.org",true],["Signal Lost","https://games.voxelbox.org/play/signal-lost/",true],["Voxelgram","https://games.voxelbox.org/play/voxelgram/",true],["Cretaceous Co.","https://games.voxelbox.org/play/cretaceous-co/",true],["VoxelBox ID","https://id.voxelbox.org",true]]],
   ["Community", [["Game Servers","/servers"],["Paladise (Palworld)","https://paladise.org",true],["Live Status","/status"],["How to Join","/getting-started"],["Community","/community"],["3D Prints","/3d-prints"],["News","/announcements"],["Showcase","/showcase"]]],
-  ["More", [["Live Demos","https://demos.voxelbox.org",true],["Support","/support"],["Partners","/partners"],["Terms","/terms"],["Intellectual Property","/ip"],["Privacy","/privacy"],["Rules","/rules"]]],
+  ["More", [["AI Tools","/ai-tools"],["Live Demos","https://demos.voxelbox.org",true],["Support","/support"],["Partners","/partners"],["Terms","/terms"],["Intellectual Property","/ip"],["Privacy","/privacy"],["Rules","/rules"]]],
 ];
 const SRV_COLOR = Object.fromEntries(GAME_SERVERS.map((s)=>[s.slug,s.color]));
 const SERVER_SLUGS = Object.fromEntries(GAME_SERVERS.map((s)=>[s.name.toLowerCase(),s.slug]));
