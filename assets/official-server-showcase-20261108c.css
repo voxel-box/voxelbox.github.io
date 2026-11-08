@@ -1,0 +1,40 @@
+.official-showcase {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+  scroll-margin-top: 6rem;
+  padding: clamp(4rem, 9vw, 8rem) 7%;
+  background: #10171b;
+  color: #f4efe5;
+}
+.official-showcase-intro, .official-showcase-grid { max-width: 76rem; margin-inline: auto; }
+.official-showcase-intro > .mono { color: #b4c4c9; font-size: .72rem; }
+.official-showcase-intro h2 { font-size: clamp(2.65rem, 6vw, 5.25rem); letter-spacing: -.055em; line-height: .98; margin: .7rem 0 1rem; }
+.official-showcase-intro h2 em { color: #b7d9db; }
+.official-showcase-intro p { max-width: 40rem; margin-bottom: 2rem; }
+.official-showcase-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+.official-showcase-card {
+  --world-accent: #bce8d9;
+  --world-color: #153c3b;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid #ffffff35;
+  border-top: 3px solid var(--world-accent);
+  background: radial-gradient(ellipse at 90% 0, var(--world-color), #172126 70%);
+  color: #f4efe5;
+}
+.official-showcase-card[data-world-theme="ember"] { --world-accent: #ffc197; --world-color: #633927; }
+.official-showcase-card[data-world-theme="pines"] { --world-accent: #c5d7a5; --world-color: #344a2b; }
+.official-showcase-card[data-world-theme="storm"] { --world-accent: #a6c9ff; --world-color: #253e60; }
+.official-showcase-card .mono { color: var(--world-accent); font-size: .72rem; }
+.official-showcase-card strong { display: flex; justify-content: space-between; align-items: center; gap: .5rem; font-size: clamp(1.45rem, 3vw, 2.2rem); }
+.official-showcase-card svg { width: 1.35rem; flex: 0 0 auto; }
+a.official-showcase-card:hover strong { text-decoration: underline; }
+a.official-showcase-card:focus-visible { outline: 2px solid var(--world-accent); outline-offset: 3px; }
+@media (max-width: 590px) { .official-showcase-grid { grid-template-columns: 1fr; } }
+.official-world-status { display: flex; align-items: baseline; gap: .45rem; }
+.official-world-status::before { content: ''; flex: 0 0 .48rem; height: .48rem; border-radius: 50%; background: #b4c4c9; }
+.official-world-status[data-state="online"]::before { background: #a8edbc; }
+.official-world-status[data-state="offline"]::before { background: #ffa898; }
