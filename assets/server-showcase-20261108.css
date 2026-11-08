@@ -1,0 +1,23 @@
+.server-showcase { padding-bottom: clamp(3rem, 8vw, 7rem); }
+.server-showcase h1 { overflow-wrap: anywhere; }
+.server-roster, .server-join { width: min(88%, 76rem); margin: 2rem auto 0; }
+.server-roster-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.server-roster-heading h2, .server-join h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin: 0; }
+.server-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 0.8rem; }
+.server-card { color: #f5f1e8; background: #242b2d; border: 1px solid #ffffff38; border-top: 4px solid #a0d6e0; padding: clamp(1.2rem, 3vw, 2rem); }
+.server-card[data-theme="ember"] { background: #38262a; border-top-color: #eda699; }
+.server-card[data-theme="gold"] { background: #372c20; border-top-color: #f0ce88; }
+.server-card[data-theme="moss"] { background: #283229; border-top-color: #b9d6a3; }
+.server-card-meta { display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; font-size: 0.7rem; }
+.server-card h3 { margin: 1.7rem 0 0.5rem; font-size: clamp(1.5rem, 3vw, 2.1rem); }
+.server-card a { color: inherit; }
+.server-card h3 a { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.server-card svg { width: 1.15rem; flex: 0 0 1.15rem; }
+.server-card a:hover { text-decoration: underline; }
+.server-card p, .server-join li { line-height: 1.55; }
+.server-join { max-width: 56rem; }
+.server-join ol { padding-left: 1.4rem; margin: 1rem 0; }
+.server-join li + li { margin-top: 0.6rem; }
+.server-address { display: grid; gap: 0.4rem; margin: 1.5rem 0; padding: 1rem; border: 1px solid #ffffff60; }
+.server-address code { overflow-wrap: anywhere; user-select: all; }
+.server-arcade { margin-top: 2rem; }
