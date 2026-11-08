@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="536" viewBox="0 0 840 536">
+  <rect width="420" height="536" fill="#192d32"/>
+  <rect x="420" width="420" height="536" fill="#e7ddbf"/>
+  <g stroke="#70adac" fill="none" opacity=".28">
+    <path d="M36 145h348M36 205h348M36 265h348M36 325h348M36 385h348M90 116v293m60-293v293m60-293v293m60-293v293m60-293v293"/>
+  </g>
+  <rect x="67" y="151" width="286" height="207" rx="12" fill="#254851" stroke="#a7d9d7" stroke-width="3"/>
+  <path d="M67 185h286" stroke="#a7d9d7" stroke-width="2"/>
+  <g fill="#a7d9d7"><circle cx="86" cy="168" r="4"/><circle cx="100" cy="168" r="4"/><circle cx="114" cy="168" r="4"/></g>
+  <g fill="none" stroke="#b7e7de" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m138 229-25 20 25 20m43-40 25 20-25 20m-17-49-15 57"/>
+    <path d="M112 309h91" opacity=".42"/>
+  </g>
+  <rect x="232" y="214" width="93" height="112" rx="7" fill="#b9dcae"/>
+  <path d="m254 267 15 15 32-37" fill="none" stroke="#264d42" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M46 369h328l-23 16H69z" fill="#7aa8a8"/>
+  <g fill="none" stroke="#486451" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M518 262h61m-10-10 10 10-10 10m110-10h54m-10-10 10 10-10 10"/>
+    <path d="M626 220v-43h109m-10-10 10 10-10 10m-99 116v43h109m-10-10 10 10-10 10" opacity=".55"/>
+  </g>
+  <path d="M457 225h39l18 18v56h-57z" fill="#f6f0db" stroke="#486451" stroke-width="3"/>
+  <path d="M495 225v20h19m-44 16h30m-30 14h22" fill="none" stroke="#486451" stroke-width="3"/>
+  <rect x="588" y="222" width="85" height="82" rx="9" fill="#486451"/>
+  <path d="m636 236-23 29h17l-5 25 23-32h-16z" fill="#fff1b0"/>
+  <g fill="#f6f0db" stroke="#486451" stroke-width="3">
+    <rect x="740" y="153" width="69" height="49" rx="5"/>
+    <rect x="740" y="238" width="69" height="49" rx="5"/>
+    <rect x="740" y="323" width="69" height="49" rx="5"/>
+    <path d="M740 166h69m-69 85h69m-69 85h69"/>
+  </g>
+  <g font-family="monospace" font-size="19" letter-spacing="2">
+    <text x="30" y="48" fill="#b9e6e6">01 / AI WORKBENCH</text>
+    <text x="450" y="48" fill="#354b3a">02 / AUTOMATION</text>
+  </g>
+  <g font-family="sans-serif" font-size="39" font-weight="bold">
+    <text x="30" y="492" fill="#e5f8f5">VoxelBox Studio</text>
+    <text x="450" y="492" fill="#263d30">The demo pipeline</text>
+  </g>
+</svg>
