@@ -1,0 +1,49 @@
+.chapter-worlds #worlds-title {
+  font-size: clamp(44px, 6vw, 92px);
+}
+.lanternmarch-preview {
+  width: min(100%, 380px);
+  margin: 18px 0 0;
+}
+.lanternmarch-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center 57%;
+  border: 1px solid #a7bc89;
+}
+.lanternmarch-preview figcaption {
+  margin-top: 6px;
+  color: #e7efc9;
+  font-size: 9px;
+}
+.chapter-worlds .chapter-content > .button {
+  margin-top: 16px;
+  background: #d9e998;
+  border-color: #d9e998;
+  color: #172b29;
+}
+.chapter-worlds .chapter-content > .button:hover {
+  background: #ebe9e1;
+  border-color: #ebe9e1;
+  color: #172b29;
+}
+@media (max-width: 760px) {
+  .chapter-worlds #worlds-title {
+    font-size: clamp(36px, 11vw, 70px);
+  }
+  .lanternmarch-preview {
+    width: min(100%, 320px);
+    margin-top: 12px;
+  }
+  .lanternmarch-preview img {
+    height: clamp(105px, 20svh, 160px);
+  }
+  .chapter-worlds .chapter-content > .button {
+    margin-top: 12px;
+    padding: 12px 16px;
+    min-height: 44px;
+  }
+}
