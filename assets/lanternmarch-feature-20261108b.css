@@ -1,0 +1,27 @@
+.chapter-opening .lantern-feature h1 {
+  font-size: clamp(32px, 5.7vw, 105px);
+  letter-spacing: -.075em;
+  line-height: 1;
+}
+.lantern-feature-actions {
+  margin-top: 24px;
+}
+.lantern-feature-actions .text-link {
+  min-height: 44px;
+  min-width: 185px;
+  color: #a53615;
+}
+.lantern-feature .journey-invitation {
+  margin-top: 27px;
+}
+@media (max-width: 760px) {
+  .chapter-opening .lantern-feature h1 {
+    font-size: clamp(32px, 12vw, 75px);
+  }
+  .lantern-feature-actions {
+    margin-top: 14px;
+  }
+  .lantern-feature .journey-invitation {
+    margin-top: 18px;
+  }
+}
