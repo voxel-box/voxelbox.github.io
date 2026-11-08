@@ -1,0 +1,23 @@
+.lantern-feature-actions {
+  margin-top: 24px;
+}
+.lantern-feature-actions > .mono {
+  display: block;
+  font-size: 9px;
+}
+.lantern-feature-actions .text-link {
+  min-height: 44px;
+  min-width: 185px;
+  color: #a53615;
+}
+.lantern-feature .journey-invitation {
+  margin-top: 27px;
+}
+@media (max-width: 760px) {
+  .lantern-feature-actions {
+    margin-top: 14px;
+  }
+  .lantern-feature .journey-invitation {
+    margin-top: 18px;
+  }
+}
