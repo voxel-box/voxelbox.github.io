@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="536" viewBox="0 0 840 536">
+  <defs>
+    <linearGradient id="ocean" x2="0" y2="1">
+      <stop stop-color="#143a45"/>
+      <stop offset="1" stop-color="#0a1d2a"/>
+    </linearGradient>
+    <linearGradient id="paper" x2="1" y2="1">
+      <stop stop-color="#e9ddff"/>
+      <stop offset="1" stop-color="#c8b4ee"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0v36" fill="none" stroke="#aee5e7" opacity=".22"/>
+    </pattern>
+  </defs>
+  <rect width="420" height="536" fill="url(#ocean)"/>
+  <rect width="420" height="536" fill="url(#grid)"/>
+  <rect x="420" width="420" height="536" fill="url(#paper)"/>
+  <g fill="none" stroke="#68b9c4" stroke-width="2" opacity=".68">
+    <path d="M28 344c65-45 94-39 140-17s91 31 126-1 59-45 98-26M28 370c65-45 94-39 140-17s91 31 126-1 59-45 98-26M28 396c65-45 94-39 140-17s91 31 126-1 59-45 98-26M28 422c65-45 94-39 140-17s91 31 126-1 59-45 98-26"/>
+    <circle cx="210" cy="223" r="90" stroke-dasharray="4 8"/>
+    <path d="M210 110v25m0 176v25M97 223h25m176 0h25"/>
+  </g>
+  <path d="m183 237 27 79 27-79Z" fill="#89ebe8" opacity=".26"/>
+  <path d="M191 172h38v68l-19 18-19-18z" fill="#c4eeed"/>
+  <path d="M201 162h18v10h-18zm-20 33h10v38h-10zm48 0h10v38h-10z" fill="#5ec0cb"/>
+  <circle cx="210" cy="220" r="10" fill="#153743"/>
+  <g transform="translate(630 240)">
+    <circle r="129" fill="#eae0fb"/>
+    <circle r="129" fill="none" stroke="#342354" stroke-width="2" stroke-dasharray="3 7"/>
+    <path d="M0-104 94-52v105L0 105l-94-52V-52Z" fill="#31214d"/>
+    <path d="M0-104 94-52 0 0l-94-52Z" fill="#fff3cd"/>
+    <path d="M0 0v105l-94-52V-52Z" fill="#ff8d68"/>
+    <path d="M0 0 94-52v105L0 105Z" fill="#7453a6"/>
+    <path d="M-94 53 0 0l94 53M0-104V0" fill="none" stroke="#30204d" stroke-width="2" opacity=".7"/>
+    <path d="M-24-44 0-57l24 13L0-30Zm46 77 24-13v27L22 60Z" fill="#30204d"/>
+    <path d="M-56-5l24 13v27l-24-13Z" fill="#fff3cd"/>
+  </g>
+  <g font-family="monospace" font-size="20" letter-spacing="2">
+    <text x="30" y="48" fill="#b9e6e6">01 / INTERACTIVE STORY</text>
+    <text x="450" y="48" fill="#382655">02 / DESIGN STUDIES</text>
+  </g>
+  <g font-family="sans-serif" font-size="48" font-weight="bold">
+    <text x="30" y="492" fill="#e5f8f5">NADIR</text>
+    <text x="450" y="492" fill="#2d2044">Fable / 25</text>
+  </g>
+</svg>
