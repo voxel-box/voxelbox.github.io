@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Ember March — Keep the Flame Alive</title>
+<meta name="description" content="An atmospheric browser survival game. Lead your lantern march through the dark.">
+<link rel="icon" href="favicon.ico">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:100%; height:100%; overflow:hidden; background:#05060a; font-family:'Segoe UI',system-ui,sans-serif; }
+  #game { position:fixed; inset:0; display:block; touch-action:none; cursor:crosshair; }
+
+  /* ---------- HUD ---------- */
+  #hud { position:fixed; top:0; left:0; right:0; padding:14px 18px; display:none; justify-content:space-between; align-items:flex-start; pointer-events:none; z-index:5; }
+  #hud .left, #hud .right { display:flex; flex-direction:column; gap:6px; }
+  #hud .right { align-items:flex-end; }
+  .stat { color:#e8dcc8; font-size:15px; letter-spacing:.5px; text-shadow:0 1px 4px #000; display:flex; align-items:center; gap:7px; }
+  .stat b { color:#ffd27a; font-size:18px; }
+  #waveLabel { color:#9fc7ff; font-size:13px; letter-spacing:2px; text-transform:uppercase; text-shadow:0 1px 4px #000; }
+  #hpbarWrap { width:180px; height:10px; background:rgba(255,255,255,.08); border:1px solid rgba(255,210,122,.35); border-radius:6px; overflow:hidden; }
+  #hpbar { height:100%; width:100%; background:linear-gradient(90deg,#ff5a3c,#ffb347); transition:width .15s; }
+  #oilwrap { width:180px; height:7px; background:rgba(255,255,255,.08); border:1px solid rgba(120,200,255,.3); border-radius:5px; overflow:hidden; }
+  #oilbar { height:100%; width:0%; background:linear-gradient(90deg,#3d8bff,#8fd0ff); transition:width .15s; }
+  #bossbarWrap { position:fixed; top:64px; left:50%; transform:translateX(-50%); width:min(420px,70vw); display:none; z-index:5; pointer-events:none; }
+  #bossbarWrap .lbl { color:#ff8fa3; text-align:center; font-size:12px; letter-spacing:3px; text-transform:uppercase; text-shadow:0 1px 4px #000; margin-bottom:3px; }
+  #bossbarOuter { height:8px; background:rgba(255,255,255,.08); border:1px solid rgba(255,110,140,.5); border-radius:5px; overflow:hidden; }
+  #bossbar { height:100%; width:100%; background:linear-gradient(90deg,#b3134b,#ff6e8c); transition:width .2s; }
+
+  #combo { position:fixed; top:20%; left:50%; transform:translateX(-50%); color:#ffd27a; font-size:26px; font-weight:700; text-shadow:0 0 18px rgba(255,170,60,.8),0 2px 6px #000; opacity:0; pointer-events:none; z-index:5; transition:opacity .3s; letter-spacing:1px; }
+
+  /* ---------- Screens ---------- */
+  .screen { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:10; text-align:center; padding:24px; }
+  #menu { background:radial-gradient(ellipse at 50% 80%, rgba(255,140,40,.10), transparent 60%), linear-gradient(#05060a, #0a0a12); }
+  h1.title { font-size:clamp(42px,9vw,84px); font-weight:800; letter-spacing:4px; background:linear-gradient(180deg,#ffe9b0,#ff9d3c 55%,#c95f20); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 0 24px rgba(255,140,40,.35)); }
+  .subtitle { color:#9aa4b8; font-size:clamp(13px,2.4vw,17px); letter-spacing:3px; margin-top:6px; text-transform:uppercase; }
+  .panel { margin-top:26px; background:rgba(12,14,22,.72); border:1px solid rgba(255,210,122,.18); border-radius:14px; padding:18px 26px; max-width:560px; color:#cfd6e4; font-size:14px; line-height:1.75; backdrop-filter:blur(6px); }
+  .panel .keys { display:flex; flex-wrap:wrap; gap:8px 18px; justify-content:center; }
+  kbd { background:#1c2130; border:1px solid #39415a; border-bottom-width:3px; border-radius:6px; padding:2px 9px; font-family:inherit; font-size:12.5px; color:#ffd27a; }
+  .modes { display:flex; gap:14px; margin-top:26px; flex-wrap:wrap; justify-content:center; }
+  button.big { pointer-events:auto; cursor:pointer; font-family:inherit; font-size:17px; font-weight:700; letter-spacing:1.5px; padding:14px 34px; border-radius:12px; border:1px solid rgba(255,180,80,.5); color:#1a1005; background:linear-gradient(180deg,#ffd27a,#ff9d3c); box-shadow:0 0 26px rgba(255,150,50,.35), inset 0 1px 0 rgba(255,255,255,.5); transition:transform .12s, box-shadow .12s; }
+  button.big:hover { transform:translateY(-2px) scale(1.03); box-shadow:0 6px 34px rgba(255,150,50,.55); }
+  button.big.alt { background:linear-gradient(180deg,#8fd0ff,#3d8bff); border-color:rgba(120,200,255,.5); color:#04101f; box-shadow:0 0 26px rgba(60,140,255,.35); }
+  button.ghost { background:transparent; color:#9aa4b8; border:1px solid #39415a; font-weight:600; }
+  button.ghost:hover { color:#e8dcc8; border-color:#6b7594; }
+  #bestLine { margin-top:18px; color:#7d879c; font-size:13px; letter-spacing:1px; }
+  #muteBtn { position:fixed; bottom:14px; right:16px; z-index:20; background:rgba(12,14,22,.6); color:#9aa4b8; border:1px solid #39415a; border-radius:8px; padding:6px 12px; font-size:13px; cursor:pointer; font-family:inherit; }
+  #muteBtn:hover { color:#ffd27a; }
+
+  #gameover, #victory { background:rgba(4,5,9,.82); backdrop-filter:blur(4px); display:none; }
+  .go-title { font-size:clamp(34px,7vw,64px); font-weight:800; letter-spacing:3px; color:#ff6e5a; text-shadow:0 0 30px rgba(255,80,50,.5); }
+  .win-title { color:#8fd0ff; text-shadow:0 0 30px rgba(90,170,255,.5); }
+  .scoregrid { display:grid; grid-template-columns:auto auto; gap:6px 26px; margin-top:20px; font-size:16px; color:#cfd6e4; }
+  .scoregrid .v { color:#ffd27a; font-weight:700; text-align:right; }
+  .hint { margin-top:16px; color:#7d879c; font-size:13px; }
+
+  #pauseOverlay { position:fixed; inset:0; background:rgba(4,5,9,.55); display:none; align-items:center; justify-content:center; z-index:9; flex-direction:column; gap:14px; }
+  #pauseOverlay .p { color:#e8dcc8; font-size:34px; letter-spacing:6px; font-weight:700; text-shadow:0 0 20px #000; }
+
+  /* touch controls */
+  #touchUI { position:fixed; inset:auto 0 0 0; height:150px; display:none; pointer-events:none; z-index:6; }
+  #stickBase { position:absolute; left:24px; bottom:24px; width:110px; height:110px; border-radius:50%; background:rgba(255,255,255,.06); border:1px solid rgba(255,210,122,.25); pointer-events:auto; }
+  #stickKnob { position:absolute; left:50%; top:50%; width:46px; height:46px; margin:-23px; border-radius:50%; background:rgba(255,210,122,.35); border:1px solid rgba(255,210,122,.6); }
+  #dashBtn { position:absolute; right:24px; bottom:60px; width:74px; height:74px; border-radius:50%; background:rgba(120,200,255,.15); border:1px solid rgba(120,200,255,.5); color:#8fd0ff; font-weight:700; font-size:14px; pointer-events:auto; display:flex; align-items:center; justify-content:center; user-select:none; -webkit-user-select:none; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="hud">
+  <div class="left">
+    <div id="waveLabel">Wave 1</div>
+    <div class="stat">❤ <div id="hpbarWrap"><div id="hpbar"></div></div></div>
+    <div class="stat">🛢 <div id="oilwrap"><div id="oilbar"></div></div></div>
+  </div>
+  <div class="right">
+    <div class="stat">Score <b id="scoreVal">0</b></div>
+    <div class="stat">🔥 Embers <b id="emberVal">0</b></div>
+    <div class="stat">💀 <b id="killVal">0</b></div>
+  </div>
+</div>
+<div id="bossbarWrap"><div class="lbl" id="bossName">The Hollow King</div><div id="bossbarOuter"><div id="bossbar"></div></div></div>
+<div id="combo"></div>
+
+<div id="menu" class="screen">
+  <h1 class="title">EMBER MARCH</h1>
+  <div class="subtitle">Keep the flame alive &nbsp;·&nbsp; outlast the dark</div>
+  <div class="panel">
+    <div style="margin-bottom:10px;color:#9fc7ff;">You lead a lantern march through endless night. Gather <span style="color:#ffd27a">embers</span> to refuel your light — in darkness you falter, and <span style="color:#ff8fa3">the hollow things</span> close in.</div>
+    <div class="keys">
+      <span><kbd>W A S D</kbd> move</span>
+      <span><kbd>Mouse</kbd> aim</span>
+      <span><kbd>Click</kbd> shoot</span>
+      <span><kbd>Space</kbd> dash</span>
+      <span><kbd>E</kbd> feed lantern</span>
+      <span><kbd>P</kbd> pause</span>
+    </div>
+    <div style="margin-top:10px; font-size:13px; color:#8b95ab;">Press <kbd>E</kbd> near the campfire between waves to spend embers on upgrades. Touch: drag left pad, tap right pad to dash, tap screen to fire.</div>
+  </div>
+  <div class="modes">
+    <button class="big" id="btnClassic">⚔ CLASSIC SURVIVAL</button>
+    <button class="big alt" id="btnTime">⏱ ENDLESS TIME TRIAL</button>
+  </div>
+  <div id="bestLine"></div>
+  <div class="hint">Tip: your light radius shrinks as oil runs low. Feed it embers before the dark swallows you.</div>
+</div>
+
+<div id="gameover" class="screen">
+  <div class="go-title">THE DARK TOOK YOU</div>
+  <div class="scoregrid">
+    <span>Score</span><span class="v" id="goScore">0</span>
+    <span>Waves survived</span><span class="v" id="goWave">0</span>
+    <span>Kills</span><span class="v" id="goKills">0</span>
+    <span>Best score</span><span class="v" id="goBest">0</span>
+  </div>
+  <div class="modes">
+    <button class="big" id="btnRetry">↻ RETRY</button>
+    <button class="big ghost" id="btnMenu1">MENU</button>
+  </div>
+  <div class="hint">Press <kbd>R</kbd> to retry instantly</div>
+</div>
+
+<div id="victory" class="screen">
+  <div class="go-title win-title">DAWN BREAKS ✦</div>
+  <div style="color:#cfd6e4;margin-top:8px;font-size:15px;">Your march endured the long night. The Hollow King is unmade.</div>
+  <div class="scoregrid">
+    <span>Final score</span><span class="v" id="winScore">0</span>
+    <span>Time</span><span class="v" id="winTime">0</span>
+    <span>Kills</span><span class="v" id="winKills">0</span>
+    <span>Best score</span><span class="v" id="winBest">0</span>
+  </div>
+  <div class="modes">
+    <button class="big" id="btnAgain">PLAY AGAIN</button>
+    <button class="big ghost" id="btnMenu2">MENU</button>
+  </div>
+</div>
+
+<div id="pauseOverlay"><div class="p">PAUSED</div><div class="hint">Press <kbd>P</kbd> or <kbd>Esc</kbd> to resume</div></div>
+
+<div id="touchUI">
+  <div id="stickBase"><div id="stickKnob"></div></div>
+  <div id="dashBtn">DASH</div>
+</div>
+
+<button id="muteBtn">🔊 sound</button>
+
+<script src="ember-march.js"></script>
+</body>
+</html>
